@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if ( isset( $_SESSION['user_id'] ) ) {
+    
+} else {
+    // Redirect them to the login page
+    header("Location: ../login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,7 +194,7 @@
               <a class="dropdown-item">
                 Check Inbox
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="../process.php?process=logout">
                 Sign Out
               </a>
             </div>
