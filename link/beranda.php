@@ -57,8 +57,8 @@
 
 				<!--  Main navigation  -->
 				<ul class="main-nav nav navbar-nav navbar-right">
-					<li><a href="#home">Home</a></li>
-					<li><a href="#about">About</a></li>
+					<li><a href="#home">Beranda</a></li>
+					<li><a href="#about">Tentang</a></li>
 					<li class="has-dropdown"><a href="#fitur">Fitur</a>
 						<ul class="dropdown">
 							<li class="has-dropdown"><a href="#">Irigasi</a>
@@ -81,7 +81,7 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="#contact">Contact</a></li>
+					<li><a href="#contact">Kontak</a></li>
                     <li><a href="login.php">Login</a></li>
 				</ul>
 				<!-- /Main navigation -->
@@ -207,7 +207,7 @@
 				<!-- Section-header -->
 				<div class="section-header text-center">
 					<h2 class="title">Kontak Kami</h2>
-					<p> Dinasi Pekerjaan Umum dan Penataan Ruangan Kabupaten Garut </p>
+					<p> Dinas Pekerjaan Umum dan Penataan Ruangan Kabupaten Garut </p>
 				</div>
 				<!-- /Section-header -->
 

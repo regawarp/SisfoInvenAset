@@ -30,7 +30,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="process.php?process=login" method="post">
 					<span class="login100-form-title p-b-43">
-						Login to continue
+						Login untuk melanjutkan
 					</span>
 					
 					
@@ -51,7 +51,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 
 						<div>
 							<a href="#" class="txt1">
-								Forgot Password?
+								Lupa Password?
 							</a>
 						</div>
 					</div>
@@ -67,10 +67,6 @@ if ( isset( $_SESSION['user_id'] ) ) {
 						<span class="txt2">
 							<a href="beranda.php">< Kembali ke Beranda</a>
                         </span>
-                        <span class="txt2">
-							<a href="admin/dashboard.php">Ke Dashboard ></a>
-                        </span>
-                        
 					</div>
 				</form>
 
