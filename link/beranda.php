@@ -169,7 +169,7 @@
 					<div class="about">
 						<i class="fa fa-tint"></i>
 						<h3>Irigasi</h3>
-						<p>irigasi teknis adalah saluran dan bangunan yang merupakan satu kesatuan yang diperlukan untuk pengaturan air irigasi yang mencakup penyediaan, pengambilan, pembagian yang dilengkapi dengan bangunan ukur di seluruh bangunan pembaginya</p>
+						<p>Irigasi adalah suatu sistem untuk mengairi suatu lahan dengan cara membendung sumber air.</p>
 						<a href="#">Read more</a>
 					</div>
 				</div>
@@ -180,7 +180,7 @@
 					<div class="about">
 						<i class="fa fa-pagelines"></i>
 						<h4>Konservasi dan Pengembangan Sumber Daya Air</h4>
-						<p>Konservasi sumber daya air adalah usaha untuk memelihara keberadaan, sifat dan fungsi, serta keberlanjutan sumber daya air supaya senantiasa tersedia dalam kualitas dan kuantitas yang memadai guna memenuhi kebutuhan makhluk hidup, baik di masa sekarang maupun di masa yang akan datang.</p>
+						<p>Konservasi sumber daya air adalah usaha untuk memelihara keberadaan, sifat dan fungsi, serta keberlanjutan sumber daya air.</p>
 						<a href="#">Read more</a>
 					</div>
 				</div>
