@@ -106,7 +106,7 @@
 						<h5 class="modal-title text-center" id="exampleModalLongTitle">Login</h5>
 					</div>
 					<div class="modal-body">
-						<form action="" method="post">
+						<form action="process.php?process=login" method="post">
 							Username: <br/>
 							<input type="text" name="username" id="" class="form-control">
 							Password: <br/>
