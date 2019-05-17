@@ -133,7 +133,7 @@ switch ($_GET['process']) {
         $file = $_POST['file'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $update_query='UPDATE kiba  SET id_lokasi="$idlokasi", id_dataspa="$iddataspa",nomor_kode_barang="$nokodebrg",nomor_register=$noreg,luas=$luas,tahun_pengadaan="$thn_pengadaan",hak="$hak",tanggal_sertifikat="$tgl_sertifikat",nomor_sertifikat="$no_sertifikat",penggunaan="$penggunaan",harga=$harga,nama_barang="$nama_barang",keterangan="$keterangan",asalusu="$asalusul",foto="$foto",file="$file" WHERE ID_KIBA="$idkiba"';
+        $update_query="UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER=$noreg,LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FOTO='$foto',FILE='$file' WHERE ID_KIBA='$idkiba'";
         if(mysqli_query($conn,$update_query)){
             echo "Data sukses diupdate";
         }else{
