@@ -59,8 +59,8 @@ switch ($_GET['process']) {
         $file = $_POST['file'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query='INSERT INTO kiba VALUES("$idkiba","$idlokasi","$iddataspa","$nokodebrg",$noreg,$luas,"$thn_pengadaan","$hak","$tgl_sertifikat","$no_sertifikat","$penggunaan",$harga,"$nama_barang","$keterangan","$asalusul","$foto","$file")';
-        if(mysql_query($conn,$insert_query)){
+        $insert_query='INSERT INTO kiba VALUES("'.$idkiba.'","'.$idlokasi.'","'.$iddataspa.'","'.$nokodebrg.'","'.$noreg.'",'.$luas.','.$thn_pengadaan.',"'.$hak.'",'.$tgl_sertifikat.',"'.$no_sertifikat.'","'.$penggunaan.'",'.$harga.',"'.$nama_barang.'","'.$keterangan.'","'.$asalusul.'","'.$foto.'","'.$file.'")';
+        if(mysqli_query($conn,$insert_query)){
             echo "Data Sukses diinput";
 
             //Upload foto and file
@@ -133,8 +133,8 @@ switch ($_GET['process']) {
         $file = $_POST['file'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $update_query='UPDATE kiba  SET id_lokasi="$idlokasi", id_dataspa="$iddataspa",nomor_kode_barang="$nokodebrg",nomor_register=$noreg,luas=$luas,tahun_pengadaan="$thn_pengadaan",hak="$hak",tanggal_sertifikat="$tgl_sertifikat",nomor_sertifikat="$no_sertifikat",penggunaan="$penggunaan",harga=$harga,nama_barang="$nama_barang",keterangan="$keterangan",asalusu="$asalusul",foto="$foto",file="$file" WHERE id_kiba="$idkiba"';
-        if(mysql_query($conn,$update_query)){
+        $update_query='UPDATE kiba  SET id_lokasi="$idlokasi", id_dataspa="$iddataspa",nomor_kode_barang="$nokodebrg",nomor_register=$noreg,luas=$luas,tahun_pengadaan="$thn_pengadaan",hak="$hak",tanggal_sertifikat="$tgl_sertifikat",nomor_sertifikat="$no_sertifikat",penggunaan="$penggunaan",harga=$harga,nama_barang="$nama_barang",keterangan="$keterangan",asalusu="$asalusul",foto="$foto",file="$file" WHERE ID_KIBA="$idkiba"';
+        if(mysqli_query($conn,$update_query)){
             echo "Data sukses diupdate";
         }else{
             echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
@@ -145,8 +145,8 @@ switch ($_GET['process']) {
     case 'delete-kiba':
         $idkiba = $_GET['idkiba'];
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $delete_query='DELETE FROM kiba WHERE id_kiba="$idkiba"';
-        if(mysql_query($conn,$delete_query)){
+        $delete_query='DELETE FROM kiba WHERE ID_KIBA='.$idkiba;
+        if(mysqli_query($conn,$delete_query)){
             echo "Data berhasil dihapus";
         }else{
             echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);

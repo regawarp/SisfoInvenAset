@@ -10,7 +10,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 ?>
 <html>
 <head>
-	<title>Input Kib A</title>
+	<title>Update Kib A</title>
 </head>
 <body>
 	<form method="post" action="../process.php?process=insert-kiba">
