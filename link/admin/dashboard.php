@@ -34,10 +34,10 @@
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="../../index.html">
+        <a class="navbar-brand brand-logo" href="dashboard.php">
           <img src="../../img/logo.png" alt="logo" />
         </a>
-        <a class="navbar-brand brand-logo-mini" href="../../index.html">
+        <a class="navbar-brand brand-logo-mini" href="dashboard.php">
           <img src="../../img/logo-square.png" alt="logo" />
         </a>
       </div>
@@ -148,83 +148,43 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-success btn-block">New Project
-                <i class="mdi mdi-plus"></i>
-              </button>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../index.html">
+            <a class="nav-link" href="dashboard.php">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-content-copy"></i>
-              <span class="menu-title">Basic UI Elements</span>
-              <i class="menu-arrow"></i>
+            <a class="nav-link" href="deddak.php">
+              <i class="menu-icon mdi mdi-file-outline"></i>
+              <span class="menu-title">DED & DAK</span>
             </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>
-                </li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/forms/basic_elements.html">
-              <i class="menu-icon mdi mdi-backup-restore"></i>
-              <span class="menu-title">Form elements</span>
+            <a class="nav-link" href="kiba_home.php">
+              <i class="menu-icon mdi mdi-map"></i>
+              <span class="menu-title">KIB A</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../pages/charts/chartjs.html">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Charts</span>
+              <i class="menu-icon mdi mdi-file-multiple"></i>
+              <span class="menu-title">KIB D</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../pages/tables/basic-table.html">
               <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">KIB F</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/icons/font-awesome.html">
-              <i class="menu-icon mdi mdi-sticker"></i>
-              <span class="menu-title">Icons</span>
+            <a class="nav-link" href="../../pages/tables/basic-table.html">
+              <i class="menu-icon mdi mdi-map-marker-multiple"></i>
+              <span class="menu-title">Data Spasial</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="menu-icon mdi mdi-restart"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/samples/blank-page.html"> Blank Page </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/samples/login.html"> Login </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/samples/register.html"> Register </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/samples/error-404.html"> 404 </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="../../pages/samples/error-500.html"> 500 </a>
-                </li>
-              </ul>
-            </div>
           </li>
         </ul>
       </nav>
