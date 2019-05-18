@@ -59,12 +59,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="detail_home.php">
-              <i class="menu-icon mdi mdi-map-marker-multiple"></i>
-              <span class="menu-title">Detail Pemeliharaan</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="pegawai_home.php">
               <i class="menu-icon mdi mdi-map-marker-multiple"></i>
               <span class="menu-title">Pegawai</span>
