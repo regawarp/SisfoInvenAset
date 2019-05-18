@@ -229,22 +229,22 @@ if (isset($_SESSION['user_id'])) {
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Input KIP A</h4>
+									<h4 class="card-title">Input KIB D</h4>
 									<form class="form-sample">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">ID KIB A</label>
+													<label class="col-sm-3 col-form-label">ID KIB D</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="idkiba" />
+														<input type="text" class="form-control" name="ID_KIBD" />
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Kode barang</label>
+													<label class="col-sm-3 col-form-label">ID Aset</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="nokodebrg" />
+														<input type="text" class="form-control" name="ID_ASET" />
 													</div>
 												</div>
 											</div>
@@ -254,7 +254,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">ID Lokasi</label>
 													<div class="input-group col-sm-8">
-														<select name="idlokasi" class="form-control" style="margin: 0px 10px;">
+														<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
 															<option>LK001</option>
 															<option>LK002</option>
 														</select>
@@ -268,7 +268,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">ID Spatial</label>
 													<div class="input-group col-sm-8">
-														<select name="iddataspa" class="form-control" style="margin: 0px 10px;">
+														<select name="ID_DATASPA" class="form-control" style="margin: 0px 10px;">
 															<option>SP001</option>
 															<option>SP002</option>
 														</select>
@@ -282,71 +282,89 @@ if (isset($_SESSION['user_id'])) {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">No Register</label>
+													<label class="col-sm-3 col-form-label">Jenis</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="noreg" />
+														<input type="text" class="form-control" name="JENIS" />
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Luas</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="luas" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Thn Pengadan</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="thn_pengadaan" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Hak</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="hak" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Tgl Sertifikat</label>
-													<div class="col-sm-9">
-														<input type="date" class="form-control" name="tgl_sertifikat" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">No Sertifikat</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="no_sertifikat" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Nama Barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="nama_barang" />
+														<input type="text" class="form-control" name="NAMA_BARANG" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Beton</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="BETON" />
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Keterangan</label>
+													<label class="col-sm-3 col-form-label">Kd Barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="keterangan" />
+														<input type="text" class="form-control" name="NOMOR_KOE_BARANG" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">No Regis</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="NOMOR_REGISTER" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Konstruksi</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="KONSTRUKSI" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Panjang</label>
+													<div class="col-sm-9">
+														<input type="number" class="form-control" name="PANJANG" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Lebar</label>
+													<div class="col-sm-9">
+														<input type="number" class="form-control" name="LEBAR" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Luas</label>
+													<div class="col-sm-9">
+														<input type="number" class="form-control" name="LUAS" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Tgl Dokumen</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control" name="TANGGGAL_DOKUMEN" />
 													</div>
 												</div>
 											</div>
@@ -372,9 +390,71 @@ if (isset($_SESSION['user_id'])) {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Status Tanah</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="STATUS_TANAH" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Nomor Kode</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="NOMOR_KODE" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Asal Usul</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="ASAL_USUL" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Harga</label>
+													<div class="col-sm-9">
+														<input type="number" class="form-control" name="HARGA" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Kondisi</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="KONDISI" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Keterangan</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="KETERANGAN" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Foto</label>
+													<div class="col-sm-9">
+														<input type="file" name="FOTO" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">File</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="file" />
+														<input type="file" name="FILE" />
 													</div>
 												</div>
 											</div>

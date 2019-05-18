@@ -34,7 +34,6 @@ if (isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-
 	<div class="container-scroller">
 		<!-- partial:../../partials/_navbar.html -->
 		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -207,7 +206,6 @@ if (isset($_SESSION['user_id'])) {
 												} else {
 													echo "<tr><td colspan='17' align='center'>0 results</td></tr>";
 												}
-
 												mysqli_close($conn);
 												?>
 											</tbody>
@@ -277,6 +275,24 @@ if (isset($_SESSION['user_id'])) {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Nama Barang</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="nama_barang" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Kd Barang</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="nokodebrg" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">No Register</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="noreg" />
@@ -328,15 +344,26 @@ if (isset($_SESSION['user_id'])) {
 												</div>
 											</div>
 										</div>
+										
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Nama Barang</label>
+													<label class="col-sm-3 col-form-label">Penggunaan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="nama_barang" />
+														<input type="text" class="form-control" name="noreg" />
 													</div>
 												</div>
 											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Harga</label>
+													<div class="col-sm-9">
+														<input type="number" class="form-control" name="luas" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Keterangan</label>
@@ -345,8 +372,6 @@ if (isset($_SESSION['user_id'])) {
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Asal Usul</label>
@@ -355,21 +380,22 @@ if (isset($_SESSION['user_id'])) {
 													</div>
 												</div>
 											</div>
+										</div>
+										<div class="row">
+											
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Foto</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="foto" />
+														<input type="file" name="foto" />
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">File</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="file" />
+														<input type="file"  name="file" />
 													</div>
 												</div>
 											</div>
