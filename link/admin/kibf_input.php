@@ -30,8 +30,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
         <br>NAMA_BARANG<input type="text" name="NAMA_BARANG">
         <br>KETERANGAN<input type="text" name="KETERANGAN">
         <br>ASAL_USUL<input type="text" name="ASAL_USUL">
-        <br>FOTO<input type="text" name="FOTO">
-        <br>FILE<input type="text" name="FILE">
+        <br>FOTO<input type="file" name="FOTO">
+        <br>FILE<input type="file" name="FILE">
 		<br><button>Tambah Data</button>
 	</form>
 </body>

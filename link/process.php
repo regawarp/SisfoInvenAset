@@ -43,6 +43,7 @@ switch ($_GET['process']) {
         $idkiba = $_POST['idkiba'];
         $idlokasi = $_POST['idlokasi'];
         $iddataspa = $_POST['iddataspa'];
+        $nama_barang = $_POST['nama_barang'];
         $nokodebrg = $_POST['nokodebrg'];
         $noreg = $_POST['noreg'];
         $luas = $_POST['luas'];
@@ -52,25 +53,24 @@ switch ($_GET['process']) {
         $no_sertifikat = $_POST['no_sertifikat'];
         $penggunaan = $_POST['penggunaan'];
         $harga = $_POST['harga'];
-        $nama_barang = $_POST['nama_barang'];
         $keterangan = $_POST['keterangan'];
         $asalusul = $_POST['asalusul'];
-        $foto = $_POST['foto'];
-        $file = $_POST['file'];
+        $foto = basename($_FILES["foto"]["name"]);
+        $file = basename($_FILES["file"]["name"]);
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query='INSERT INTO kiba VALUES("'.$idkiba.'","'.$idlokasi.'","'.$iddataspa.'","'.$nokodebrg.'","'.$noreg.'",'.$luas.','.$thn_pengadaan.',"'.$hak.'",'.$tgl_sertifikat.',"'.$no_sertifikat.'","'.$penggunaan.'",'.$harga.',"'.$nama_barang.'","'.$keterangan.'","'.$asalusul.'","'.$foto.'","'.$file.'")';
+        $insert_query='INSERT INTO kiba VALUES("'.$idkiba.'","'.$idlokasi.'","'.$iddataspa.'","'.$nama_barang.'","'.$nokodebrg.'","'.$noreg.'",'.$luas.','.$thn_pengadaan.',"'.$hak.'",'.$tgl_sertifikat.',"'.$no_sertifikat.'","'.$penggunaan.'",'.$harga.',"'.$keterangan.'","'.$asalusul.'","'.$foto.'","'.$file.'")';
         if(mysqli_query($conn,$insert_query)){
             echo "Data Sukses diinput";
 
             //Upload foto and file
-           /* $target_dir = "uploads/";
-            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $target_dir = "../img/upload/";
+            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
             if(isset($_POST["submit"])) {
-                $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                $check = getimagesize($_FILES["foto"]["tmp_name"]);
                 if($check !== false) {
                     echo "File is an image - " . $check["mime"] . ".";
                     $uploadOk = 1;
@@ -85,7 +85,7 @@ switch ($_GET['process']) {
                 $uploadOk = 0;
             }
             // Check file size
-            if ($_FILES["fileToUpload"]["size"] > 500000) {
+            if ($_FILES["foto"]["size"] > 500000) {
                 echo "Sorry, your file is too large.";
                 $uploadOk = 0;
             }
@@ -100,13 +100,34 @@ switch ($_GET['process']) {
                 echo "Sorry, your file was not uploaded.";
             // if everything is ok, try to upload file
             } else {
-                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+                if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+                    echo "The file ". basename( $_FILES["foto"]["name"]). " has been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
             }
-         */   
+
+            $target_dir = "../file/";
+            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+            $uploadOk = 1;
+            $fileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                echo "Sorry, file already exists.";
+                $uploadOk = 0;
+            }
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                    echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                }
+            }
+            
         }else{
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
