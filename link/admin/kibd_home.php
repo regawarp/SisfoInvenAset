@@ -230,7 +230,7 @@ if (isset($_SESSION['user_id'])) {
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Input KIB D</h4>
-									<form class="form-sample">
+									<form class="form-sample"  method="post" action="../process.php?process=insert-kibd" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
@@ -310,7 +310,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Kd Barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NOMOR_KOE_BARANG" />
+														<input type="text" class="form-control" name="NOMOR_KODE_BARANG" />
 													</div>
 												</div>
 											</div>

@@ -200,7 +200,7 @@ if (isset($_SESSION['user_id'])) {
 																<td>$row[ASAL_USUL]</td>
 																<td>$row[FOTO]</td>
 																<td>$row[FILE]</td>
-																<td><a href='kiba_update.php?idkiba=$row[ID_KIBA]'>UPDATE</a><a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]'>DELETE</a></td>
+																<td><a href='kiba_update.php?idkiba=$row[ID_KIBA]'>UPDATE</a><a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]&&foto=$row[FOTO]&&file=$row[FILE]'>DELETE</a></td>
 																</tr>";
 													}
 												} else {
@@ -349,7 +349,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Penggunaan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="noreg" />
+														<input type="text" class="form-control" name="penggunaan" />
 													</div>
 												</div>
 											</div>
@@ -357,7 +357,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Harga</label>
 													<div class="col-sm-9">
-														<input type="number" class="form-control" name="luas" />
+														<input type="number" class="form-control" name="harga" />
 													</div>
 												</div>
 											</div>

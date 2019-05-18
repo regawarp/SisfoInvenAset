@@ -128,6 +128,7 @@ switch ($_GET['process']) {
                 }
             }
             
+            header("Location: admin/kiba_home.php");
         }else{
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
@@ -180,15 +181,19 @@ switch ($_GET['process']) {
         $delete_query='DELETE FROM kiba WHERE ID_KIBA='.$idkiba;
         if(mysqli_query($conn,$delete_query)){
             echo "Data berhasil dihapus";
-            if (!unlink('../img/upload/'.$foto)){
-              echo ("Error deleting $foto");
-            }else{
-              echo ("Deleted $foto");
+            if($foto!=""){
+                if (!unlink('../img/upload/'.$foto)){
+                  echo ("Error deleting $foto");
+                }else{
+                  echo ("Deleted $foto");
+                }
             }
-            if (!unlink('../file/'.$file)){
-              echo ("Error deleting $file");
-            }else{
-              echo ("Deleted $file");
+            if($file!=""){
+                if (!unlink('../file/'.$file)){
+                  echo ("Error deleting $file");
+                }else{
+                  echo ("Deleted $file");
+                }
             }
         }else{
             echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
@@ -276,6 +281,29 @@ switch ($_GET['process']) {
     case 'delete-kibf':
         # code...
         break;
+
+    case 'insert-lokasi':
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $NAMA_LOKASI = $_POST['NAMA_LOKASI'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO lokasi VALUES('$ID_LOKASI','$NAMA_LOKASI')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        break;
+
+    case 'update-lokasi':
+        # code...
+        break;
+
+    case 'delete-lokasi':
+        # code...
+        break;
+
     default:
         # code...
         break;
