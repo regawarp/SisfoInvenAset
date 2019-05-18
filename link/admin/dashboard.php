@@ -5,7 +5,7 @@
 
 // } else {
 //     // Redirect them to the login page
-//     header("Location: ../login.php");
+//     header("Location: ../beranda.php");
 // }
 ?>
 <!DOCTYPE html>
