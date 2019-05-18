@@ -134,7 +134,7 @@ if (isset($_SESSION['user_id'])) {
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="../../pages/tables/basic-table.html">
+						<a class="nav-link" href="kibf_home.php">
 							<i class="menu-icon mdi mdi-table"></i>
 							<span class="menu-title">KIB F</span>
 						</a>

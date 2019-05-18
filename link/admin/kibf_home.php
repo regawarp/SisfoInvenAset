@@ -1,73 +1,467 @@
 <?php
 session_start();
 
-if ( isset( $_SESSION['user_id']) ) {
+if (isset($_SESSION['user_id'])) {
 	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
 	$sql = "SELECT * FROM kibf";
 	$result = mysqli_query($conn, $sql);
 } else {
-    // Redirect them to the login page
-    header("Location: ../login.php");
+	// Redirect them to the login page
+	header("Location: ../login.php");
 }
 ?>
 <html>
+
 <head>
-	<title>Kartu Inventaris Barang F</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="../../css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="../../css/vendor.bundle.base.css">
+	<link rel="stylesheet" href="../../css/vendor.bundle.addons.css">
+	<!-- endinject -->
+	<!-- plugin css for this page -->
+	<link rel="stylesheet" href="../../css/skins/all.css">
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../datatables/css/dataTables.bootstrap.min.css" />
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<link rel="stylesheet" href="../../css/admin.css">
+	<!-- endinject -->
 </head>
+
 <body>
-	<table border="1">
-		<tr>
-			<td>ID_KIBF</td>
-	         <td>ID_DATASPA</td>
-	         <td>ID_LOKASI</td>
-	         <td>ID_ASET</td>
-	         <td>NAMA_BARANG</td>
-	         <td>BANGUNAN</td>
-	         <td>BERTINGKAT</td>
-	         <td>BETON</td>
-	         <td>PANJANG</td>
-	         <td>TANGGAL_DOKUMEN</td>
-	         <td>NOMOR_DOKUMEN</td>
-	         <td>TANGGAL_MULAI</td>
-	         <td>STATUS_TANAH</td>
-	         <td>NOMO_KODE_TANAH</td>
-	         <td>NILAI_KONTRAK</td>
-	         <td>FOTO</td>
-	         <td>FILE</td>
-	         <td>KETERANGAN</td>
-	         <td>ASAL_USUL</td>
-			<td>UPDATE</td>
-			<td>DELETE</td>
-		</tr>
-	<?php
-		if (mysqli_num_rows($result) > 0) {while($row = mysqli_fetch_assoc($result)) {
-				echo "<tr>
-		         <td>$row[ID_KIBF]</td>
-		         <td>$row[ID_DATASPA]</td>
-		         <td>$row[ID_LOKASI]</td>
-		         <td>$row[ID_ASET]</td>
-		         <td>$row[NAMA_BARANG]</td>
-		         <td>$row[BANGUNAN]</td>
-		         <td>$row[BERTINGKAT]</td>
-		         <td>$row[BETON]</td>
-		         <td>$row[PANJANG]</td>
-		         <td>$row[TANGGAL_DOKUMEN]</td>
-		         <td>$row[NOMOR_DOKUMEN]</td>
-		         <td>$row[TANGGAL_MULAI]</td>
-		         <td>$row[STATUS_TANAH]</td>
-		         <td>$row[NOMO_KODE_TANAH]</td>
-		         <td>$row[NILAI_KONTRAK]</td>
-		         <td>$row[FOTO]</td>
-		         <td>$row[FILE]</td>
-		         <td>$row[KETERANGAN]</td>
-		         <td>$row[ASAL_USUL]</td>
-		         <td><a href='kibf_update.php?idkibf=$row[ID_KIBF]'>UPDATE</a></td>
-		         <td><a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>DELETE</a></td>
-		        </tr>";
-		    }
-		} else {echo "<tr><td colspan='20' align='center'>0 results</td></tr>";}
-		mysqli_close($conn);
-	?>
-	</table>
+	<div class="container-scroller">
+		<!-- partial:../../partials/_navbar.html -->
+		<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+				<a class="navbar-brand brand-logo" href="../../index.html">
+					<img src="../../img/logo.png" alt="logo" />
+				</a>
+				<a class="navbar-brand brand-logo-mini" href="../../index.html">
+					<img src="../../img/logo-mini.png" alt="logo" />
+				</a>
+			</div>
+			<div class="navbar-menu-wrapper d-flex align-items-center">
+				<ul class="navbar-nav navbar-nav-right">
+					<li class="nav-item dropdown d-none d-xl-inline-block">
+						<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+							<span class="profile-text">Hello, Richard V.Welsh !</span>
+							<img class="img-xs rounded-circle" src="../../img/faces/face1.jpg" alt="Profile image">
+						</a>
+						<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+							<a class="dropdown-item p-0">
+								<div class="d-flex border-bottom">
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+										<i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
+									</div>
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+										<i class="mdi mdi-account-outline mr-0 text-gray"></i>
+									</div>
+									<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+										<i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+									</div>
+								</div>
+							</a>
+							<a class="dropdown-item mt-2">
+								Manage Accounts
+							</a>
+							<a class="dropdown-item">
+								Change Password
+							</a>
+							<a class="dropdown-item">
+								Check Inbox
+							</a>
+							<a class="dropdown-item">
+								Sign Out
+							</a>
+						</div>
+					</li>
+				</ul>
+				<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+					<span class="mdi mdi-menu"></span>
+				</button>
+			</div>
+		</nav>
+		<!-- partial -->
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:../../partials/_sidebar.html -->
+
+			<nav class="sidebar sidebar-offcanvas" id="sidebar">
+				<ul class="nav">
+					<li class="nav-item nav-profile">
+						<div class="nav-link">
+							<div class="user-wrapper">
+								<div class="profile-image">
+									<img src="../../img/faces/face1.jpg" alt="profile image">
+								</div>
+								<div class="text-wrapper">
+									<p class="profile-name">Richard V.Welsh</p>
+									<div>
+										<small class="designation text-muted">Manager</small>
+										<span class="status-indicator online"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="dashboard.php">
+							<i class="menu-icon mdi mdi-television"></i>
+							<span class="menu-title">Dashboard</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="deddak.php">
+							<i class="menu-icon mdi mdi-file-outline"></i>
+							<span class="menu-title">DED & DAK</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="kiba_home.php">
+							<i class="menu-icon mdi mdi-map"></i>
+							<span class="menu-title">KIB A</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="kibd_home.php">
+							<i class="menu-icon mdi mdi-file-multiple"></i>
+							<span class="menu-title">KIB D</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="kibf_home.php">
+							<i class="menu-icon mdi mdi-table"></i>
+							<span class="menu-title">KIB F</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../../pages/tables/basic-table.html">
+							<i class="menu-icon mdi mdi-map-marker-multiple"></i>
+							<span class="menu-title">Data Spasial</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title mb-4">Big Div</h5>
+									<div class="table-responsive">
+										<table id="myTable" class="table table-hover">
+											<thead>
+												<tr>
+													<td>ID KIB F</td>
+													<td>ID Spasial</td>
+													<td>ID Lokasi</td>
+													<td>ID Aset</td>
+													<td>Nama Barang</td>
+													<td>Bangunan</td>
+													<td>Bertingkat</td>
+													<td>Beton</td>
+													<td>Panjang</td>
+													<td>Tgl Dokumen</td>
+													<td>No Dokumen</td>
+													<td>Tgl Mulai</td>
+													<td>Status Tanah</td>
+													<td>Kode Tanah</td>
+													<td>Nilai Kontrak</td>
+													<td>Foto</td>
+													<td>File</td>
+													<td>Keterangan</td>
+													<td>Asal Usul</td>
+													<td>Operasi</td>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
+												if (mysqli_num_rows($result) > 0) {
+													while ($row = mysqli_fetch_assoc($result)) {
+														echo "<tr>
+												<td>$row[ID_KIBF]</td>
+												<td>$row[ID_DATASPA]</td>
+												<td>$row[ID_LOKASI]</td>
+												<td>$row[ID_ASET]</td>
+												<td>$row[NAMA_BARANG]</td>
+												<td>$row[BANGUNAN]</td>
+												<td>$row[BERTINGKAT]</td>
+												<td>$row[BETON]</td>
+												<td>$row[PANJANG]</td>
+												<td>$row[TANGGAL_DOKUMEN]</td>
+												<td>$row[NOMOR_DOKUMEN]</td>
+												<td>$row[TANGGAL_MULAI]</td>
+												<td>$row[STATUS_TANAH]</td>
+												<td>$row[NOMO_KODE_TANAH]</td>
+												<td>$row[NILAI_KONTRAK]</td>
+												<td>$row[FOTO]</td>
+												<td>$row[FILE]</td>
+												<td>$row[KETERANGAN]</td>
+												<td>$row[ASAL_USUL]</td>
+												<td><a href='kibf_update.php?idkibf=$row[ID_KIBF]'>UPDATE</a></td>
+												<td><a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>DELETE</a></td>
+												</tr>";
+													}
+												} else {
+													echo "<tr><td colspan='20' align='center'>0 results</td></tr>";
+												}
+												mysqli_close($conn);
+												?>
+											</tbody>
+											<tfoot></tfoot>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Input KIB F</h4>
+									<form class="form-sample">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">ID KIB F</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="ID_KIBF" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">ID Aset</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="ID_ASET" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">ID Lokasi</label>
+													<div class="input-group col-sm-8">
+														<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
+															<option>LK001</option>
+															<option>LK002</option>
+														</select>
+														<span class="input-group-append">
+															<button class="file-upload-browse btn btn-info" type="button">Input Lokasi</button>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">ID Spatial</label>
+													<div class="input-group col-sm-8">
+														<select name="ID_DATASPA" class="form-control" style="margin: 0px 10px;">
+															<option>SP001</option>
+															<option>SP002</option>
+														</select>
+														<span class="input-group-append">
+															<button class="file-upload-browse btn btn-info" type="button">Input Spatial</button>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Nama Barang</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="NAMA_BARANG" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Bangunan</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="BANGUNAN" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Bertingkat</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="BERTINGKAT" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Beton</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="BETON" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Panjang</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="PANJANG" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Tgl Dokumen</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control" name="TANGGAL_DOKUMEN" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">No Dokumen</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="NOMOR_DOKUMEN" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Tgl Mulai</label>
+													<div class="col-sm-9">
+														<input type="date" class="form-control" name="TANGGAL_MULAI" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Status Tanah</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="STATUS_TANAH" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">No Kd Tanah</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="NOMOR_KODE_TANAH" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Nilai Kontrak</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="NILAI_KONTRAK" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Keterangan</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="KETERANGAN" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Asal Usul</label>
+													<div class="col-sm-9">
+														<input type="text" class="form-control" name="ASAL_USUL" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">Foto</label>
+													<div class="col-sm-9">
+														<input type="file" name="FOTO" />
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label">File</label>
+													<div class="col-sm-9">
+														<input type="file" name="FILE" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:../../partials/_footer.html -->
+				<footer class="footer">
+					<div class="container-fluid clearfix">
+						<span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
+							<a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+						<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+							<i class="mdi mdi-heart text-danger"></i>
+						</span>
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
 </body>
-</html>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="../../js/vendor.bundle.base.js"></script>
+<script src="../../js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="../../js/off-canvas.js"></script>
+<script src="../../js/misc.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<!-- <script src="../../js/jquery.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="../../datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../datatables/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+	});
+</script>
+<!-- End custom js for this page-->
