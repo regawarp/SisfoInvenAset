@@ -13,7 +13,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<title>Input Kib D</title>
 </head>
 <body>
-	<form method="post" action="../process.php?process=insert-kibd">
+	<form method="post" action="../process.php?process=insert-kibd" enctype="multipart/form-data">
 		<br>ID_KIBD<input type="text" name="ID_KIBD">
         <br>ID_LOKASI<input type="text" name="ID_LOKASI">
         <br>ID_DATASPA<input type="text" name="ID_DATASPA">
@@ -28,6 +28,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
         <br>LEBAR<input type="number" name="LEBAR">
         <br>LUAS<input type="number" name="LUAS">
         <br>TANGGAL_DOKUMEN<input type="date" name="TANGGAL_DOKUMEN">
+        <br>NOMOR_DOKUMEN<input type="text" name="NOMOR_DOKUMEN">
         <br>STATUS_TANAH<input type="text" name="STATUS_TANAH">
         <br>NOMOR_KODE<input type="text" name="NOMOR_KODE">
         <br>ASAL_USUL<input type="text" name="ASAL_USUL">
