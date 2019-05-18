@@ -362,6 +362,17 @@ switch ($_GET['process']) {
 
     case 'insert-ded':
         # code...
+        $ID_DED = $_POST['ID_DED'];
+        $PATH_FILE = $_POST['PATH_FILE'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO aset VALUES('$ID_DED','$PATH_FILE')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'update-ded':
@@ -374,10 +385,24 @@ switch ($_GET['process']) {
 
     case 'insert-pegawai':
         # code...
+        $NOMOR_INDUK_PEGAWAI = $_POST['NOMOR_INDUK_PEGAWAI'];
+        $ID_JENIS = $_POST['ID_JENIS'];
+        $NAMA_PEGAWAI = $_POST['NAMA_PEGAWAI'];
+        $PASSWORD = $_POST['PASSWORD'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO aset VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'update-pegawai':
         # code...
+
         break;
 
     case 'delete-pegawai':
@@ -386,6 +411,20 @@ switch ($_GET['process']) {
 
     case 'insert-pemeliharaan':
         # code...
+        $ID_PEMELIHARAAN = $_POST['ID_PEMELIHARAAN'];
+        $ID_DAK = $_POST['ID_DAK'];
+        $TOTAL_BIAYA = $_POST['TOTAL_BIAYA'];
+        $TANGGAL_MULAI = $_POST['TANGGAL_MULAI'];
+        $TANGGAL_AKHIR = $_POST['TANGGAL_AKHIR'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO aset VALUES('$ID_PEMELIHARAAN','$ID_DAK','$TOTAL_BIAYA','$TANGGAL_MULAI','$TANGGAL_AKHIR')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'update-pemeliharaan':
@@ -393,6 +432,32 @@ switch ($_GET['process']) {
         break;
 
     case 'delete-pemeliharaan':
+        # code...
+        break;
+
+    case 'insert-detail':
+        # code...
+        $ID_DETAIL_PEMELIHARAAN = $_POST['ID_DETAIL_PEMELIHARAAN'];
+        $ID_PEMELIHARAAN = $_POST['ID_PEMELIHARAAN'];
+        $JENIS_PEMELIHARAAN = $_POST['JENIS_PEMELIHARAAN'];
+        $BIAYA = $_POST['BIAYA'];
+        $VOLUME = $_POST['VOLUME'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO aset VALUES('$$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        break;
+
+    case 'update-detail':
+        # code...
+        break;
+    
+    case 'delete-detail':
         # code...
         break;
 
