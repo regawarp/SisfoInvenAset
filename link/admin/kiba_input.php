@@ -45,14 +45,14 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<input type="text" name="penggunaan">
 		<br>HARGA
 		<input type="number" name="harga">
-		<br>KETERANGAN
-		<input type="text" name="keterangan">
-		<br>ASAL USUL
-		<input type="text" name="asalusul">
 		<br>FOTO
 		<input type="file" name="foto">
 		<br>FILE
 		<input type="file" name="file">
+		<br>KETERANGAN
+		<input type="text" name="keterangan">
+		<br>ASAL USUL
+		<input type="text" name="asalusul">
 		<br>
 		<button>Tambah Data</button>
 	</form>

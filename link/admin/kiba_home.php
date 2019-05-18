@@ -76,7 +76,7 @@ if (isset($_SESSION['user_id'])) {
 		         <td>$row[FOTO]</td>
 		         <td>$row[FILE]</td>
 		         <td><a href='kiba_update.php?idkiba=$row[ID_KIBA]'>UPDATE</a></td>
-		         <td><a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]'>DELETE</a></td>
+		         <td><a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]&&foto=$row[FOTO]&&file=$row[FILE]'>DELETE</a></td>
 		        </tr>";
 			}
 		} else {
