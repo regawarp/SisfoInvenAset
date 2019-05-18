@@ -13,19 +13,20 @@ if ( isset( $_SESSION['user_id'] ) ) {
 	<title>Input Kib A</title>
 </head>
 <body>
-	<form method="post" action="../process.php?process=insert-kiba">
+	<form method="post" action="../process.php?process=insert-kiba" enctype="multipart/form-data">
 		ID KIBA :
 		<input type="text" name="idkiba">
 		<br>ID LOKASI :
 		<select name="idlokasi">
-			<option>LK001</option>
-			<option>LK002</option>
+			<option>52001</option>
+			<option>52002</option>
 		</select> <button>Input Lokasi</button>
 		<br>ID SPATIAL :
 		<select name="iddataspa">
-			<option>SP001</option>
-			<option>SP002</option>
+			<option>60</option>
 		</select> <button>Input Spatial</button>
+		<br>NAMA BARANG
+		<input type="text" name="nama_barang">
 		<br>NOMOR KODE BARANG
 		<input type="text" name="nokodebrg">
 		<br>NOMOR REGISTER
@@ -44,16 +45,14 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<input type="text" name="penggunaan">
 		<br>HARGA
 		<input type="number" name="harga">
-		<br>NAMA BARANG
-		<input type="text" name="nama_barang">
+		<br>FOTO
+		<input type="file" name="foto">
+		<br>FILE
+		<input type="file" name="file">
 		<br>KETERANGAN
 		<input type="text" name="keterangan">
 		<br>ASAL USUL
 		<input type="text" name="asalusul">
-		<br>FOTO
-		<input type="text" name="foto">
-		<br>FILE
-		<input type="text" name="file">
 		<br>
 		<button>Tambah Data</button>
 	</form>
