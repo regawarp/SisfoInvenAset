@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     5/14/2019 3:22:42 PM                         */
+/* Created on:     5/18/2019 9:19:31 AM                         */
 /*==============================================================*/
 
 
@@ -48,6 +48,8 @@ alter table PEMELIHARAAN
 
 drop table if exists ASET;
 
+drop table if exists BI;
+
 drop table if exists DAK;
 
 drop table if exists DATASPA;
@@ -72,14 +74,38 @@ drop table if exists PEGAWAI;
 
 drop table if exists PEMELIHARAAN;
 
+drop table if exists RBI;
+
 /*==============================================================*/
 /* Table: ASET                                                  */
 /*==============================================================*/
 create table ASET
 (
    ID_ASET              char(10) not null  comment '',
-   NAMA_ASET            varchar(25)  comment '',
+   NAMA_ASET            varchar(50)  comment '',
    primary key (ID_ASET)
+);
+
+/*==============================================================*/
+/* Table: BI                                                    */
+/*==============================================================*/
+create table BI
+(
+   ID_BI                char(10) not null  comment '',
+   NOMOR_KODE_BARANG    char(25)  comment '',
+   NOMOR_REGISTER       char(25)  comment '',
+   NAMA_BARANG          varchar(255)  comment '',
+   MERK_TIPE_BARANG     varchar(50)  comment '',
+   NOMOR_KETERANGAN_BARANG varchar(255)  comment '',
+   BAHAN                varchar(50)  comment '',
+   ASAL_USUL            varchar(30)  comment '',
+   TAHUN_PEROLEHAN      date  comment '',
+   KONSTRUKSI           varchar(30)  comment '',
+   KONDISI              varchar(5)  comment '',
+   JUMLAH_BARANG        float  comment '',
+   JUMLAH_HARGA         bigint  comment '',
+   KETERANGAN           text  comment '',
+   primary key (ID_BI)
 );
 
 /*==============================================================*/
@@ -89,7 +115,8 @@ create table DAK
 (
    ID_DAK               char(10) not null  comment '',
    ID_LOKASI            char(10)  comment '',
-   LUAS                 int  comment '',
+   NAMA_DAK             varchar(50)  comment '',
+   LUAS                 float  comment '',
    PANJANG              float  comment '',
    LEBAR                float  comment '',
    PANJANG_BAIK_M       float  comment '',
@@ -106,7 +133,7 @@ create table DAK
    KEMAMPUAN_M          float  comment '',
    USULAN_TAMBAHAN_RUPIAH float  comment '',
    USULAN_TAMBAHAN_M    float  comment '',
-   USULAN_TAMBAHAN_SUMBER_DANA float  comment '',
+   USULAN_TAMBAHAN_SUMBER_DANA varchar(25)  comment '',
    primary key (ID_DAK)
 );
 
@@ -148,8 +175,8 @@ create table DETAIL_PEMELIHARAAN
 (
    ID_DETAIL_PEMELIHARAAN char(10) not null  comment '',
    ID_PEMELIHARAAN      char(10) not null  comment '',
-   JENIS_PEMELIHARAAN   varchar(30)  comment '',
-   BIAYA                float(8,2)  comment '',
+   JENIS_PEMELIHARAAN   varchar(50)  comment '',
+   BIAYA                bigint  comment '',
    VOLUME               float  comment '',
    primary key (ID_DETAIL_PEMELIHARAAN)
 );
@@ -160,7 +187,7 @@ create table DETAIL_PEMELIHARAAN
 create table JENIS_PEGAWAI
 (
    ID_JENIS             char(10) not null  comment '',
-   NAMA_JENIS           varchar(25)  comment '',
+   NAMA_JENIS           varchar(50)  comment '',
    primary key (ID_JENIS)
 );
 
@@ -172,16 +199,18 @@ create table KIBA
    ID_KIBA              char(10) not null  comment '',
    ID_LOKASI            char(10) not null  comment '',
    ID_DATASPA           char(10) not null  comment '',
-   NOMOR_KODE_BARANG    char(15)  comment '',
-   NOMOR_REGISTER       int  comment '',
-   LUAS                 int  comment '',
+   NAMA_BARANG          varchar(255)  comment '',
+   NOMOR_KODE_BARANG    char(25)  comment '',
+   NOMOR_REGISTER       char(25)  comment '',
+   LUAS                 float  comment '',
    TAHUN_PENGADAAN      date  comment '',
-   HAK                  varchar(20)  comment '',
+   HAK                  varchar(25)  comment '',
    TANGGAL_SERTIFIKAT   date  comment '',
    NOMOR_SERTIFIKAT     varchar(25)  comment '',
    PENGGUNAAN           varchar(30)  comment '',
-   HARGA                int  comment '',
-   NAMA_BARANG          varchar(1024)  comment '',
+   HARGA                bigint  comment '',
+   FOTO                 varchar(255)  comment '',
+   FILE                 varchar(255)  comment '',
    KETERANGAN           text  comment '',
    ASAL_USUL            varchar(30)  comment '',
    primary key (ID_KIBA)
@@ -196,21 +225,22 @@ create table KIBD
    ID_LOKASI            char(10) not null  comment '',
    ID_DATASPA           char(10) not null  comment '',
    ID_ASET              char(10) not null  comment '',
-   JENIS                varchar(25)  comment '',
-   NAMA_BARANG          varchar(1024)  comment '',
-   NOMOR_KODE_BARANG    char(15)  comment '',
-   NOMOR_REGISTER       int  comment '',
+   NAMA_BARANG          varchar(255)  comment '',
+   NOMOR_KODE_BARANG    char(25)  comment '',
+   NOMOR_REGISTER       char(25)  comment '',
    KONSTRUKSI           varchar(30)  comment '',
    PANJANG              float  comment '',
    LEBAR                float  comment '',
-   LUAS                 int  comment '',
+   LUAS                 float  comment '',
    TANGGAL_DOKUMEN      date  comment '',
-   NOMOR_DOKUMEN        varchar(25)  comment '',
+   NOMOR_DOKUMEN        varchar(50)  comment '',
    STATUS_TANAH         varchar(15)  comment '',
    NOMOR_KODE           varchar(15)  comment '',
    ASAL_USUL            varchar(30)  comment '',
-   HARGA                int  comment '',
+   HARGA                bigint  comment '',
    KONDISI              varchar(5)  comment '',
+   FOTO                 varchar(255)  comment '',
+   FILE                 varchar(255)  comment '',
    KETERANGAN           text  comment '',
    primary key (ID_KIBD)
 );
@@ -224,17 +254,19 @@ create table KIBF
    ID_DATASPA           char(10) not null  comment '',
    ID_LOKASI            char(10) not null  comment '',
    ID_ASET              char(10) not null  comment '',
+   NAMA_BARANG          varchar(255)  comment '',
    BANGUNAN             varchar(15)  comment '',
    BERTINGKAT           varchar(15)  comment '',
    BETON                varchar(15)  comment '',
    PANJANG              float  comment '',
    TANGGAL_DOKUMEN      date  comment '',
-   NOMOR_DOKUMEN        varchar(25)  comment '',
+   NOMOR_DOKUMEN        varchar(50)  comment '',
    TANGGAL_MULAI        date  comment '',
    STATUS_TANAH         varchar(15)  comment '',
    NOMO_KODE_TANAH      varchar(25)  comment '',
-   NILAI_KONTRAK        int  comment '',
-   NAMA_BARANG          varchar(1024)  comment '',
+   NILAI_KONTRAK        bigint  comment '',
+   FOTO                 varchar(255)  comment '',
+   FILE                 varchar(255)  comment '',
    KETERANGAN           text  comment '',
    ASAL_USUL            varchar(30)  comment '',
    primary key (ID_KIBF)
@@ -246,7 +278,7 @@ create table KIBF
 create table LOKASI
 (
    ID_LOKASI            char(10) not null  comment '',
-   NAMA_LOKASI          varchar(25)  comment '',
+   NAMA_LOKASI          varchar(50)  comment '',
    primary key (ID_LOKASI)
 );
 
@@ -255,10 +287,10 @@ create table LOKASI
 /*==============================================================*/
 create table PEGAWAI
 (
-   NOMOR_INDUK_PEGAWAI  char(10) not null  comment '',
+   NOMOR_INDUK_PEGAWAI  char(20) not null  comment '',
    ID_JENIS             char(10) not null  comment '',
-   NAMA_PEGAWAI         char(12)  comment '',
-   PASSWORD             varchar(25)  comment '',
+   NAMA_PEGAWAI         varchar(50)  comment '',
+   PASSWORD             varchar(50)  comment '',
    primary key (NOMOR_INDUK_PEGAWAI)
 );
 
@@ -269,10 +301,23 @@ create table PEMELIHARAAN
 (
    ID_PEMELIHARAAN      char(10) not null  comment '',
    ID_DAK               char(10)  comment '',
-   TOTAL_BIAYA          float(8,2)  comment '',
+   TOTAL_BIAYA          bigint  comment '',
    TANGGAL_MULAI        date  comment '',
    TANGGAL_AKHIR        date  comment '',
    primary key (ID_PEMELIHARAAN)
+);
+
+/*==============================================================*/
+/* Table: RBI                                                   */
+/*==============================================================*/
+create table RBI
+(
+   ID_RBI               char(10)  comment '',
+   GOLONGAN             varchar(50)  comment '',
+   KODE_BIDANG_BARANG   varchar(5)  comment '',
+   JUMLAH_BARANG        float  comment '',
+   JUMLAH_HARGA         bigint  comment '',
+   KETERANGAN           text  comment ''
 );
 
 alter table DAK add constraint FK_DAK_LOKASIDAK_LOKASI foreign key (ID_LOKASI)
