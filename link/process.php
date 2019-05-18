@@ -304,6 +304,98 @@ switch ($_GET['process']) {
         # code...
         break;
 
+    case 'insert-aset':
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $NAMA_ASET = $_POST['NAMA_ASET'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO aset VALUES('$ID_LOKASI','$NAMA_ASET')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        break;
+
+    case 'update-aset':
+        # code...
+        break;
+
+    case 'delete-aset':
+        # code...
+        break;
+
+    case 'insert-dak':
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $NAMA_ASET = $_POST['NAMA_ASET'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO aset VALUES('$ID_LOKASI','$NAMA_ASET')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        break;
+
+    case 'update-dak':
+        # code...
+        break;
+
+    case 'delete-dak':
+        # code...
+        break;
+
+    case 'insert-spatial':
+        # code...
+        break;
+
+    case 'update-spatial':
+        # code...
+        break;
+
+    case 'delete-spatial':
+        # code...
+        break;
+
+    case 'insert-ded':
+        # code...
+        break;
+
+    case 'update-ded':
+        # code...
+        break;
+
+    case 'delete-ded':
+        # code...
+        break;
+
+    case 'insert-pegawai':
+        # code...
+        break;
+
+    case 'update-pegawai':
+        # code...
+        break;
+
+    case 'delete-pegawai':
+        # code...
+        break;
+
+    case 'insert-pemeliharaan':
+        # code...
+        break;
+
+    case 'update-pemeliharaan':
+        # code...
+        break;
+
+    case 'delete-pemeliharaan':
+        # code...
+        break;
+
     default:
         # code...
         break;
