@@ -206,8 +206,7 @@ if (isset($_SESSION['user_id'])) {
 												<td>$row[FILE]</td>
 												<td>$row[KETERANGAN]</td>
 												<td>$row[ASAL_USUL]</td>
-												<td><a href='kibf_update.php?idkibf=$row[ID_KIBF]'>UPDATE</a></td>
-												<td><a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>DELETE</a></td>
+												<td><a href='kibf_update.php?idkibf=$row[ID_KIBF]'>UPDATE</a><a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>DELETE</a></td>
 												</tr>";
 													}
 												} else {
@@ -228,7 +227,7 @@ if (isset($_SESSION['user_id'])) {
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Input KIB F</h4>
-									<form class="form-sample">
+									<form class="form-sample" method="post" action="../process.php?process=insert-kibf" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
