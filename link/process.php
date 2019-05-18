@@ -198,6 +198,36 @@ switch ($_GET['process']) {
     
     case 'insert-kibd':
         # code...
+        $ID_KIBD = $_POST['ID_KIBD'];
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $ID_DATASPA = $_POST['ID_DATASPA'];
+        $ID_ASET = $_POST['ID_ASET'];
+        $NAMA_BARANG = $_POST['NAMA_BARANG'];
+        $NOMOR_KODE_BARANG = $_POST['NOMOR_KODE_BARANG'];
+        $NOMOR_REGISTER = $_POST['NOMOR_REGISTER'];
+        $KONSTRUKSI = $_POST['KONSTRUKSI'];
+        $PANJANG = $_POST['PANJANG'];
+        $LEBAR = $_POST['LEBAR'];
+        $LUAS = $_POST['LUAS'];
+        $TANGGAL_DOKUMEN = $_POST['TANGGAL_DOKUMEN'];
+        $NOMOR_DOKUMEN = $_POST['NOMOR_DOKUMEN'];
+        $STATUS_TANAH = $_POST['STATUS_TANAH'];
+        $NOMOR_KODE = $_POST['NOMOR_KODE'];
+        $ASAL_USUL = $_POST['ASAL_USUL'];
+        $HARGA = $_POST['HARGA'];
+        $KONDISI = $_POST['KONDISI'];
+        $FOTO = basename($_FILES["FOTO"]["name"]);
+        $FILE = basename($_FILES["FILE"]["name"]);
+        $KETERANGAN = $_POST['KETERANGAN'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query="INSERT INTO kibd VALUES('$ID_KIBD','$ID_LOKASI','$ID_DATASPA','$ID_ASET','$NAMA_BARANG','$NOMOR_KODE_BARANG','$NOMOR_REGISTER','$KONSTRUKSI','$PANJANG','$LEBAR','$LUAS','$TANGGAL_DOKUMEN','$NOMOR_DOKUMEN','$STATUS_TANAH','$NOMOR_KODE','$ASAL_USUL','$HARGA','$KONDISI','$KETERANGAN','$FOTO','$FILE')";
+        if(mysqli_query($conn,$insert_query)){
+            echo "Data Sukses diinput";
+        }else{
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'update-kibd':
