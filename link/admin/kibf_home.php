@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id'])) {
 	$result = mysqli_query($conn, $sql);
 } else {
 	// Redirect them to the login page
-	header("Location: ../login.php");
+	header("Location: ../beranda.php");
 }
 ?>
 <html>
@@ -226,7 +226,7 @@ if (isset($_SESSION['user_id'])) {
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Input KIB F</h4>
-									<form class="form-sample">
+									<form class="form-sample" method="post" action="../process.php?process=insert-kibf" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">

@@ -1,3 +1,12 @@
+<?php
+session_start();
+$nav="Login";
+if ( isset( $_SESSION['user_id'] ) ) {
+    $nav="Dashboard";
+} else {
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +96,13 @@
 						</ul>
 					</li>
 					<li><a href="#contact">Kontak</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>
+					<?php
+						if($nav=="Dashboard"){
+							echo '<li><a href="/admin/dashboard.php">Dashboard</a></li>';
+						}else{
+							echo '<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>';
+						}
+					?>
 				</ul>
 				<!-- /Main navigation -->
 
