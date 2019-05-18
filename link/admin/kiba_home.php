@@ -225,7 +225,7 @@ if (isset($_SESSION['user_id'])) {
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">Input KIP A</h4>
-									<form class="form-sample">
+									<form class="form-sample" action="../process.php?process=insert-kiba" enctype="multipart/form-data" method="post">
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
@@ -250,8 +250,8 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">ID Lokasi</label>
 													<div class="input-group col-sm-8">
 														<select name="idlokasi" class="form-control" style="margin: 0px 10px;">
-															<option>LK001</option>
-															<option>LK002</option>
+															<option>52001</option>
+															<option>52002</option>
 														</select>
 														<span class="input-group-append">
 															<button class="file-upload-browse btn btn-info" type="button">Input Lokasi</button>
@@ -264,8 +264,7 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">ID Spatial</label>
 													<div class="input-group col-sm-8">
 														<select name="iddataspa" class="form-control" style="margin: 0px 10px;">
-															<option>SP001</option>
-															<option>SP002</option>
+															<option>60</option>
 														</select>
 														<span class="input-group-append">
 															<button class="file-upload-browse btn btn-info" type="button">Input Spatial</button>
@@ -359,7 +358,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Foto</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="foto" />
+														<input type="file" class="form-control" name="foto" />
 													</div>
 												</div>
 											</div>
@@ -369,7 +368,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">File</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="file" />
+														<input type="file" class="form-control" name="file" />
 													</div>
 												</div>
 											</div>
