@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id'])) {
 	<!-- endinject -->
 	<!-- plugin css for this page -->
 	<link rel="stylesheet" href="../../css/skins/all.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../../datatables/css/dataTables.bootstrap.min.css" />
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
@@ -128,7 +128,7 @@ if (isset($_SESSION['user_id'])) {
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="kibd_home">
+						<a class="nav-link" href="kibd_home.php">
 							<i class="menu-icon mdi mdi-file-multiple"></i>
 							<span class="menu-title">KIB D</span>
 						</a>
