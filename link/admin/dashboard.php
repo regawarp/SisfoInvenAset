@@ -169,13 +169,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/charts/chartjs.html">
+            <a class="nav-link" href="kibd_home.php">
               <i class="menu-icon mdi mdi-file-multiple"></i>
               <span class="menu-title">KIB D</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../pages/tables/basic-table.html">
+            <a class="nav-link" href="kibf_home.php">
               <i class="menu-icon mdi mdi-table"></i>
               <span class="menu-title">KIB F</span>
             </a>
@@ -579,8 +579,7 @@
                       <p class="mb-2 text-primary">88%</p>
                     </div>
                     <div class="progress">
-                      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%" aria-valuenow="88"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                   <div class="wrapper mt-4">
@@ -589,8 +588,7 @@
                       <p class="mb-2 text-success">56%</p>
                     </div>
                     <div class="progress">
-                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 56%" aria-valuenow="56"
-                        aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </div>

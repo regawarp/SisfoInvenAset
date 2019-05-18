@@ -206,8 +206,7 @@ if (isset($_SESSION['user_id'])) {
 												<td>$row[FILE]</td>
 												<td>$row[KETERANGAN]</td>
 												<td>$row[ASAL_USUL]</td>
-												<td><a href='kibf_update.php?idkibf=$row[ID_KIBF]'>UPDATE</a></td>
-												<td><a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>DELETE</a></td>
+												<td><a href='kibf_update.php?idkibf=$row[ID_KIBF]'>UPDATE</a><a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>DELETE</a></td>
 												</tr>";
 													}
 												} else {
@@ -216,7 +215,6 @@ if (isset($_SESSION['user_id'])) {
 												mysqli_close($conn);
 												?>
 											</tbody>
-											<tfoot></tfoot>
 										</table>
 									</div>
 								</div>

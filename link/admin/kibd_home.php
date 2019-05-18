@@ -92,7 +92,7 @@ if (isset($_SESSION['user_id'])) {
 			<!-- partial:../../partials/_sidebar.html -->
 
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
-				<ul class="nav">
+			<ul class="nav">
 					<li class="nav-item nav-profile">
 						<div class="nav-link">
 							<div class="user-wrapper">

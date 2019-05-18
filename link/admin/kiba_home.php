@@ -25,7 +25,7 @@ if (isset($_SESSION['user_id'])) {
 	<!-- endinject -->
 	<!-- plugin css for this page -->
 	<link rel="stylesheet" href="../../css/skins/all.css">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../../datatables/css/dataTables.bootstrap.min.css" />
 	<!-- End plugin css for this page -->
 	<!-- inject:css -->
@@ -92,7 +92,7 @@ if (isset($_SESSION['user_id'])) {
 			<!-- partial:../../partials/_sidebar.html -->
 
 			<nav class="sidebar sidebar-offcanvas" id="sidebar">
-				<ul class="nav">
+			<ul class="nav">
 					<li class="nav-item nav-profile">
 						<div class="nav-link">
 							<div class="user-wrapper">
@@ -134,7 +134,7 @@ if (isset($_SESSION['user_id'])) {
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="../../pages/tables/basic-table.html">
+						<a class="nav-link" href="kibf_home.php">
 							<i class="menu-icon mdi mdi-table"></i>
 							<span class="menu-title">KIB F</span>
 						</a>
