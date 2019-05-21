@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
 	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-	$sql = "SELECT * FROM pegawai";
+	$sql = "SELECT * FROM pegawai,jenis_pegawai WHERE pegawai.ID_JENIS=jenis_pegawai.ID_JENIS";
 	$result = mysqli_query($conn, $sql);
 } else {
 	// Redirect them to the login page
@@ -60,7 +60,7 @@ if (isset($_SESSION['user_id'])) {
 											<thead>
 												<tr>
 													<td>NOMOR_INPUK_PEGAWAI</td>
-													<td>ID_JENIS</td>
+													<td>JENIS</td>
 													<td>NAMA_PEGAWAI</td>
 													<td>PASSWORD</td>
 													<td>UPDATE</td>
@@ -73,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
 													while ($row = mysqli_fetch_assoc($result)) {
 														echo "<tr>
 																<td>$row[NOMOR_INDUK_PEGAWAI]</td>
-																<td>$row[ID_JENIS]</td>
+																<td>$row[NAMA_JENIS]</td>
 																<td>$row[NAMA_PEGAWAI]</td>
 																<td>$row[PASSWORD]</td>
 																<td><a href='pegawai_update.php?nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'>UPDATE</a></td>

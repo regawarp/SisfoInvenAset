@@ -232,8 +232,9 @@ switch ($_GET['process']) {
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         $insert_query="INSERT INTO kibd VALUES('$ID_KIBD','$ID_LOKASI','$ID_DATASPA','$ID_ASET','$NAMA_BARANG','$NOMOR_KODE_BARANG','$NOMOR_REGISTER','$KONSTRUKSI','$PANJANG','$LEBAR','$LUAS','$TANGGAL_DOKUMEN','$NOMOR_DOKUMEN','$STATUS_TANAH','$NOMOR_KODE','$ASAL_USUL','$HARGA','$KONDISI','$KETERANGAN','$FOTO','$FILE')";
         if(mysqli_query($conn,$insert_query)){
-            echo "Data Sukses diinput";
+            header("Location: admin/kiba_home.php?status=sukses-insert");
         }else{
+            header("Location: admin/kiba_home.php?status=gagal-insert");
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
