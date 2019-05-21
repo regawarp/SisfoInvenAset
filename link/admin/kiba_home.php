@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
 	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-	$sql = "SELECT * FROM kiba";
+	$sql = "SELECT * FROM kiba,lokasi,dataspa where kiba.ID_LOKASI=lokasi.ID_LOKASI AND kiba.ID_DATASPA=dataspa.ID_DATASPA";
 	$result = mysqli_query($conn, $sql);
 } else {
 	// Redirect them to the login page
@@ -53,13 +53,14 @@ if (isset($_SESSION['user_id'])) {
 						<div class="col-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h5 class="card-title mb-4">Big Div</h5>
+									<h5 class="card-title mb-4">Data Kartu Inventaris Barang A (Tanah)</h5>
 									<div class="table-responsive">
 										<table id="myTable" class="table table-hover">
 											<thead>
 												<tr>
+													<td>Operasi</td>
 													<td>Lokasi</td>
-													<td>ID Spasial</td>
+													<td>Data Spatial</td>
 													<td>Kode Brg</td>
 													<td>No Register</td>
 													<td>Luas</td>
@@ -74,7 +75,6 @@ if (isset($_SESSION['user_id'])) {
 													<td>Asal Usul</td>
 													<td>Foto</td>
 													<td>File</td>
-													<td>Operasi</td>
 												</tr>
 											</thead>
 											<tbody>
@@ -82,8 +82,9 @@ if (isset($_SESSION['user_id'])) {
 												if (mysqli_num_rows($result) > 0) {
 													while ($row = mysqli_fetch_assoc($result)) {
 														echo "<tr>
-																<td>$row[ID_LOKASI]</td>
-																<td>$row[ID_DATASPA]</td>
+																<td><a href='kiba_update.php?idkiba=$row[ID_KIBA]'>UPDATE</a>&nbsp;<a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]&&foto=$row[FOTO]&&file=$row[FILE]'>DELETE</a></td>
+																<td>$row[NAMA_LOKASI]</td>
+																<td><a href='$row[LINK_GIS]'>$row[NAMA_DATASPA]</a></td>
 																<td>$row[NOMOR_KODE_BARANG]</td>
 																<td>$row[NOMOR_REGISTER]</td>
 																<td>$row[LUAS]</td>
@@ -96,15 +97,13 @@ if (isset($_SESSION['user_id'])) {
 																<td>$row[NAMA_BARANG]</td>
 																<td>$row[KETERANGAN]</td>
 																<td>$row[ASAL_USUL]</td>
-																<td>$row[FOTO]</td>
-																<td>$row[FILE]</td>
-																<td><a href='kiba_update.php?idkiba=$row[ID_KIBA]'>UPDATE</a><a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]&&foto=$row[FOTO]&&file=$row[FILE]'>DELETE</a></td>
+																<td><img src='../../img/upload/$row[FOTO]' width='50px' height='auto'></td>
+																<td><a href='../../file/$row[FILE]'>Lampiran</a></td>
 																</tr>";
 													}
 												} else {
 													echo "<tr><td colspan='17' align='center'>0 results</td></tr>";
 												}
-												mysqli_close($conn);
 												?>
 											</tbody>
 											<tfoot>
@@ -120,7 +119,7 @@ if (isset($_SESSION['user_id'])) {
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Input KIP A</h4>
+									<h4 class="card-title">Input KIB A</h4>
 									<form class="form-sample" action="../process.php?process=insert-kiba" enctype="multipart/form-data" method="post">
 										<div class="row">
 											<div class="col-md-6">
@@ -146,8 +145,17 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">ID Lokasi</label>
 													<div class="input-group col-sm-8">
 														<select name="idlokasi" class="form-control" style="margin: 0px 10px;">
-															<option>52001</option>
-															<option>52002</option>
+															<?php
+															$query = "SELECT * FROM lokasi";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																while ($row = mysqli_fetch_assoc($result)) {
+																	echo"<option value='$row[ID_LOKASI]'>$row[NAMA_LOKASI]</option>";
+																}
+															}else{
+																echo"<option>Input Lokasi Baru</option>";
+															}
+															?>
 														</select>
 														<span class="input-group-append">
 															<button class="file-upload-browse btn btn-info" type="button">Input Lokasi</button>
@@ -160,7 +168,17 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">ID Spatial</label>
 													<div class="input-group col-sm-8">
 														<select name="iddataspa" class="form-control" style="margin: 0px 10px;">
-															<option>60</option>
+															<?php
+															$query = "SELECT * FROM dataspa";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																while ($row = mysqli_fetch_assoc($result)) {
+																	echo"<option value='$row[ID_DATASPA]'>$row[NAMA_DATASPA]</option>";
+																}
+															}else{
+																echo"<option>Input Data Spatial Baru</option>";
+															}
+															?>
 														</select>
 														<span class="input-group-append">
 															<button class="file-upload-browse btn btn-info" type="button">Input Spatial</button>
@@ -345,3 +363,6 @@ if (isset($_SESSION['user_id'])) {
 <!-- End custom js for this page-->
 
 </html>
+<?php
+mysqli_close($conn);
+?>
