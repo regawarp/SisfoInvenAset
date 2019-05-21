@@ -128,8 +128,9 @@ switch ($_GET['process']) {
                 }
             }
             
-            header("Location: admin/kiba_home.php");
+            header("Location: admin/kiba_home.php?status=sukses-insert");
         }else{
+            header("Location: admin/kiba_home.php?status=gagal-insert");
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
@@ -166,8 +167,9 @@ switch ($_GET['process']) {
         }
         
         if(mysqli_query($conn,$update_query)){
-            echo "Data sukses diupdate";
+           header("Location: admin/kiba_home.php?status=sukses-update");
         }else{
+            header("Location: admin/kiba_home.php?status=gagal-update");
             echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
@@ -195,7 +197,9 @@ switch ($_GET['process']) {
                   echo ("Deleted $file");
                 }
             }
+            header("Location: admin/kiba_home.php?status=sukses-delete");
         }else{
+            header("Location: admin/kiba_home.php?status=gagal-delete");
             echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);

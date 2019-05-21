@@ -2,6 +2,10 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
+	if (isset($_GET['status'])) {
+		$status=$_GET['status'];
+		echo "<script type='text/javascript'>alert('$status');</script>";
+	}
 	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
 	$sql = "SELECT * FROM kiba,lokasi,dataspa where kiba.ID_LOKASI=lokasi.ID_LOKASI AND kiba.ID_DATASPA=dataspa.ID_DATASPA";
 	$result = mysqli_query($conn, $sql);
@@ -126,7 +130,19 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">ID KIB A</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="idkiba" />
+														<?php
+															$query = "SELECT ID_KIBA FROM kiba ORDER BY ID_KIBA DESC LIMIT 1";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																if ($id = mysqli_fetch_assoc($result)) {
+																	$num = $id['ID_KIBA'];
+																	$num++;
+																	echo "<input type='text' class='form-control' name='idkiba' value='$num' readonly/>";
+																}else{
+																	echo "<input type='text' class='form-control' name='idkiba' value='1'/> readonly";
+																}
+															}
+														?>
 													</div>
 												</div>
 											</div>
@@ -142,7 +158,7 @@ if (isset($_SESSION['user_id'])) {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">ID Lokasi</label>
+													<label class="col-sm-3 col-form-label">Lokasi</label>
 													<div class="input-group col-sm-8">
 														<select name="idlokasi" class="form-control" style="margin: 0px 10px;">
 															<?php
@@ -165,7 +181,7 @@ if (isset($_SESSION['user_id'])) {
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">ID Spatial</label>
+													<label class="col-sm-3 col-form-label">Data Spatial</label>
 													<div class="input-group col-sm-8">
 														<select name="iddataspa" class="form-control" style="margin: 0px 10px;">
 															<?php
