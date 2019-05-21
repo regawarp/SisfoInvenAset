@@ -3,11 +3,10 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
 	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-	$sql = "SELECT * FROM kiba WHERE ID_KIBA='$_GET[idkiba]'";
+	$sql = "SELECT * FROM kiba,lokasi,dataspa WHERE kiba.ID_LOKASI=lokasi.ID_LOKASI AND kiba.ID_DATASPA=dataspa.ID_DATASPA AND ID_KIBA='$_GET[idkiba]'";
 	$result = mysqli_query($conn, $sql);
 	if (mysqli_num_rows($result) > 0) {
 		if ($row = mysqli_fetch_assoc($result)) {
-
 		}else{
 				header("Location:kiba_home.php");
 		}
@@ -91,7 +90,11 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($rowlok = mysqli_fetch_assoc($result)) {
-																	echo"<option value='$rowlok[ID_LOKASI]'>$rowlok[NAMA_LOKASI]</option>";
+																	if((string)($rowlok['ID_LOKASI'])==(string)($row['ID_LOKASI'])){
+																		echo"<option value='$rowlok[ID_LOKASI]' selected='selected'>$rowlok[NAMA_LOKASI]HALOO</option>";
+																	}else{
+																		echo"<option value='$rowlok[ID_LOKASI]'>".$row['kiba.ID_LOKASI']." - $rowlok[ID_LOKASI] -$rowlok[NAMA_LOKASI]</option>";
+																	}
 																}
 															}else{
 																echo"<option>Input Lokasi Baru</option>";
@@ -114,7 +117,11 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($rowspa = mysqli_fetch_assoc($result)) {
-																	echo"<option value='$rowspa[ID_DATASPA]'>$rowspa[NAMA_DATASPA]</option>";
+																	if($rowspa['ID_DATASPA']==$row['ID_DATASPA']){
+																		echo"<option value='$rowspa[ID_DATASPA]' selected>$rowspa[NAMA_DATASPA]</option>";
+																	}else{
+																		echo"<option value='$rowspa[ID_DATASPA]'>$rowspa[NAMA_DATASPA]</option>";
+																	}
 																}
 															}else{
 																echo"<option>Input Data Spatial Baru</option>";
