@@ -63,8 +63,6 @@ if (isset($_SESSION['user_id'])) {
 										<table id="myTable" class="table table-hover">
 											<thead>
 												<tr>
-													<td>Update</td>
-													<td>Delete</td>
 													<td>Lokasi</td>
 													<td>Data Spatial</td>
 													<td>Kode Brg</td>
@@ -81,6 +79,8 @@ if (isset($_SESSION['user_id'])) {
 													<td>Asal Usul</td>
 													<td>Foto</td>
 													<td>File</td>
+													<td>Update</td>
+													<td>Delete</td>
 												</tr>
 											</thead>
 											<tbody>
@@ -88,22 +88,8 @@ if (isset($_SESSION['user_id'])) {
 												if (mysqli_num_rows($result) > 0) {
 													while ($row = mysqli_fetch_assoc($result)) {
 														echo "<tr>
-																<td>
-																<a href='kiba_update.php?idkiba=$row[ID_KIBA]'>
-																	<button class='btn btn-warning' type='button'>
-																		<span class='mdi mdi-pencil'></span>
-																	</button>
-																</a>
-																</td>
-																<td>
-																<a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]&&foto=$row[FOTO]&&file=$row[FILE]'>
-																	<button class='btn btn-danger' type='button'>
-																		<span class='mdi mdi-delete'></span>
-																	</button>
-																</a>
-																</td>
 																<td>$row[NAMA_LOKASI]</td>
-																<td><a href='$row[LINK_GIS]'>$row[NAMA_DATASPA]</a></td>
+																<td><a href='https://$row[LINK_GIS]' target='_blank'>$row[NAMA_DATASPA]</a></td>
 																<td>$row[NOMOR_KODE_BARANG]</td>
 																<td>$row[NOMOR_REGISTER]</td>
 																<td>$row[LUAS]</td>
@@ -118,6 +104,20 @@ if (isset($_SESSION['user_id'])) {
 																<td>$row[ASAL_USUL]</td>
 																<td><img src='../../img/upload/$row[FOTO]' width='50px' height='auto'></td>
 																<td><a href='../../file/$row[FILE]'>Lampiran</a></td>
+																<td>
+																<a href='kiba_update.php?idkiba=$row[ID_KIBA]'>
+																	<button class='btn btn-warning' type='button'>
+																		<span class='mdi mdi-pencil'></span>
+																	</button>
+																</a>
+																</td>
+																<td>
+																<a href='../process.php?process=delete-kiba&&idkiba=$row[ID_KIBA]&&foto=$row[FOTO]&&file=$row[FILE]'>
+																	<button class='btn btn-danger' type='button'>
+																		<span class='mdi mdi-delete'></span>
+																	</button>
+																</a>
+																</td>
 																</tr>";
 													}
 												} else {

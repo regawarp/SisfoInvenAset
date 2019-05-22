@@ -63,9 +63,6 @@ if (isset($_SESSION['user_id'])) {
 										<table id="myTable" class="table table-hover">
 											<thead>
 												<tr>
-													<td>Update</td>
-													<td>Delete</td>
-													<td>ID KibD</td>
 													<td>Lokasi</td>
 													<td>Spasial</td>
 													<td>Aset</td>
@@ -86,6 +83,8 @@ if (isset($_SESSION['user_id'])) {
 													<td>Ket</td>
 													<td>Foto</td>
 													<td>File</td>
+													<td>Update</td>
+													<td>Delete</td>
 												</tr>
 											</thead>
 											<tbody>
@@ -93,21 +92,6 @@ if (isset($_SESSION['user_id'])) {
 												if (mysqli_num_rows($result) > 0) {
 													while ($row = mysqli_fetch_assoc($result)) {
 														echo "<tr>
-													<td>
-														<a href='kibd_update.php?idkibd=$row[ID_KIBD]'>
-														<button class='btn btn-warning' type='button'>
-																		<span class='mdi mdi-pencil'></span>
-																	</button>
-																	</a>
-													</td>
-													<td>
-														<a href='../process.php?process=delete-kibd&&idkibd=$row[ID_KIBD]'>
-														<button class='btn btn-danger' type='button'>
-																		<span class='mdi mdi-delete'></span>
-																	</button>
-														</a>
-													</td>
-													<td>$row[ID_KIBD]</td>
 													<td>$row[NAMA_LOKASI]</td>
 													<td><a href='$row[LINK_GIS]'>$row[NAMA_DATASPA]</a></td>
 													<td>$row[NAMA_ASET]</td>
@@ -128,6 +112,20 @@ if (isset($_SESSION['user_id'])) {
 													<td>$row[KETERANGAN]</td>
 													<td><img src='../../img/upload/$row[FOTO]' width='50px' height='auto'></td>
 													<td><a href='../../file/$row[FILE]'>Lampiran</a></td>
+													<td>
+														<a href='kibd_update.php?idkibd=$row[ID_KIBD]'>
+														<button class='btn btn-warning' type='button'>
+																		<span class='mdi mdi-pencil'></span>
+																	</button>
+																	</a>
+													</td>
+													<td>
+														<a href='../process.php?process=delete-kibd&&idkibd=$row[ID_KIBD]'>
+														<button class='btn btn-danger' type='button'>
+																		<span class='mdi mdi-delete'></span>
+																	</button>
+														</a>
+													</td>
 													</tr>";
 													}
 												} else {
@@ -240,14 +238,6 @@ if (isset($_SESSION['user_id'])) {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Jenis</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="JENIS" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Nama Barang</label>
 													<div class="col-sm-9">
 														<input type="text" class="form-control" name="NAMA_BARANG" />
@@ -258,17 +248,17 @@ if (isset($_SESSION['user_id'])) {
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Beton</label>
+													<label class="col-sm-3 col-form-label">Kd Barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="BETON" />
+														<input type="text" class="form-control" name="NOMOR_KODE_BARANG" />
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Kd Barang</label>
+													<label class="col-sm-3 col-form-label">No Dokumen</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NOMOR_KODE_BARANG" />
+														<input type="text" class="form-control" name="NOMOR_DOKUMEN" <?php echo "value='$row[NOMOR_DOKUMEN]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -322,25 +312,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Tgl Dokumen</label>
 													<div class="col-sm-9">
-														<input type="date" class="form-control" name="TANGGGAL_DOKUMEN" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Asal Usul</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="asalusul" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Foto</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="foto" />
+														<input type="date" class="form-control" name="TANGGAL_DOKUMEN" />
 													</div>
 												</div>
 											</div>

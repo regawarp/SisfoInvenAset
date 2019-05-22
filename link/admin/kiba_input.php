@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-if ( isset( $_SESSION['user_id'] ) ) {
-    
-} else {
-    // Redirect them to the login page
-    header("Location: ../beranda.php");
+if (isset($_SESSION['user_id'])) { } else {
+	// Redirect them to the login page
+	header("Location: ../beranda.php");
 }
 ?>
 <html>
+
 <head>
 	<title>Input Kib A</title>
 </head>
+
 <body>
 	<form method="post" action="../process.php?process=insert-kiba" enctype="multipart/form-data">
 		ID KIBA :
@@ -57,4 +57,5 @@ if ( isset( $_SESSION['user_id'] ) ) {
 		<button>Tambah Data</button>
 	</form>
 </body>
+
 </html>

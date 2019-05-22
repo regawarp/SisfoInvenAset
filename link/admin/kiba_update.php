@@ -6,9 +6,8 @@ if (isset($_SESSION['user_id'])) {
 	$sql = "SELECT * FROM kiba,lokasi,dataspa WHERE kiba.ID_LOKASI=lokasi.ID_LOKASI AND kiba.ID_DATASPA=dataspa.ID_DATASPA AND ID_KIBA='$_GET[idkiba]'";
 	$result = mysqli_query($conn, $sql);
 	if (mysqli_num_rows($result) > 0) {
-		if ($row = mysqli_fetch_assoc($result)) {
-		}else{
-				header("Location:kiba_home.php");
+		if ($row = mysqli_fetch_assoc($result)) { } else {
+			header("Location:kiba_home.php");
 		}
 	}
 } else {
@@ -17,6 +16,7 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +42,7 @@ if (isset($_SESSION['user_id'])) {
 	<div class="container-scroller">
 		<!-- partial:../../partials/_navbar.html -->
 		<?php
-			include "header.php";
+		include "header.php";
 		?>
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
@@ -66,7 +66,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">ID KIB A</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="idkiba" <?php echo"value='$row[ID_KIBA]'";?> readonly/>
+														<input type="text" class="form-control" name="idkiba" <?php echo "value='$row[ID_KIBA]'"; ?> readonly />
 													</div>
 												</div>
 											</div>
@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Kode barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="nokodebrg" <?php echo"value='$row[NOMOR_KODE_BARANG]'";?>/>
+														<input type="text" class="form-control" name="nokodebrg" <?php echo "value='$row[NOMOR_KODE_BARANG]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -90,14 +90,14 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($rowlok = mysqli_fetch_assoc($result)) {
-																	if((string)($rowlok['ID_LOKASI'])==(string)($row['ID_LOKASI'])){
-																		echo"<option value='$rowlok[ID_LOKASI]' selected='selected'>$rowlok[NAMA_LOKASI]HALOO</option>";
-																	}else{
-																		echo"<option value='$rowlok[ID_LOKASI]'>".$row['kiba.ID_LOKASI']." - $rowlok[ID_LOKASI] -$rowlok[NAMA_LOKASI]</option>";
+																	if ((string)($rowlok['ID_LOKASI']) == (string)($row['ID_LOKASI'])) {
+																		echo "<option value='$rowlok[ID_LOKASI]' selected='selected'>$rowlok[NAMA_LOKASI]</option>";
+																	} else {
+																		echo "<option value='$rowlok[ID_LOKASI]'>$rowlok[NAMA_LOKASI]</option>";
 																	}
 																}
-															}else{
-																echo"<option>Input Lokasi Baru</option>";
+															} else {
+																echo "<option>Input Lokasi Baru</option>";
 															}
 															?>
 														</select>
@@ -117,14 +117,14 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($rowspa = mysqli_fetch_assoc($result)) {
-																	if($rowspa['ID_DATASPA']==$row['ID_DATASPA']){
-																		echo"<option value='$rowspa[ID_DATASPA]' selected>$rowspa[NAMA_DATASPA]</option>";
-																	}else{
-																		echo"<option value='$rowspa[ID_DATASPA]'>$rowspa[NAMA_DATASPA]</option>";
+																	if ($rowspa['ID_DATASPA'] == $row['ID_DATASPA']) {
+																		echo "<option value='$rowspa[ID_DATASPA]' selected>$rowspa[NAMA_DATASPA]</option>";
+																	} else {
+																		echo "<option value='$rowspa[ID_DATASPA]'>$rowspa[NAMA_DATASPA]</option>";
 																	}
 																}
-															}else{
-																echo"<option>Input Data Spatial Baru</option>";
+															} else {
+																echo "<option>Input Data Spatial Baru</option>";
 															}
 															?>
 														</select>
@@ -140,7 +140,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Nama Barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="nama_barang" <?php echo"value='$row[NAMA_BARANG]'";?>/>
+														<input type="text" class="form-control" name="nama_barang" <?php echo "value='$row[NAMA_BARANG]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -148,7 +148,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Kd Barang</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="nokodebrg" <?php echo"value='$row[NOMOR_KODE_BARANG]'";?>/>
+														<input type="text" class="form-control" name="nokodebrg" <?php echo "value='$row[NOMOR_KODE_BARANG]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -158,7 +158,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">No Register</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="noreg" <?php echo"value='$row[NOMOR_REGISTER]'";?>/>
+														<input type="text" class="form-control" name="noreg" <?php echo "value='$row[NOMOR_REGISTER]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -166,7 +166,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Luas</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="luas" <?php echo"value='$row[LUAS]'";?>/>
+														<input type="text" class="form-control" name="luas" <?php echo "value='$row[LUAS]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -176,7 +176,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Thn Pengadan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="thn_pengadaan" <?php echo"value='$row[TAHUN_PENGADAAN]'";?>/>
+														<input type="text" class="form-control" name="thn_pengadaan" <?php echo "value='$row[TAHUN_PENGADAAN]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -184,7 +184,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Hak</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="hak" <?php echo"value='$row[HAK]'";?>/>
+														<input type="text" class="form-control" name="hak" <?php echo "value='$row[HAK]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -194,7 +194,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Tgl Sertifikat</label>
 													<div class="col-sm-9">
-														<input type="date" class="form-control" name="tgl_sertifikat" <?php echo"value='$row[TANGGAL_SERTIFIKAT]'";?>/>
+														<input type="date" class="form-control" name="tgl_sertifikat" <?php echo "value='$row[TANGGAL_SERTIFIKAT]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -202,7 +202,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">No Sertifikat</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="no_sertifikat" <?php echo"value='$row[NOMOR_SERTIFIKAT]'";?>/>
+														<input type="text" class="form-control" name="no_sertifikat" <?php echo "value='$row[NOMOR_SERTIFIKAT]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -213,7 +213,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Penggunaan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="penggunaan" <?php echo"value='$row[PENGGUNAAN]'";?>/>
+														<input type="text" class="form-control" name="penggunaan" <?php echo "value='$row[PENGGUNAAN]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -221,7 +221,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Harga</label>
 													<div class="col-sm-9">
-														<input type="number" class="form-control" name="harga" <?php echo"value='$row[HARGA]'";?>/>
+														<input type="number" class="form-control" name="harga" <?php echo "value='$row[HARGA]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -231,7 +231,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Keterangan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="keterangan" <?php echo"value='$row[KETERANGAN]'";?>/>
+														<input type="text" class="form-control" name="keterangan" <?php echo "value='$row[KETERANGAN]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -239,7 +239,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Asal Usul</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="asalusul" <?php echo"value='$row[ASAL_USUL]'";?>/>
+														<input type="text" class="form-control" name="asalusul" <?php echo "value='$row[ASAL_USUL]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -277,7 +277,7 @@ if (isset($_SESSION['user_id'])) {
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->
 				<?php
-					include "footer.php";
+				include "footer.php";
 				?>
 				<!-- partial -->
 			</div>
@@ -312,6 +312,6 @@ if (isset($_SESSION['user_id'])) {
 
 </html>
 <?php
-	
+
 mysqli_close($conn);
 ?>

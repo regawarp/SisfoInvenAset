@@ -1,11 +1,9 @@
 <?php
 session_start();
-$nav="Login";
-if ( isset( $_SESSION['user_id'] ) ) {
-    $nav="Dashboard";
-} else {
-
-}
+$nav = "Login";
+if (isset($_SESSION['user_id'])) {
+	$nav = "Dashboard";
+} else { }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,11 +95,11 @@ if ( isset( $_SESSION['user_id'] ) ) {
 					</li>
 					<li><a href="#contact">Kontak</a></li>
 					<?php
-						if($nav=="Dashboard"){
-							echo '<li><a href="/admin/dashboard.php">Dashboard</a></li>';
-						}else{
-							echo '<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>';
-						}
+					if ($nav == "Dashboard") {
+						echo '<li><a href="admin/dashboard.php">Dashboard</a></li>';
+					} else {
+						echo '<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>';
+					}
 					?>
 				</ul>
 				<!-- /Main navigation -->
@@ -122,9 +120,9 @@ if ( isset( $_SESSION['user_id'] ) ) {
 					</div>
 					<div class="modal-body">
 						<form action="process.php?process=login" method="post">
-							Username: <br/>
+							Username: <br />
 							<input type="text" name="username" id="" class="form-control">
-							Password: <br/>
+							Password: <br />
 							<input type="password" name="password" id="" class="form-control">
 							<input type="submit" value="Login">
 						</form>
@@ -208,7 +206,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 					<h2 class="title">Peta Aset Infrastruktur Sumber Daya Air</h2>
 				</div>
 				<div class="col-md-12 tentang">
-					<iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Aset Infrastruktur Sumber Daya Air" src="//www.arcgis.com/apps/Embed/index.html?webmap=ef284696a7a8437e8aac540dd4e680e3&extent=107.54,-7.4457,107.5849,-7.4224&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+					<!-- <iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Aset Infrastruktur Sumber Daya Air" src="//www.arcgis.com/apps/Embed/index.html?webmap=ef284696a7a8437e8aac540dd4e680e3&extent=107.54,-7.4457,107.5849,-7.4224&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe> -->
 				</div>
 				<!-- /Peta content -->
 			</div>
@@ -232,7 +230,7 @@ if ( isset( $_SESSION['user_id'] ) ) {
 					<h2 class="title">Peta Titik Lokasi Banjir</h2>
 				</div>
 				<div class="col-md-12 tentang">
-					<iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Peta Titik Lokasi Banjir" src="//www.arcgis.com/apps/Embed/index.html?webmap=cfc7c9ea3f984a29a9475890be44ad8b&extent=107.8132,-7.2523,107.9928,-7.1592&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+					<!-- <iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Peta Titik Lokasi Banjir" src="//www.arcgis.com/apps/Embed/index.html?webmap=cfc7c9ea3f984a29a9475890be44ad8b&extent=107.8132,-7.2523,107.9928,-7.1592&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe> -->
 				</div>
 				<!-- /Peta content -->
 			</div>

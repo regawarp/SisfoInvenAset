@@ -1,20 +1,20 @@
 <?php
 session_start();
 
-if ( isset( $_SESSION['user_id'] ) ) {
-    
-} else {
+if (isset($_SESSION['user_id'])) { } else {
     // Redirect them to the login page
     header("Location: ../beranda.php");
 }
 ?>
 <html>
+
 <head>
-	<title>Input Kib D</title>
+    <title>Input Kib D</title>
 </head>
+
 <body>
-	<form method="post" action="../process.php?process=insert-kibd" enctype="multipart/form-data">
-		<br>ID_KIBD<input type="text" name="ID_KIBD">
+    <form method="post" action="../process.php?process=insert-kibd" enctype="multipart/form-data">
+        <br>ID_KIBD<input type="text" name="ID_KIBD">
         <br>ID_LOKASI<input type="text" name="ID_LOKASI">
         <br>ID_DATASPA<input type="text" name="ID_DATASPA">
         <br>ID_ASET<input type="text" name="ID_ASET">
@@ -37,7 +37,8 @@ if ( isset( $_SESSION['user_id'] ) ) {
         <br>KETERANGAN<input type="text" name="KETERANGAN">
         <br>FOTO<input type="file" name="FOTO">
         <br>FILE<input type="file" name="FILE">
-		<br><button>Tambah Data</button>
-	</form>
+        <br><button>Tambah Data</button>
+    </form>
 </body>
+
 </html>
