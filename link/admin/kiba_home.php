@@ -189,7 +189,7 @@ if (isset($_SESSION['user_id'])) {
 															?>
 														</select>
 														<span class="input-group-append">
-															<button class="file-upload-browse btn btn-info" type="button">Input Lokasi</button>
+															<a class="file-upload-browse btn btn-info" type="button" href="lokasi_home.php">Input Lokasi</a>
 														</span>
 													</div>
 												</div>
@@ -212,7 +212,7 @@ if (isset($_SESSION['user_id'])) {
 															?>
 														</select>
 														<span class="input-group-append">
-															<button class="file-upload-browse btn btn-info" type="button">Input Spatial</button>
+															<a class="file-upload-browse btn btn-info" type="button" href="dataspa_home.php">Input Spatial</a>
 														</span>
 													</div>
 												</div>

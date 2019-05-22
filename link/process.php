@@ -338,7 +338,7 @@ switch ($_GET['process']) {
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         $insert_query = "INSERT INTO kibf VALUES('$ID_KIBF','$ID_DATASPA','$ID_LOKASI','$ID_ASET','$NAMA_BARANG','$BANGUNAN','$BERTINGKAT','$BETON','$PANJANG','$TANGGAL_DOKUMEN','$NOMOR_DOKUMEN','$TANGGAL_MULAI','$STATUS_TANAH','$NOMO_KODE_TANAH','$NILAI_KONTRAK','$FOTO','$FILE','$KETERANGAN','$ASAL_USUL')";
         if (mysqli_query($conn, $insert_query)) {
-            echo "Data Sukses diinput";
+            header("Location: admin/kibf_home.php?status=sukses-insert");
         } else {
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
@@ -346,11 +346,74 @@ switch ($_GET['process']) {
         break;
 
     case 'update-kibf':
-        # code...
+        $ID_KIBF = $_POST['ID_KIBF'];
+        $ID_DATASPA = $_POST['ID_DATASPA'];
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $ID_ASET = $_POST['ID_ASET'];
+        $NAMA_BARANG = $_POST['NAMA_BARANG'];
+        $BANGUNAN = $_POST['BANGUNAN'];
+        $BERTINGKAT = $_POST['BERTINGKAT'];
+        $BETON = $_POST['BETON'];
+        $PANJANG = $_POST['PANJANG'];
+        $TANGGAL_DOKUMEN = $_POST['TANGGAL_DOKUMEN'];
+        $NOMOR_DOKUMEN = $_POST['NOMOR_DOKUMEN'];
+        $TANGGAL_MULAI = $_POST['TANGGAL_MULAI'];
+        $STATUS_TANAH = $_POST['STATUS_TANAH'];
+        $NOMO_KODE_TANAH = $_POST['NOMO_KODE_TANAH'];
+        $NILAI_KONTRAK = $_POST['NILAI_KONTRAK'];
+        $FOTO = basename($_FILES["FOTO"]["name"]);
+        $FILE = basename($_FILES["FILE"]["name"]);
+        $KETERANGAN = $_POST['KETERANGAN'];
+        $ASAL_USUL = $_POST['ASAL_USUL'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        if ($FOTO != "" && $FILE != "") {
+            $update_query = "UPDATE kibf SET ID_DATASPA = '$ID_DATASPA',ID_LOKASI = '$ID_LOKASI',ID_ASET = '$ID_ASET',NAMA_BARANG = '$NAMA_BARANG',BANGUNAN = '$BANGUNAN',BERTINGKAT = '$BERTINGKAT',BETON = '$BETON',PANJANG = '$PANJANG',TANGGAL_DOKUMEN = '$TANGGAL_DOKUMEN',NOMOR_DOKUMEN = '$NOMOR_DOKUMEN',TANGGAL_MULAI = '$TANGGAL_MULAI',STATUS_TANAH = '$STATUS_TANAH',NOMO_KODE_TANAH = '$NOMO_KODE_TANAH',NILAI_KONTRAK = '$NILAI_KONTRAK',FOTO = '$FOTO',FILE = '$FILE',KETERANGAN = '$KETERANGAN',ASAL_USUL = '$ASAL_USUL' WHERE ID_KIBF='$ID_KIBF'";
+        } else if ($FOTO != "") {
+            $update_query = "UPDATE kibf SET ID_DATASPA = '$ID_DATASPA',ID_LOKASI = '$ID_LOKASI',ID_ASET = '$ID_ASET',NAMA_BARANG = '$NAMA_BARANG',BANGUNAN = '$BANGUNAN',BERTINGKAT = '$BERTINGKAT',BETON = '$BETON',PANJANG = '$PANJANG',TANGGAL_DOKUMEN = '$TANGGAL_DOKUMEN',NOMOR_DOKUMEN = '$NOMOR_DOKUMEN',TANGGAL_MULAI = '$TANGGAL_MULAI',STATUS_TANAH = '$STATUS_TANAH',NOMO_KODE_TANAH = '$NOMO_KODE_TANAH',NILAI_KONTRAK = '$NILAI_KONTRAK',FOTO = '$FILE',KETERANGAN = '$KETERANGAN',ASAL_USUL = '$ASAL_USUL' WHERE ID_KIBF='$ID_KIBF'";
+        } else if ($FILE != "") {
+            $update_query = "UPDATE kibf SET ID_DATASPA = '$ID_DATASPA',ID_LOKASI = '$ID_LOKASI',ID_ASET = '$ID_ASET',NAMA_BARANG = '$NAMA_BARANG',BANGUNAN = '$BANGUNAN',BERTINGKAT = '$BERTINGKAT',BETON = '$BETON',PANJANG = '$PANJANG',TANGGAL_DOKUMEN = '$TANGGAL_DOKUMEN',NOMOR_DOKUMEN = '$NOMOR_DOKUMEN',TANGGAL_MULAI = '$TANGGAL_MULAI',STATUS_TANAH = '$STATUS_TANAH',NOMO_KODE_TANAH = '$NOMO_KODE_TANAH',NILAI_KONTRAK = '$NILAI_KONTRAK',FILE = '$FILE',KETERANGAN = '$KETERANGAN',ASAL_USUL = '$ASAL_USUL' WHERE ID_KIBF='$ID_KIBF'";
+        } else {
+            $update_query = "UPDATE kibf SET ID_DATASPA = '$ID_DATASPA',ID_LOKASI = '$ID_LOKASI',ID_ASET = '$ID_ASET',NAMA_BARANG = '$NAMA_BARANG',BANGUNAN = '$BANGUNAN',BERTINGKAT = '$BERTINGKAT',BETON = '$BETON',PANJANG = '$PANJANG',TANGGAL_DOKUMEN = '$TANGGAL_DOKUMEN',NOMOR_DOKUMEN = '$NOMOR_DOKUMEN',TANGGAL_MULAI = '$TANGGAL_MULAI',STATUS_TANAH = '$STATUS_TANAH',NOMO_KODE_TANAH = '$NOMO_KODE_TANAH',NILAI_KONTRAK = '$NILAI_KONTRAK',KETERANGAN = '$KETERANGAN',ASAL_USUL = '$ASAL_USUL' WHERE ID_KIBF='$ID_KIBF'";
+        }
+
+        if (mysqli_query($conn, $update_query)) {
+            header("Location: admin/kibf_home.php?status=sukses-update");
+        } else {
+            // header("Location: admin/kiba_home.php?status=gagal-update");
+            echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-kibf':
-        # code...
+        $idkibf = $_GET['idkibf'];
+        $foto = $_GET['foto'];
+        $file = $_GET['file'];
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $delete_query = "DELETE FROM kibf WHERE ID_KIBF='$idkibf'";
+        if (mysqli_query($conn, $delete_query)) {
+            echo "Data berhasil dihapus";
+            if ($foto != "") {
+                if (!unlink('../img/upload/' . $foto)) {
+                    echo ("Error deleting $foto");
+                } else {
+                    echo ("Deleted $foto");
+                }
+            }
+            if ($file != "") {
+                if (!unlink('../file/' . $file)) {
+                    echo ("Error deleting $file");
+                } else {
+                    echo ("Deleted $file");
+                }
+            }
+            header("Location: admin/kibf_home.php?status=sukses-delete");
+        } else {
+            // header("Location: admin/kibd_home.php?status=gagal-delete");
+            echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-lokasi':
