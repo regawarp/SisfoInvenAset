@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
 	if (isset($_GET['status'])) {
-		$status=$_GET['status'];
+		$status = $_GET['status'];
 		echo "<script type='text/javascript'>alert('$status');</script>";
 	}
 	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
@@ -41,7 +41,7 @@ if (isset($_SESSION['user_id'])) {
 	<div class="container-scroller">
 		<!-- partial:../../partials/_navbar.html -->
 		<?php
-			include "header.php"
+		include "header.php"
 		?>
 		<!-- partial -->
 		<div class="container-fluid page-body-wrapper">
@@ -63,7 +63,8 @@ if (isset($_SESSION['user_id'])) {
 										<table id="myTable" class="table table-hover">
 											<thead>
 												<tr>
-													<td>Operasi</td>
+													<td>Update</td>
+													<td>Delete</td>
 													<td>ID KibD</td>
 													<td>Lokasi</td>
 													<td>Spasial</td>
@@ -92,7 +93,20 @@ if (isset($_SESSION['user_id'])) {
 												if (mysqli_num_rows($result) > 0) {
 													while ($row = mysqli_fetch_assoc($result)) {
 														echo "<tr>
-													<td><a href='kibd_update.php?idkibd=$row[ID_KIBD]'>UPDATE</a>&nbsp;<a href='../process.php?process=delete-kibd&&idkibd=$row[ID_KIBD]'>DELETE</a></td>
+													<td>
+														<a href='kibd_update.php?idkibd=$row[ID_KIBD]'>
+														<button class='btn btn-warning' type='button'>
+																		<span class='mdi mdi-pencil'></span>
+																	</button>
+																	</a>
+													</td>
+													<td>
+														<a href='../process.php?process=delete-kibd&&idkibd=$row[ID_KIBD]'>
+														<button class='btn btn-danger' type='button'>
+																		<span class='mdi mdi-delete'></span>
+																	</button>
+														</a>
+													</td>
 													<td>$row[ID_KIBD]</td>
 													<td>$row[NAMA_LOKASI]</td>
 													<td><a href='$row[LINK_GIS]'>$row[NAMA_DATASPA]</a></td>
@@ -139,17 +153,17 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">ID KIB D</label>
 													<div class="col-sm-9">
 														<?php
-															$query = "SELECT ID_KIBD FROM kibd ORDER BY ID_KIBD DESC LIMIT 1";
-															$result = mysqli_query($conn, $query);
-															if (mysqli_num_rows($result) > 0) {
-																if ($id = mysqli_fetch_assoc($result)) {
-																	$num = $id['ID_KIBD'];
-																	$num++;
-																	echo "<input type='text' class='form-control' name='idkibd' value='$num' readonly/>";
-																}else{
-																	echo "<input type='text' class='form-control' name='idkibd' value='1'/> readonly";
-																}
+														$query = "SELECT ID_KIBD FROM kibd ORDER BY ID_KIBD DESC LIMIT 1";
+														$result = mysqli_query($conn, $query);
+														if (mysqli_num_rows($result) > 0) {
+															if ($id = mysqli_fetch_assoc($result)) {
+																$num = $id['ID_KIBD'];
+																$num++;
+																echo "<input type='text' class='form-control' name='idkibd' value='$num' readonly/>";
+															} else {
+																echo "<input type='text' class='form-control' name='idkibd' value='1'/> readonly";
 															}
+														}
 														?>
 													</div>
 												</div>
@@ -164,10 +178,10 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($row = mysqli_fetch_assoc($result)) {
-																	echo"<option value='$row[ID_ASET]'>$row[NAMA_ASET]</option>";
+																	echo "<option value='$row[ID_ASET]'>$row[NAMA_ASET]</option>";
 																}
-															}else{
-																echo"<option>Input Aset Baru</option>";
+															} else {
+																echo "<option>Input Aset Baru</option>";
 															}
 															?>
 														</select>
@@ -186,10 +200,10 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($row = mysqli_fetch_assoc($result)) {
-																	echo"<option value='$row[ID_LOKASI]'>$row[NAMA_LOKASI]</option>";
+																	echo "<option value='$row[ID_LOKASI]'>$row[NAMA_LOKASI]</option>";
 																}
-															}else{
-																echo"<option>Input Lokasi Baru</option>";
+															} else {
+																echo "<option>Input Lokasi Baru</option>";
 															}
 															?>
 														</select>
@@ -209,10 +223,10 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($row = mysqli_fetch_assoc($result)) {
-																	echo"<option value='$row[ID_DATASPA]'>$row[NAMA_DATASPA]</option>";
+																	echo "<option value='$row[ID_DATASPA]'>$row[NAMA_DATASPA]</option>";
 																}
-															}else{
-																echo"<option>Input Data Spatial Baru</option>";
+															} else {
+																echo "<option>Input Data Spatial Baru</option>";
 															}
 															?>
 														</select>
@@ -417,7 +431,7 @@ if (isset($_SESSION['user_id'])) {
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->
 				<?php
-					include "footer.php"
+				include "footer.php"
 				?>
 				<!-- partial -->
 			</div>
@@ -449,6 +463,7 @@ if (isset($_SESSION['user_id'])) {
 	});
 </script>
 <!-- End custom js for this page-->
+
 </html>
 <?php
 mysqli_close($conn);

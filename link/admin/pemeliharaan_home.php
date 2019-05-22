@@ -78,8 +78,12 @@ if (isset($_SESSION['user_id'])) {
 																<td>$row[TOTAL_BIAYA]</td>
 																<td>$row[TANGGAL_MULAI]</td>
 																<td>$row[TANGGAL_AKHIR]</td>
-																<td><a href='pemeliharaan_update.php?idpemeliharaan=$row[ID_PEMELIHARAAN]'>UPDATE</a></td>
-																<td><a href='../process.php?process=delete-pemeliharaan&&idpemeliharaan=$row[ID_PEMELIHARAAN]'>DELETE</a></td>
+																<td><a href='pemeliharaan_update.php?idpemeliharaan=$row[ID_PEMELIHARAAN]'><button class='btn btn-warning' type='button'>
+																<span class='mdi mdi-pencil'></span>
+																</button></a></td>
+																<td><a href='../process.php?process=delete-pemeliharaan&&idpemeliharaan=$row[ID_PEMELIHARAAN]'><button class='btn btn-danger' type='button'>
+																<span class='mdi mdi-delete'></span>
+															</button></a></td>
 															  </tr>";
 													}
 												} else {

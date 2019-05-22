@@ -72,8 +72,12 @@ if (isset($_SESSION['user_id'])) {
 														echo "<tr>
 																<td>$row[ID_LOKASI]</td>
 																<td>$row[NAMA_LOKASI]</td>
-																<td><a href='lokasi_update.php?idlokasi=$row[ID_LOKASI]'>UPDATE</a></td>
-																<td><a href='../process.php?process=delete-lokasi&&idlokasi=$row[ID_LOKASI]'>DELETE</a></td>
+																<td><a href='lokasi_update.php?idlokasi=$row[ID_LOKASI]'><button class='btn btn-warning' type='button'>
+																<span class='mdi mdi-pencil'></span>
+																</button></a></td>
+																<td><a href='../process.php?process=delete-lokasi&&idlokasi=$row[ID_LOKASI]'><button class='btn btn-danger' type='button'>
+																<span class='mdi mdi-delete'></span>
+															</button></a></td>
 															  </tr>";
 													}
 												} else {

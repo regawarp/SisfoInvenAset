@@ -76,8 +76,12 @@ if (isset($_SESSION['user_id'])) {
 																<td>$row[NAMA_JENIS]</td>
 																<td>$row[NAMA_PEGAWAI]</td>
 																<td>$row[PASSWORD]</td>
-																<td><a href='pegawai_update.php?nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'>UPDATE</a></td>
-																<td><a href='../process.php?process=delete-pegawai&&nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'>DELETE</a></td>
+																<td><a href='pegawai_update.php?nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'><button class='btn btn-warning' type='button'>
+																<span class='mdi mdi-pencil'></span>
+																</button></a></td>
+																<td><a href='../process.php?process=delete-pegawai&&nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'><button class='btn btn-danger' type='button'>
+																<span class='mdi mdi-delete'></span>
+															</button></a></td>
 															</tr>";
 													}
 												} else {

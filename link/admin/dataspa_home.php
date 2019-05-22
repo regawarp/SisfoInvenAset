@@ -74,8 +74,12 @@ if (isset($_SESSION['user_id'])) {
 														<td>$row[ID_DATASPA]</td>
 														<td>$row[NAMA_DATASPA]</td>
 														<td>$row[LINK_GIS]</td>
-														<td><a href='dataspa_update.php?iddataspa=$row[ID_DATASPA]'>UPDATE</a></td>
-														<td><a href='../process.php?process=delete-dataspa&&iddataspa=$row[ID_DATASPA]'>DELETE</a></td>
+														<td><a href='dataspa_update.php?iddataspa=$row[ID_DATASPA]'><button class='btn btn-warning' type='button'>
+														<span class='mdi mdi-pencil'></span>
+													</button></a></td>
+														<td><a href='../process.php?process=delete-dataspa&&iddataspa=$row[ID_DATASPA]'><button class='btn btn-danger' type='button'>
+														<span class='mdi mdi-delete'></span>
+													</button></a></td>
 														</tr>";
 													}
 												} else {

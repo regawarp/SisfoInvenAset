@@ -71,8 +71,12 @@ if (isset($_SESSION['user_id'])) {
 														echo "<tr>
 		         <td>$row[ID_DED]</td>
 		         <td>$row[PATH_FILE]</td>
-		         <td><a href='ded_update.php?idded=$row[ID_DED]'>UPDATE</a></td>
-		         <td><a href='../process.php?process=delete-ded&&idded=$row[ID_DED]'>DELETE</a></td>
+		         <td><a href='ded_update.php?idded=$row[ID_DED]'><button class='btn btn-warning' type='button'>
+				 <span class='mdi mdi-pencil'></span>
+			 </button></a></td>
+		         <td><a href='../process.php?process=delete-ded&&idded=$row[ID_DED]'><button class='btn btn-danger' type='button'>
+				 <span class='mdi mdi-delete'></span>
+			 </button></a></td>
 		        </tr>";
 													}
 												} else {

@@ -109,8 +109,12 @@ if (isset($_SESSION['user_id'])) {
                                                     <td>$row[USULAN_TAMBAHAN_RUPIAH]</td>
                                                     <td>$row[USULAN_TAMBAHAN_M]</td>
                                                     <td>$row[USULAN_TAMBAHAN_SUMBER_DANA]</td>
-                                                    <td><a href='dak_update.php?iddak=$row[ID_DAK]'>UPDATE</a></td>
-                                                    <td><a href='../process.php?process=delete-dak&&iddak=$row[ID_DAK]'>DELETE</a></td>
+                                                    <td><a href='dak_update.php?iddak=$row[ID_DAK]'><button class='btn btn-warning' type='button'>
+                                                    <span class='mdi mdi-pencil'></span>
+                                                </button></a></td>
+                                                    <td><a href='../process.php?process=delete-dak&&iddak=$row[ID_DAK]'><button class='btn btn-danger' type='button'>
+                                                    <span class='mdi mdi-delete'></span>
+                                                </button></a></td>
                                                     </tr>";
                                                 }
                                             } else {
