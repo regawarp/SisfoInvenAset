@@ -424,6 +424,7 @@ switch ($_GET['process']) {
         $insert_query = "INSERT INTO lokasi VALUES('$ID_LOKASI','$NAMA_LOKASI')";
         if (mysqli_query($conn, $insert_query)) {
             echo "Data Sukses diinput";
+            header("Location: admin/lokasi_home.php");
         } else {
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
@@ -438,6 +439,7 @@ switch ($_GET['process']) {
         $insert_query = "UPDATE lokasi SET NAMA_LOKASI='$NAMA_LOKASI' WHERE ID_LOKASI='$ID_LOKASI'";
         if (mysqli_query($conn, $insert_query)) {
             echo "Data Sukses di update";
+            header("Location: admin/lokasi_home.php");
         } else {
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
@@ -451,6 +453,7 @@ switch ($_GET['process']) {
         $insert_query = "DELETE FROM lokasi WHERE ID_LOKASI='$ID_LOKASI'";
         if (mysqli_query($conn, $insert_query)) {
             echo "Data Sukses di delete";
+            header("Location: admin/lokasi_home.php");
         } else {
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
         }
