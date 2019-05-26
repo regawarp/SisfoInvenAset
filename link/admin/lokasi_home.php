@@ -97,7 +97,7 @@ if (isset($_SESSION['user_id'])) {
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">Input Data Spatial</h4>
+									<h4 class="card-title">Input Lokasi</h4>
 									<form class="form-sample" action="../process.php?process=insert-lokasi" enctype="multipart/form-data" method="post">
 										<div class="row">
 											<div class="col-md-6">

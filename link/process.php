@@ -10,25 +10,27 @@ switch ($_GET['process']) {
     case 'login':
         if (!empty($_POST)) {
             if (isset($_POST['username']) && isset($_POST['password'])) {
-                // Getting submitted user data from database
-                //    $con = new mysqli($db_host, $db_user, $db_pass, $db_name);
-                //    $stmt = $con->prepare("SELECT * FROM users WHERE username = ?");
-                //    $stmt->bind_param('s', $_POST['username']);
-                //    $stmt->execute();
-                //    $result = $stmt->get_result();
-                // $user = $result->fetch_object();
-
-                // Verify user password and set $_SESSION
-                // if ( password_verify( $_POST['password'], $user->password ) ) {
-                //  $_SESSION['user_id'] = $user->ID;
-                // }
-                if ($_POST['password'] == 'a') {
-                    $_SESSION['user_id'] = $_POST['username'];
-                    header('Location: admin/dashboard.php');
-                } else { //WRONG PASS
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+                $query = "SELECT * FROM pegawai,jenis_pegawai WHERE pegawai.ID_JENIS=jenis_pegawai.ID_JENIS AND NOMOR_INDUK_PEGAWAI = '$_POST[username]' ";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        if ((string)$_POST['password'] == (string)$row['PASSWORD']) {
+                            $_SESSION['user_id'] = $_POST['username'];
+                            $_SESSION['jenis'] = $row['NAMA_JENIS'];
+                            $_SESSION['nama'] = $row['NAMA_PEGAWAI'];
+                            header('Location: admin/dashboard.php');
+                        } else {
+                            echo ("<script LANGUAGE='JavaScript'>
+                            window.alert('Wrong Password');
+                            window.location.href='beranda.php';
+                            </script>");
+                        }
+                    }
+                } else {
                     echo ("<script LANGUAGE='JavaScript'>
-                    window.alert('Wrong Password');
-                    window.location.href='login.php';
+                    window.alert('Wrong Username');
+                    window.location.href='beranda.php';
                     </script>");
                 }
             }
@@ -675,9 +677,10 @@ switch ($_GET['process']) {
         $PASSWORD = $_POST['PASSWORD'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "INSERT INTO aset VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
+        $query = "INSERT INTO pegawai VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di insert";
+            header('Location:admin/pegawai_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -691,9 +694,10 @@ switch ($_GET['process']) {
         $PASSWORD = $_POST['PASSWORD'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "UPDATE aset SET NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI',ID_JENIS='$ID_JENIS',NAMA_PEGAWAI='$NAMA_PEGAWAI',PASSWORD='$PASSWORD'";
+        $query = "UPDATE pegawai SET ID_JENIS='$ID_JENIS',NAMA_PEGAWAI='$NAMA_PEGAWAI',PASSWORD='$PASSWORD' WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di update";
+            header('Location:admin/pegawai_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -708,6 +712,7 @@ switch ($_GET['process']) {
         $query = "DELETE FROM pegawai WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di delete";
+            header('Location:admin/pegawai_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }

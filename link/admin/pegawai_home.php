@@ -76,10 +76,10 @@ if (isset($_SESSION['user_id'])) {
 																<td>$row[NAMA_JENIS]</td>
 																<td>$row[NAMA_PEGAWAI]</td>
 																<td>$row[PASSWORD]</td>
-																<td><a href='pegawai_update.php?nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'><button class='btn btn-warning' type='button'>
+																<td><a href='pegawai_update.php?NOMOR_INDUK_PEGAWAI=$row[NOMOR_INDUK_PEGAWAI]'><button class='btn btn-warning' type='button'>
 																<span class='mdi mdi-pencil'></span>
 																</button></a></td>
-																<td><a href='../process.php?process=delete-pegawai&&nomor-induk-pegawai=$row[NOMOR_INDUK_PEGAWAI]'><button class='btn btn-danger' type='button'>
+																<td><a href='../process.php?process=delete-pegawai&&NOMOR_INDUK_PEGAWAI=$row[NOMOR_INDUK_PEGAWAI]'><button class='btn btn-danger' type='button'>
 																<span class='mdi mdi-delete'></span>
 															</button></a></td>
 															</tr>";
@@ -92,6 +92,62 @@ if (isset($_SESSION['user_id'])) {
 											</tbody>
 										</table>
 									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Input Pegawai</h4>
+									<form class="form-sample" action="../process.php?process=insert-pegawai" enctype="multipart/form-data" method="post">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">NOMOR_INDUK_PEGAWAI</label>
+													<div class="col-sm-9">
+														<input type='text' class='form-control' name='NOMOR_INDUK_PEGAWAI'>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">JENIS PEGAWAI</label>
+													<div class="col-sm-9">
+														<select name="ID_JENIS" class="form-control" style="margin: 0px 10px;">
+															<?php
+															$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+															$query = "SELECT * FROM jenis_pegawai";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																while ($row = mysqli_fetch_assoc($result)) {
+																	echo "<option value='$row[ID_JENIS]'>$row[NAMA_JENIS]</option>";
+																}
+															} else {
+																echo "<option>Input Jenis Baru</option>";
+															}
+															mysqli_close($conn);
+															?>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA_PEGAWAI</label>
+													<div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_PEGAWAI"></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">PASSWORD</label>
+													<div class="col-sm-9"> <input type="text" class="form-control" name="PASSWORD"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
