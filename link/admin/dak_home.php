@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id'])) {
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title mb-4">Big Div</h5>
+                                    <h5 class="card-title mb-4">Data DAK</h5>
                                     <div class="table-responsive">
                                         <table id="myTable" class="table table-hover">
                                             <thead>

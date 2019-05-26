@@ -821,9 +821,10 @@ switch ($_GET['process']) {
         $TANGGAL_AKHIR = $_POST['TANGGAL_AKHIR'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "INSERT INTO pemeliharaan VALUES('$ID_PEMELIHARAAN','$ID_DAK','$TOTAL_BIAYA','$TANGGAL_MULAI','$TANGGAL_AKHIR')";
+        $query = "INSERT INTO pemeliharaan VALUES('$ID_PEMELIHARAAN','$ID_DAK',$TOTAL_BIAYA,'$TANGGAL_MULAI','$TANGGAL_AKHIR')";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses diinput";
+            header('Location:admin/pemeliharaan_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -841,6 +842,7 @@ switch ($_GET['process']) {
         $query = "UPDATE pemeliharaan SET ID_DAK='$ID_DAK',TOTAL_BIAYA=$TOTAL_BIAYA,TANGGAL_MULAI='$TANGGAL_MULAI',TANGGAL_AKHIR='$TANGGAL_AKHIR' WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di update";
+            header('Location:admin/pemeliharaan_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -854,6 +856,7 @@ switch ($_GET['process']) {
         $query = "DELETE FROM pemeliharaan WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses diinput";
+            header('Location:admin/pemeliharaan_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -868,8 +871,9 @@ switch ($_GET['process']) {
         $VOLUME = $_POST['VOLUME'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "INSERT INTO detail_pemeliharaan VALUES('$$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
+        $query = "INSERT INTO detail_pemeliharaan VALUES('$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
         if (mysqli_query($conn, $query)) {
+            header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
             echo "Data Sukses diinput";
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
@@ -885,9 +889,10 @@ switch ($_GET['process']) {
         $VOLUME = $_POST['VOLUME'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "UPDATE detail_pemeliharaan SET ID_PEMELIHARAAN='$ID_PEMELIHARAAN',JENIS_PEMELIHARAAN='$JENIS_PEMELIHARAAN',BIAY=$BIAYA,VOLUME=$VOLUME WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
+        $query = "UPDATE detail_pemeliharaan SET ID_PEMELIHARAAN='$ID_PEMELIHARAAN',JENIS_PEMELIHARAAN='$JENIS_PEMELIHARAAN',BIAYA=$BIAYA,VOLUME=$VOLUME WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di update";
+            header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -901,6 +906,7 @@ switch ($_GET['process']) {
         $query = "DELETE FROM detail_pemeliharaan WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di delete";
+            header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
