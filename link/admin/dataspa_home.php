@@ -115,7 +115,7 @@ if (isset($_SESSION['user_id'])) {
 																echo"<input type='text' class='form-control' name='ID_DATASPA' readonly value='$num'>";
 															}
 														}else{
-															echo"<input type='text' class='form-control' name='ID_DATASPA' readonly>";
+															echo"<input type='text' class='form-control' name='ID_DATASPA' readonly value='1'>";
 														}
 														mysqli_close($conn);
 														?>

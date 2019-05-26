@@ -6,6 +6,78 @@ $username = "root";
 $password = "";
 $dbname = "db_pupr";
 
+function uploadFileFoto($PATH_FILE, $TMP, $JENIS)
+{
+    if ($JENIS == "FOTO") {
+        //Upload foto and file
+        $target_dir = "../img/upload/";
+        $target_file = $target_dir . $PATH_FILE;
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // Check if image file is a actual image or fake image
+        if (isset($_POST["submit"])) {
+            $check = getimagesize($TMP);
+            if ($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+        // Check file size
+        if ($_FILES["foto"]["size"] > 500000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+        if (
+            $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif"
+        ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($TMP, $target_file)) {
+                echo "The file " . $PATH_FILE . " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+    } else if ($JENIS == "FILE") {
+        $target_dir = "../file/";
+        $target_file = $target_dir . $PATH_FILE;
+        $uploadOk = 1;
+        $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($TMP, $target_file)) {
+                echo "The file " . $PATH_FILE . " has been uploaded.";
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        }
+    }
+}
+
 switch ($_GET['process']) {
     case 'login':
         if (!empty($_POST)) {
@@ -630,12 +702,19 @@ switch ($_GET['process']) {
 
     case 'insert-ded':
         $ID_DED = $_POST['ID_DED'];
-        $PATH_FILE = $_POST['PATH_FILE'];
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $PATH_FILE = basename($_FILES['PATH_FILE']['name']);
+        $TMP = $_FILES['PATH_FILE']['tmp_name'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         $query = "INSERT INTO ded VALUES('$ID_DED','$PATH_FILE')";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses diinput";
+            //Input ke table ded lokasi
+            $query = "INSERT INTO dedlokasi VALUES('$ID_LOKASI','$ID_DED')";
+            mysqli_query($conn, $query);
+            uploadFileFoto($PATH_FILE, $TMP, "FILE");
+            header('Location:admin/ded_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -644,15 +723,25 @@ switch ($_GET['process']) {
 
     case 'update-ded':
         $ID_DED = $_POST['ID_DED'];
-        $PATH_FILE = $_POST['PATH_FILE'];
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $PATH_FILE = basename($_FILES['PATH_FILE']['name']);
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "UPDATE ded SET ID_DED='$ID_DED',PATH_FILE='$PATH_FILE' WHERE ID_DED='$ID_DED'";
-        if (mysqli_query($conn, $query)) {
-            echo "Data Sukses di update";
-        } else {
-            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+
+        $query = "UPDATE dedlokasi SET ID_LOKASI='$ID_LOKASI' WHERE ID_DED='$ID_DED'";
+        mysqli_query($conn, $query);
+        if ($PATH_FILE != "") {
+            $query = "UPDATE ded SET PATH_FILE='$PATH_FILE' WHERE ID_DED='$ID_DED'";
+            uploadFileFoto($PATH_FILE, $TMP, "FILE");
+            if (mysqli_query($conn, $query)) {
+                echo "Data Sukses di update";
+                header('Location:admin/ded_home.php');
+            } else {
+                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+            }
         }
+        header('Location:admin/ded_home.php');
+
         mysqli_close($conn);
         break;
 
@@ -660,9 +749,12 @@ switch ($_GET['process']) {
         $ID_DED = $_GET['ID_DED'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $query = "DELETE FROM ded WEHRE ID_DED='$ID_DED'";
+        $query = "DELETE FROM dedlokasi WHERE ID_DED='$ID_DED'";
+        mysqli_query($conn, $query);
+        $query = "DELETE FROM ded WHERE ID_DED='$ID_DED'";
         if (mysqli_query($conn, $query)) {
             echo "Data Sukses di delete";
+            header('Location:admin/ded_home.php');
         } else {
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
@@ -670,7 +762,6 @@ switch ($_GET['process']) {
         break;
 
     case 'insert-pegawai':
-        # code...
         $NOMOR_INDUK_PEGAWAI = $_POST['NOMOR_INDUK_PEGAWAI'];
         $ID_JENIS = $_POST['ID_JENIS'];
         $NAMA_PEGAWAI = $_POST['NAMA_PEGAWAI'];
