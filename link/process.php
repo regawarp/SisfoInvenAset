@@ -431,19 +431,38 @@ switch ($_GET['process']) {
         break;
 
     case 'update-lokasi':
-        # code...
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $NAMA_LOKASI = $_POST['NAMA_LOKASI'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query = "UPDATE lokasi SET NAMA_LOKASI='$NAMA_LOKASI' WHERE ID_LOKASI='$ID_LOKASI'";
+        if (mysqli_query($conn, $insert_query)) {
+            echo "Data Sukses di update";
+        } else {
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-lokasi':
-        # code...
+        $ID_LOKASI = $_GET['ID_LOKASI'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query = "DELETE FROM lokasi WHERE ID_LOKASI='$ID_LOKASI'";
+        if (mysqli_query($conn, $insert_query)) {
+            echo "Data Sukses di delete";
+        } else {
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-aset':
-        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $ID_ASET = $_POST['ID_ASET'];
         $NAMA_ASET = $_POST['NAMA_ASET'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query = "INSERT INTO aset VALUES('$ID_LOKASI','$NAMA_ASET')";
+        $insert_query = "INSERT INTO aset VALUES('$ID_ASET','$NAMA_ASET')";
         if (mysqli_query($conn, $insert_query)) {
             echo "Data Sukses diinput";
         } else {
@@ -453,68 +472,196 @@ switch ($_GET['process']) {
         break;
 
     case 'update-aset':
-        # code...
-        break;
-
-    case 'delete-aset':
-        # code...
-        break;
-
-    case 'insert-dak':
-        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $ID_ASET = $_POST['ID_LOKASI'];
         $NAMA_ASET = $_POST['NAMA_ASET'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query = "INSERT INTO aset VALUES('$ID_LOKASI','$NAMA_ASET')";
+        $insert_query = "INSERT aset SET NAMA_ASET='$NAMA_ASET' WHERE ID_ASET='$ID_ASET'";
         if (mysqli_query($conn, $insert_query)) {
-            echo "Data Sukses diinput";
+            echo "Data Sukses di update";
         } else {
             echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        break;
+
+    case 'delete-aset':
+        $ID_ASET = $_GET['ID_ASET'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $insert_query = "DELETE FROM aset WHERE ID_ASET='$ID_ASET'";
+        if (mysqli_query($conn, $insert_query)) {
+            echo "Data Sukses di delete";
+        } else {
+            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        break;
+
+    case 'insert-dak':
+        $ID_DAK = $_POST['ID_DAK'];
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $NAMA_DAK = $_POST['NAMA_DAK'];
+        $LUAS = $_POST['LUAS'];
+        $PANJANG = $_POST['PANJANG'];
+        $LEBAR = $_POST['LEBAR'];
+        $PANJANG_BAIK_M = $_POST['PANJANG_BAIK_M'];
+        $PANJANG_BAIK_PERS = $_POST['PANJANG_BAIK_PERS'];
+        $PANJANG_SEDANG_M = $_POST['PANJANG_SEDANG_M'];
+        $PANJANG_SEDANG_PERS = $_POST['PANJANG_SEDANG_PERS'];
+        $PANJANG_RUSAKRINGAN_M = $_POST['PANJANG_RUSAKRINGAN_M'];
+        $PANJANG_RUSAKRINGAN_PERS = $_POST['PANJANG_RUSAKRINGAN_PERS'];
+        $PANJANG_RUSAKBERAT_M = $_POST['PANJANG_RUSAKBERAT_M'];
+        $PANJANG_RUSAKBERAT_PERS = $_POST['PANJANG_RUSAKBERAT_PERS'];
+        $RENCANA_PENANGANAN = $_POST['RENCANA_PENANGANAN'];
+        $KEBUTUHAN_ANGGARAN = $_POST['KEBUTUHAN_ANGGARAN'];
+        $KEMAMPUAN_RUPIAH = $_POST['KEMAMPUAN_RUPIAH'];
+        $KEMAMPUAN_M = $_POST['KEMAMPUAN_M'];
+        $USULAN_TAMBAHAN_RUPIAH = $_POST['USULAN_TAMBAHAN_RUPIAH'];
+        $USULAN_TAMBAHAN_M = $_POST['USULAN_TAMBAHAN_M'];
+        $USULAN_TAMBAHAN_SUMBER_DANA = $_POST['USULAN_TAMBAHAN_SUMBER_DANA'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "INSERT INTO dak VALUES('$ID_DAK','$ID_LOKASI','$NAMA_DAK',$LUAS,$PANJANG,$LEBAR,$PANJANG_BAIK_M,$PANJANG_BAIK_PERS,$PANJANG_SEDANG_M,$PANJANG_SEDANG_PERS,$PANJANG_RUSAKRINGAN_M,$PANJANG_RUSAKRINGAN_PERS,$PANJANG_RUSAKBERAT_M,$PANJANG_RUSAKBERAT_PERS,'$RENCANA_PENANGANAN',$KEBUTUHAN_ANGGARAN,$KEMAMPUAN_RUPIAH,$KEMAMPUAN_M,$USULAN_TAMBAHAN_RUPIAH,$USULAN_TAMBAHAN_M,'$USULAN_TAMBAHAN_SUMBER_DANA')";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di insert";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
         break;
 
     case 'update-dak':
-        # code...
+        $ID_DAK = $_POST['ID_DAK'];
+        $ID_LOKASI = $_POST['ID_LOKASI'];
+        $NAMA_DAK = $_POST['NAMA_DAK'];
+        $LUAS = $_POST['LUAS'];
+        $PANJANG = $_POST['PANJANG'];
+        $LEBAR = $_POST['LEBAR'];
+        $PANJANG_BAIK_M = $_POST['PANJANG_BAIK_M'];
+        $PANJANG_BAIK_PERS = $_POST['PANJANG_BAIK_PERS'];
+        $PANJANG_SEDANG_M = $_POST['PANJANG_SEDANG_M'];
+        $PANJANG_SEDANG_PERS = $_POST['PANJANG_SEDANG_PERS'];
+        $PANJANG_RUSAKRINGAN_M = $_POST['PANJANG_RUSAKRINGAN_M'];
+        $PANJANG_RUSAKRINGAN_PERS = $_POST['PANJANG_RUSAKRINGAN_PERS'];
+        $PANJANG_RUSAKBERAT_M = $_POST['PANJANG_RUSAKBERAT_M'];
+        $PANJANG_RUSAKBERAT_PERS = $_POST['PANJANG_RUSAKBERAT_PERS'];
+        $RENCANA_PENANGANAN = $_POST['RENCANA_PENANGANAN'];
+        $KEBUTUHAN_ANGGARAN = $_POST['KEBUTUHAN_ANGGARAN'];
+        $KEMAMPUAN_RUPIAH = $_POST['KEMAMPUAN_RUPIAH'];
+        $KEMAMPUAN_M = $_POST['KEMAMPUAN_M'];
+        $USULAN_TAMBAHAN_RUPIAH = $_POST['USULAN_TAMBAHAN_RUPIAH'];
+        $USULAN_TAMBAHAN_M = $_POST['USULAN_TAMBAHAN_M'];
+        $USULAN_TAMBAHAN_SUMBER_DANA = $_POST['USULAN_TAMBAHAN_SUMBER_DANA'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "UPDATE dak SET ID_LOKASI = '$ID_LOKASI',NAMA_DAK = '$NAMA_DAK',LUAS = $LUAS,PANJANG = $PANJANG,LEBAR = $LEBAR,PANJANG_BAIK_M = $PANJANG_BAIK_M,PANJANG_BAIK_PERS = $PANJANG_BAIK_PERS,PANJANG_SEDANG_M = $PANJANG_SEDANG_M,PANJANG_SEDANG_PERS = $PANJANG_SEDANG_PERS,PANJANG_RUSAKRINGAN_M = $PANJANG_RUSAKRINGAN_M,PANJANG_RUSAKRINGAN_PERS = $PANJANG_RUSAKRINGAN_PERS,PANJANG_RUSAKBERAT_M = $PANJANG_RUSAKBERAT_M,PANJANG_RUSAKBERAT_PERS = $PANJANG_RUSAKBERAT_PERS,RENCANA_PENANGANAN = '$RENCANA_PENANGANAN',KEBUTUHAN_ANGGARAN = $KEBUTUHAN_ANGGARAN,KEMAMPUAN_RUPIAH = $KEMAMPUAN_RUPIAH,KEMAMPUAN_M = $KEMAMPUAN_M,USULAN_TAMBAHAN_RUPIAH = $USULAN_TAMBAHAN_RUPIAH,USULAN_TAMBAHAN_M = $USULAN_TAMBAHAN_M,USULAN_TAMBAHAN_SUMBER_DANA = '$USULAN_TAMBAHAN_SUMBER_DANA' WHERE ID_DAK = '$ID_DAK'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di update";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-dak':
-        # code...
+        $ID_DAK = $_GET['ID_DAK'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "DELETE FROM dak WHERE ID_DAK = '$ID_DAK'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di delete";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-spatial':
-        # code...
+        $ID_DATASPA = $_POST['ID_DATASPA'];
+        $NAMA_DATASPA = $_POST['NAMA_DATASPA'];
+        $LINK_GIS = $_POST['LINK_GIS'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "INSERT INTO dataspa VALUES('$ID_DATASPA','$NAMA_DATASPA','$LINK_GIS')";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses diinput";
+            header('Location:admin/dataspa_home.php');
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'update-spatial':
-        # code...
+        $ID_DATASPA = $_POST['ID_DATASPA'];
+        $NAMA_DATASPA = $_POST['NAMA_DATASPA'];
+        $LINK_GIS = $_POST['LINK_GIS'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "UPDATE dataspa SET NAMA_DATASPA='$NAMA_DATASPA',LINK_GIS='$LINK_GIS' WHERE ID_DATASPA='$ID_DATASPA'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses diinput";
+            header('Location:admin/dataspa_home.php');
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-spatial':
-        # code...
+        $ID_DATASPA = $_GET['ID_DATASPA'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "DELETE FROM dataspa WHERE ID_DATASPA='$ID_DATASPA'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di delete";
+            header('Location:admin/dataspa_home.php');
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-ded':
-        # code...
         $ID_DED = $_POST['ID_DED'];
         $PATH_FILE = $_POST['PATH_FILE'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query = "INSERT INTO aset VALUES('$ID_DED','$PATH_FILE')";
-        if (mysqli_query($conn, $insert_query)) {
+        $query = "INSERT INTO ded VALUES('$ID_DED','$PATH_FILE')";
+        if (mysqli_query($conn, $query)) {
             echo "Data Sukses diinput";
         } else {
-            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
         break;
 
     case 'update-ded':
-        # code...
+        $ID_DED = $_POST['ID_DED'];
+        $PATH_FILE = $_POST['PATH_FILE'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "UPDATE ded SET ID_DED='$ID_DED',PATH_FILE='$PATH_FILE' WHERE ID_DED='$ID_DED'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di update";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-ded':
-        # code...
+        $ID_DED = $_GET['ID_DED'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "DELETE FROM ded WEHRE ID_DED='$ID_DED'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di delete";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-pegawai':
@@ -525,26 +672,46 @@ switch ($_GET['process']) {
         $PASSWORD = $_POST['PASSWORD'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query = "INSERT INTO aset VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
-        if (mysqli_query($conn, $insert_query)) {
-            echo "Data Sukses diinput";
+        $query = "INSERT INTO aset VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di insert";
         } else {
-            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
         break;
 
     case 'update-pegawai':
-        # code...
+        $NOMOR_INDUK_PEGAWAI = $_POST['NOMOR_INDUK_PEGAWAI'];
+        $ID_JENIS = $_POST['ID_JENIS'];
+        $NAMA_PEGAWAI = $_POST['NAMA_PEGAWAI'];
+        $PASSWORD = $_POST['PASSWORD'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "UPDATE aset SET NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI',ID_JENIS='$ID_JENIS',NAMA_PEGAWAI='$NAMA_PEGAWAI',PASSWORD='$PASSWORD'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di update";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
 
         break;
 
     case 'delete-pegawai':
-        # code...
+        $NOMOR_INDUK_PEGAWAI = $_GET['NOMOR_INDUK_PEGAWAI'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "DELETE FROM pegawai WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di delete";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-pemeliharaan':
-        # code...
         $ID_PEMELIHARAAN = $_POST['ID_PEMELIHARAAN'];
         $ID_DAK = $_POST['ID_DAK'];
         $TOTAL_BIAYA = $_POST['TOTAL_BIAYA'];
@@ -552,25 +719,46 @@ switch ($_GET['process']) {
         $TANGGAL_AKHIR = $_POST['TANGGAL_AKHIR'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query = "INSERT INTO aset VALUES('$ID_PEMELIHARAAN','$ID_DAK','$TOTAL_BIAYA','$TANGGAL_MULAI','$TANGGAL_AKHIR')";
-        if (mysqli_query($conn, $insert_query)) {
+        $query = "INSERT INTO pemeliharaan VALUES('$ID_PEMELIHARAAN','$ID_DAK','$TOTAL_BIAYA','$TANGGAL_MULAI','$TANGGAL_AKHIR')";
+        if (mysqli_query($conn, $query)) {
             echo "Data Sukses diinput";
         } else {
-            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
         break;
 
     case 'update-pemeliharaan':
-        # code...
+        $ID_PEMELIHARAAN = $_POST['ID_PEMELIHARAAN'];
+        $ID_DAK = $_POST['ID_DAK'];
+        $TOTAL_BIAYA = $_POST['TOTAL_BIAYA'];
+        $TANGGAL_MULAI = $_POST['TANGGAL_MULAI'];
+        $TANGGAL_AKHIR = $_POST['TANGGAL_AKHIR'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "UPDATE pemeliharaan SET ID_DAK='$ID_DAK',TOTAL_BIAYA=$TOTAL_BIAYA,TANGGAL_MULAI='$TANGGAL_MULAI',TANGGAL_AKHIR='$TANGGAL_AKHIR' WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di update";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-pemeliharaan':
-        # code...
+        $ID_PEMELIHARAAN = $_GET['ID_PEMELIHARAAN'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "DELETE FROM pemeliharaan WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses diinput";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'insert-detail':
-        # code...
         $ID_DETAIL_PEMELIHARAAN = $_POST['ID_DETAIL_PEMELIHARAAN'];
         $ID_PEMELIHARAAN = $_POST['ID_PEMELIHARAAN'];
         $JENIS_PEMELIHARAAN = $_POST['JENIS_PEMELIHARAAN'];
@@ -578,21 +766,43 @@ switch ($_GET['process']) {
         $VOLUME = $_POST['VOLUME'];
 
         $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $insert_query = "INSERT INTO aset VALUES('$$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
-        if (mysqli_query($conn, $insert_query)) {
+        $query = "INSERT INTO detail_pemeliharaan VALUES('$$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
+        if (mysqli_query($conn, $query)) {
             echo "Data Sukses diinput";
         } else {
-            echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
         mysqli_close($conn);
         break;
 
     case 'update-detail':
-        # code...
+        $ID_DETAIL_PEMELIHARAAN = $_POST['ID_DETAIL_PEMELIHARAAN'];
+        $ID_PEMELIHARAAN = $_POST['ID_PEMELIHARAAN'];
+        $JENIS_PEMELIHARAAN = $_POST['JENIS_PEMELIHARAAN'];
+        $BIAYA = $_POST['BIAYA'];
+        $VOLUME = $_POST['VOLUME'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "UPDATE detail_pemeliharaan SET ID_PEMELIHARAAN='$ID_PEMELIHARAAN',JENIS_PEMELIHARAAN='$JENIS_PEMELIHARAAN',BIAY=$BIAYA,VOLUME=$VOLUME WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di update";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     case 'delete-detail':
-        # code...
+        $ID_DETAIL_PEMELIHARAAN = $_GET['ID_DETAIL_PEMELIHARAAN'];
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+        $query = "DELETE FROM detail_pemeliharaan WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
+        if (mysqli_query($conn, $query)) {
+            echo "Data Sukses di delete";
+        } else {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+        mysqli_close($conn);
         break;
 
     default:

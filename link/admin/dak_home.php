@@ -11,6 +11,7 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,37 +58,37 @@ if (isset($_SESSION['user_id'])) {
                                     <div class="table-responsive">
                                         <table id="myTable" class="table table-hover">
                                             <thead>
-                                            <tr>
-                                                <td>ID_DAK</td>
-                                                <td>ID_LOKASI</td>
-                                                <td>NAMA_DAK</td>
-                                                <td>LUAS</td>
-                                                <td>PANJANG</td>
-                                                <td>LEBAR</td>
-                                                <td>PANJANG_BAIK_M</td>
-                                                <td>PANJANG_BAIK_PERS</td>
-                                                <td>PANJANG_SEDANG_M</td>
-                                                <td>PANJANG_SEDANG_PERS</td>
-                                                <td>PANJANG_RUSAKRINGAN_M</td>
-                                                <td>PANJANG_RUSAKRINGAN_PERS</td>
-                                                <td>PANJANG_RUSAKBERAT_M</td>
-                                                <td>PANJANG_RUSAKBERAT_PERS</td>
-                                                <td>RENCANA_PENANGANAN</td>
-                                                <td>KEBUTUHAN_ANGGARAN</td>
-                                                <td>KEMAMPUAN_RUPIAH</td>
-                                                <td>KEMAMPUAN_M</td>
-                                                <td>USULAN_TAMBAHAN_RUPIAH</td>
-                                                <td>USULAN_TAMBAHAN_M</td>
-                                                <td>USULAN_TAMBAHAN_SUMBER_DANA</td>
-                                                <td>UPDATE</td>
-                                                <td>DELETE</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>ID_DAK</td>
+                                                    <td>ID_LOKASI</td>
+                                                    <td>NAMA_DAK</td>
+                                                    <td>LUAS</td>
+                                                    <td>PANJANG</td>
+                                                    <td>LEBAR</td>
+                                                    <td>PANJANG_BAIK_M</td>
+                                                    <td>PANJANG_BAIK_PERS</td>
+                                                    <td>PANJANG_SEDANG_M</td>
+                                                    <td>PANJANG_SEDANG_PERS</td>
+                                                    <td>PANJANG_RUSAKRINGAN_M</td>
+                                                    <td>PANJANG_RUSAKRINGAN_PERS</td>
+                                                    <td>PANJANG_RUSAKBERAT_M</td>
+                                                    <td>PANJANG_RUSAKBERAT_PERS</td>
+                                                    <td>RENCANA_PENANGANAN</td>
+                                                    <td>KEBUTUHAN_ANGGARAN</td>
+                                                    <td>KEMAMPUAN_RUPIAH</td>
+                                                    <td>KEMAMPUAN_M</td>
+                                                    <td>USULAN_TAMBAHAN_RUPIAH</td>
+                                                    <td>USULAN_TAMBAHAN_M</td>
+                                                    <td>USULAN_TAMBAHAN_SUMBER_DANA</td>
+                                                    <td>UPDATE</td>
+                                                    <td>DELETE</td>
+                                                </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
-                                            if (mysqli_num_rows($result) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                    echo "<tr>
+                                                <?php
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo "<tr>
                                                     <td>$row[ID_DAK]</td>
                                                     <td>$row[ID_LOKASI]</td>
                                                     <td>$row[NAMA_DAK]</td>
@@ -116,12 +117,12 @@ if (isset($_SESSION['user_id'])) {
                                                     <span class='mdi mdi-delete'></span>
                                                 </button></a></td>
                                                     </tr>";
+                                                    }
+                                                } else {
+                                                    echo "<tr><td colspan='24' align='center'>0 results</td></tr>";
                                                 }
-                                            } else {
-                                                echo "<tr><td colspan='24' align='center'>0 results</td></tr>";
-                                            }
-                                            mysqli_close($conn);
-                                            ?>
+                                                mysqli_close($conn);
+                                                ?>
                                             </tbody>
                                         </table>
                                     </div>
