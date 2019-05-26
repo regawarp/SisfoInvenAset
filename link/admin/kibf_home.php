@@ -89,7 +89,7 @@ if (isset($_SESSION['user_id'])) {
 												if (mysqli_num_rows($result) > 0) {
 													while ($row = mysqli_fetch_assoc($result)) {
 														echo "<tr>
-												<td><a href='$row[LINK_GIS]'>$row[NAMA_DATASPA]</a></td>
+												<td><a href='https://$row[LINK_GIS]' target='_blank'>$row[NAMA_DATASPA]</a></td>
 												<td>$row[NAMA_LOKASI]</td>
 												<td>$row[NAMA_ASET]</td>
 												<td>$row[NAMA_BARANG]</td>
