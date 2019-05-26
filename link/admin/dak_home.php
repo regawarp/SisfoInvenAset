@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id'])) {
     $result = mysqli_query($conn, $sql);
 } else {
     // Redirect them to the login page
-    header("Location: ../login.php");
+    header("Location: ../beranda.php");
 }
 ?>
 <html>
@@ -110,10 +110,10 @@ if (isset($_SESSION['user_id'])) {
                                                     <td>$row[USULAN_TAMBAHAN_RUPIAH]</td>
                                                     <td>$row[USULAN_TAMBAHAN_M]</td>
                                                     <td>$row[USULAN_TAMBAHAN_SUMBER_DANA]</td>
-                                                    <td><a href='dak_update.php?iddak=$row[ID_DAK]'><button class='btn btn-warning' type='button'>
+                                                    <td><a href='dak_update.php?ID_DAK=$row[ID_DAK]'><button class='btn btn-warning' type='button'>
                                                     <span class='mdi mdi-pencil'></span>
                                                 </button></a></td>
-                                                    <td><a href='../process.php?process=delete-dak&&iddak=$row[ID_DAK]'><button class='btn btn-danger' type='button'>
+                                                    <td><a href='../process.php?process=delete-dak&&ID_DAK=$row[ID_DAK]'><button class='btn btn-danger' type='button'>
                                                     <span class='mdi mdi-delete'></span>
                                                 </button></a></td>
                                                     </tr>";
@@ -126,6 +126,182 @@ if (isset($_SESSION['user_id'])) {
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 grid-margin">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Input DAK</h4>
+                                    <form class="form-sample" action="../process.php?process=insert-dak" enctype="multipart/form-data" method="post">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DAK</label>
+                                                    <div class="col-sm-9">
+                                                        <?php
+                                                        $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+                                                        $sql = "SELECT * FROM dak ORDER BY ID_DAK DESC LIMIT 1";
+                                                        $result = mysqli_query($conn, $sql);
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            if ($row = mysqli_fetch_assoc($result)) {
+                                                                $num = $row['ID_DAK'];
+                                                                $num++;
+                                                                echo "<input type='text' class='form-control' name='ID_DAK' readonly value='$num'>";
+                                                            }
+                                                        } else {
+                                                            echo "<input type='text' class='form-control' name='ID_DAK' readonly value='1'>";
+                                                        }
+                                                        mysqli_close($conn);
+                                                        ?>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">LOKASI</label>
+                                                    <div class="col-sm-9">
+                                                        <select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
+                                                            <?php
+                                                            $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+                                                            $query = "SELECT * FROM lokasi";
+                                                            $result = mysqli_query($conn, $query);
+                                                            if (mysqli_num_rows($result) > 0) {
+                                                                while ($rowlokasi = mysqli_fetch_assoc($result)) {
+                                                                    echo "<option value='$rowlokasi[ID_LOKASI]'>$rowlokasi[NAMA_LOKASI]</option>";
+                                                                }
+                                                            } else {
+                                                                echo "<option>Input Lokasi Baru</option>";
+                                                            }
+                                                            mysqli_close($conn);
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA_DAK</label>
+                                                    <div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_DAK">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">LUAS</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="LUAS">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">LEBAR</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="LEBAR">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_BAIK_M</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_BAIK_M">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_BAIK_PERS</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_BAIK_PERS">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_SEDANG_M</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_SEDANG_M">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_SEDANG_PERS</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_SEDANG_PERS">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKRINGAN_M</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKRINGAN_M">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKRINGAN_PERS</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKRINGAN_PERS">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKBERAT_M</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKBERAT_M">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKBERAT_PERS</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKBERAT_PERS">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">RENCANA_PENANGANAN</label>
+                                                    <div class="col-sm-9"> <input type="text" class="form-control" name="RENCANA_PENANGANAN">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">KEBUTUHAN_ANGGARAN</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="KEBUTUHAN_ANGGARAN">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">KEMAMPUAN_RUPIAH</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="KEMAMPUAN_RUPIAH">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">KEMAMPUAN_M</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="KEMAMPUAN_M">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">USULAN_TAMBAHAN_RUPIAH</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="USULAN_TAMBAHAN_RUPIAH">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">USULAN_TAMBAHAN_M</label>
+                                                    <div class="col-sm-9"> <input type="number" class="form-control" name="USULAN_TAMBAHAN_M">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row"> <label class="col-sm-3 col-form-label">USULAN_TAMBAHAN_SUMBER_DANA</label>
+                                                    <div class="col-sm-9"> <input type="text" class="form-control" name="USULAN_TAMBAHAN_SUMBER_DANA">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

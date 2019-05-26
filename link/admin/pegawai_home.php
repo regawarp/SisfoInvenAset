@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id'])) {
 	$result = mysqli_query($conn, $sql);
 } else {
 	// Redirect them to the login page
-	header("Location: ../login.php");
+	header("Location: ../beranda.php");
 }
 ?>
 <html>
