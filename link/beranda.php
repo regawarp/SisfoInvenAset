@@ -118,13 +118,14 @@ if (isset($_SESSION['user_id'])) {
 						</button>
 						<h5 class="modal-title text-center" id="exampleModalLongTitle">Login</h5>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body" style="color:black;">
 						<form action="process.php?process=login" method="post">
+							<center><img src="../img/logo-square-only.png" alt="pugarut" style="height:300px;"></center>
 							Username: <br />
-							<input type="text" name="username" id="" class="form-control">
+							<input type="text" name="username" class="form-control">
 							Password: <br />
-							<input type="password" name="password" id="" class="form-control">
-							<input type="submit" value="Login">
+							<input type="password" name="password" class="form-control">
+							<input type="submit" value="Login" class="btn btn-info" style="margin-top:10px;width:100%;">
 						</form>
 					</div>
 				</div>
