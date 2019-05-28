@@ -7,7 +7,7 @@ if (isset($_SESSION['user_id'])) {
 	$result = mysqli_query($conn, $sql);
 } else {
 	// Redirect them to the login page
-	header("Location: ../login.php");
+	header("Location: ../beranda.php");
 }
 ?>
 <html>
@@ -73,11 +73,11 @@ if (isset($_SESSION['user_id'])) {
 														echo "<tr>
 														<td>$row[ID_DATASPA]</td>
 														<td>$row[NAMA_DATASPA]</td>
-														<td>$row[LINK_GIS]</td>
-														<td><a href='dataspa_update.php?iddataspa=$row[ID_DATASPA]'><button class='btn btn-warning' type='button'>
+														<td><a href='https://$row[LINK_GIS]' target='_blank'>$row[LINK_GIS]</a></td>
+														<td><a href='dataspa_update.php?ID_DATASPA=$row[ID_DATASPA]'><button class='btn btn-warning' type='button'>
 														<span class='mdi mdi-pencil'></span>
-													</button></a></td>
-														<td><a href='../process.php?process=delete-dataspa&&iddataspa=$row[ID_DATASPA]'><button class='btn btn-danger' type='button'>
+														</button></a></td>
+														<td><a href='../process.php?process=delete-spatial&&ID_DATASPA=$row[ID_DATASPA]'><button class='btn btn-danger' type='button'>
 														<span class='mdi mdi-delete'></span>
 													</button></a></td>
 														</tr>";
@@ -90,6 +90,56 @@ if (isset($_SESSION['user_id'])) {
 											</tbody>
 										</table>
 									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Input Data Spatial</h4>
+									<form class="form-sample" action="../process.php?process=insert-spatial" enctype="multipart/form-data" method="post">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DATASPA</label>
+													<div class="col-sm-9">
+														<?php
+														$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+														$sql = "SELECT * FROM dataspa ORDER BY ID_DATASPA DESC LIMIT 1";
+														$result = mysqli_query($conn, $sql);
+														if(mysqli_num_rows($result)>0){
+															if($row=mysqli_fetch_assoc($result)){
+																$num = $row['ID_DATASPA'];
+																$num++;
+																echo"<input type='text' class='form-control' name='ID_DATASPA' readonly value='$num'>";
+															}
+														}else{
+															echo"<input type='text' class='form-control' name='ID_DATASPA' readonly value='1'>";
+														}
+														mysqli_close($conn);
+														?>
+														
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA DATA SPATIAL</label>
+													<div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_DATASPA"></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row"> <label class="col-sm-3 col-form-label">LINK GIS</label>
+													<div class="col-sm-9"> <input type="text" class="form-control" name="LINK_GIS"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -121,7 +171,8 @@ if (isset($_SESSION['user_id'])) {
 <!-- endinject -->
 <!-- Custom js for this page-->
 <!-- <script src="../../js/jquery.min.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+<script src="../../js/jquery.min.js"></script>
 <script src="../../datatables/js/jquery.dataTables.min.js"></script>
 <script src="../../datatables/js/dataTables.bootstrap.min.js"></script>
 <script>
