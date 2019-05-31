@@ -126,6 +126,7 @@ if (isset($_SESSION['user_id'])) {
                                             </tbody>
                                         </table>
                                     </div>
+                                    <a href="dak_export.php" class="btn btn-success col-md-12">Export to Excel</a>
                                 </div>
                             </div>
                         </div>

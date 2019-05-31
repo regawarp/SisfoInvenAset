@@ -130,6 +130,7 @@ if (isset($_SESSION['user_id'])) {
 											</tfoot>
 										</table>
 									</div>
+									<a href="kiba_export.php" class="btn btn-success col-md-12">Download file Excel</a>
 								</div>
 							</div>
 						</div>
