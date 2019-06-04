@@ -53,6 +53,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="bi_home.php">
+        <i class="menu-icon mdi mdi-table"></i>
+        <span class="menu-title">BI</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="dataspa_home.php">
         <i class="menu-icon mdi mdi-map-marker-multiple"></i>
         <span class="menu-title">Data Spasial</span>
