@@ -92,52 +92,53 @@ if (isset($_SESSION['user_id'])) {
 							</div>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-12 grid-margin">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Input Lokasi</h4>
-									<form class="form-sample" action="../process.php?process=insert-lokasi" enctype="multipart/form-data" method="post">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_LOKASI</label>
-													<div class="col-sm-9">
-														<?php
-														$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-														$sql = "SELECT * FROM lokasi ORDER BY ID_LOKASI DESC LIMIT 1";
-														$result = mysqli_query($conn, $sql);
-														if (mysqli_num_rows($result) > 0) {
-															if ($row = mysqli_fetch_assoc($result)) {
-																$num = $row['ID_LOKASI'];
-																$num++;
-																echo "<input type='text' class='form-control' name='ID_LOKASI' readonly value='$num'>";
+					<?php if ($_SESSION['jenis'] != "User") { ?>
+						<div class="row">
+							<div class="col-12 grid-margin">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">Input Lokasi</h4>
+										<form class="form-sample" action="../process.php?process=insert-lokasi" enctype="multipart/form-data" method="post">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_LOKASI</label>
+														<div class="col-sm-9">
+															<?php
+															$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+															$sql = "SELECT * FROM lokasi ORDER BY ID_LOKASI DESC LIMIT 1";
+															$result = mysqli_query($conn, $sql);
+															if (mysqli_num_rows($result) > 0) {
+																if ($row = mysqli_fetch_assoc($result)) {
+																	$num = $row['ID_LOKASI'];
+																	$num++;
+																	echo "<input type='text' class='form-control' name='ID_LOKASI' readonly value='$num'>";
+																}
+															} else {
+																echo "<input type='text' class='form-control' name='ID_LOKASI' readonly>";
 															}
-														} else {
-															echo "<input type='text' class='form-control' name='ID_LOKASI' readonly>";
-														}
-														mysqli_close($conn);
-														?>
+															mysqli_close($conn);
+															?>
 
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA LOKASI</label>
+														<div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_LOKASI"></div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA LOKASI</label>
-													<div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_LOKASI"></div>
+											<div class="row">
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
-											</div>
-										</div>
-									</form>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->

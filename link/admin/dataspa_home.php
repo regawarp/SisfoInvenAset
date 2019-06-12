@@ -94,56 +94,58 @@ if (isset($_SESSION['user_id'])) {
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-12 grid-margin">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Input Data Spatial</h4>
-									<form class="form-sample" action="../process.php?process=insert-spatial" enctype="multipart/form-data" method="post">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DATASPA</label>
-													<div class="col-sm-9">
-														<?php
-														$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-														$sql = "SELECT * FROM dataspa ORDER BY ID_DATASPA DESC LIMIT 1";
-														$result = mysqli_query($conn, $sql);
-														if(mysqli_num_rows($result)>0){
-															if($row=mysqli_fetch_assoc($result)){
-																$num = $row['ID_DATASPA'];
-																$num++;
-																echo"<input type='text' class='form-control' name='ID_DATASPA' readonly value='$num'>";
+					<?php if ($_SESSION['jenis'] != "User") { ?>
+						<div class="row">
+							<div class="col-12 grid-margin">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">Input Data Spatial</h4>
+										<form class="form-sample" action="../process.php?process=insert-spatial" enctype="multipart/form-data" method="post">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DATASPA</label>
+														<div class="col-sm-9">
+															<?php
+															$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+															$sql = "SELECT * FROM dataspa ORDER BY ID_DATASPA DESC LIMIT 1";
+															$result = mysqli_query($conn, $sql);
+															if (mysqli_num_rows($result) > 0) {
+																if ($row = mysqli_fetch_assoc($result)) {
+																	$num = $row['ID_DATASPA'];
+																	$num++;
+																	echo "<input type='text' class='form-control' name='ID_DATASPA' readonly value='$num'>";
+																}
+															} else {
+																echo "<input type='text' class='form-control' name='ID_DATASPA' readonly value='1'>";
 															}
-														}else{
-															echo"<input type='text' class='form-control' name='ID_DATASPA' readonly value='1'>";
-														}
-														mysqli_close($conn);
-														?>
-														
+															mysqli_close($conn);
+															?>
+
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA DATA SPATIAL</label>
+														<div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_DATASPA"></div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">LINK GIS</label>
+														<div class="col-sm-9"> <input type="text" class="form-control" name="LINK_GIS"></div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA DATA SPATIAL</label>
-													<div class="col-sm-9"> <input type="text" class="form-control" name="NAMA_DATASPA"></div>
+											<div class="row">
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">LINK GIS</label>
-													<div class="col-sm-9"> <input type="text" class="form-control" name="LINK_GIS"></div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
-											</div>
-										</div>
-									</form>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->

@@ -94,75 +94,76 @@ if (isset($_SESSION['user_id'])) {
 							</div>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="col-12 grid-margin">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Input DED</h4>
-									<form class="form-sample" action="../process.php?process=insert-ded" enctype="multipart/form-data" method="post">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DED</label>
-													<div class="col-sm-9">
-														<?php
-														$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-														$query = "SELECT * FROM ded,dedlokasi,lokasi WHERE ded.ID_DED=dedlokasi.ID_DED AND dedlokasi.ID_LOKASI=lokasi.ID_LOKASI GROUP BY ded.ID_DED ";
-														$result = mysqli_query($conn, $sql);
-														if(mysqli_num_rows($result)>0){
-															if($row=mysqli_fetch_assoc($result)){
-																$num = $row['ID_DED'];
-																$num++;
-																echo"<input type='text' class='form-control' name='ID_DED' readonly value='$num'>";
-															}
-														}else{
-															echo"<input type='text' class='form-control' name='ID_DED' readonly value='1'>";
-														}
-														mysqli_close($conn);
-														?>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA LOKASI</label>
-													<div class="col-sm-9">
-														<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
+					<?php if ($_SESSION['jenis'] != "User") { ?>
+						<div class="row">
+							<div class="col-12 grid-margin">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">Input DED</h4>
+										<form class="form-sample" action="../process.php?process=insert-ded" enctype="multipart/form-data" method="post">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DED</label>
+														<div class="col-sm-9">
 															<?php
 															$conn = mysqli_connect("localhost", "root", "", "db_pupr");
-															$query = "SELECT * FROM lokasi";
-															$result = mysqli_query($conn, $query);
+															$query = "SELECT * FROM ded,dedlokasi,lokasi WHERE ded.ID_DED=dedlokasi.ID_DED AND dedlokasi.ID_LOKASI=lokasi.ID_LOKASI GROUP BY ded.ID_DED ";
+															$result = mysqli_query($conn, $sql);
 															if (mysqli_num_rows($result) > 0) {
-																while ($rowlokasi = mysqli_fetch_assoc($result)) {
-																	echo "<option value='$rowlokasi[ID_LOKASI]'>$rowlokasi[NAMA_LOKASI]</option>";
+																if ($row = mysqli_fetch_assoc($result)) {
+																	$num = $row['ID_DED'];
+																	$num++;
+																	echo "<input type='text' class='form-control' name='ID_DED' readonly value='$num'>";
 																}
 															} else {
-																echo "<option>Input Lokasi Baru</option>";
+																echo "<input type='text' class='form-control' name='ID_DED' readonly value='1'>";
 															}
 															mysqli_close($conn);
 															?>
-														</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row"> <label class="col-sm-3 col-form-label">NAMA LOKASI</label>
+														<div class="col-sm-9">
+															<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
+																<?php
+																$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+																$query = "SELECT * FROM lokasi";
+																$result = mysqli_query($conn, $query);
+																if (mysqli_num_rows($result) > 0) {
+																	while ($rowlokasi = mysqli_fetch_assoc($result)) {
+																		echo "<option value='$rowlokasi[ID_LOKASI]'>$rowlokasi[NAMA_LOKASI]</option>";
+																	}
+																} else {
+																	echo "<option>Input Lokasi Baru</option>";
+																}
+																mysqli_close($conn);
+																?>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">PATH_FILE</label>
+														<div class="col-sm-9">
+															<input type="file" name="PATH_FILE" />
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">PATH_FILE</label>
-													<div class="col-sm-9">
-														<input type="file" name="PATH_FILE" />
-													</div>
+											<div class="row">
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
-											</div>
-										</div>
-									</form>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->

@@ -140,266 +140,268 @@ if (isset($_SESSION['user_id'])) {
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-12 grid-margin">
-							<div class="card">
-								<div class="card-body">
-									<h4 class="card-title">Input KIB D</h4>
-									<form class="form-sample" method="post" action="../process.php?process=insert-kibd" enctype="multipart/form-data">
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">ID KIB D</label>
-													<div class="col-sm-9">
-														<?php
-														$query = "SELECT ID_KIBD FROM kibd ORDER BY ID_KIBD DESC LIMIT 1";
-														$result = mysqli_query($conn, $query);
-														if (mysqli_num_rows($result) > 0) {
-															if ($id = mysqli_fetch_assoc($result)) {
-																$num = $id['ID_KIBD'];
-																$num++;
-																echo "<input type='text' class='form-control' name='idkibd' value='$num' readonly/>";
-															} else {
-																echo "<input type='text' class='form-control' name='idkibd' value='1'/> readonly";
-															}
-														}
-														?>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Aset</label>
-													<div class="input-group col-sm-8">
-														<select name="ID_ASET" class="form-control" style="margin: 0px 10px;">
+					<?php if ($_SESSION['jenis'] != "User") { ?>
+						<div class="row">
+							<div class="col-12 grid-margin">
+								<div class="card">
+									<div class="card-body">
+										<h4 class="card-title">Input KIB D</h4>
+										<form class="form-sample" method="post" action="../process.php?process=insert-kibd" enctype="multipart/form-data">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">ID KIB D</label>
+														<div class="col-sm-9">
 															<?php
-															$query = "SELECT * FROM aset";
+															$query = "SELECT ID_KIBD FROM kibd ORDER BY ID_KIBD DESC LIMIT 1";
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
-																while ($row = mysqli_fetch_assoc($result)) {
-																	echo "<option value='$row[ID_ASET]'>$row[NAMA_ASET]</option>";
+																if ($id = mysqli_fetch_assoc($result)) {
+																	$num = $id['ID_KIBD'];
+																	$num++;
+																	echo "<input type='text' class='form-control' name='idkibd' value='$num' readonly/>";
+																} else {
+																	echo "<input type='text' class='form-control' name='idkibd' value='1'/> readonly";
 																}
-															} else {
-																echo "<option>Input Aset Baru</option>";
 															}
 															?>
-														</select>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Lokasi</label>
-													<div class="input-group col-sm-8">
-														<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
-															<?php
-															$query = "SELECT * FROM lokasi";
-															$result = mysqli_query($conn, $query);
-															if (mysqli_num_rows($result) > 0) {
-																while ($row = mysqli_fetch_assoc($result)) {
-																	echo "<option value='$row[ID_LOKASI]'>$row[NAMA_LOKASI]</option>";
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Aset</label>
+														<div class="input-group col-sm-8">
+															<select name="ID_ASET" class="form-control" style="margin: 0px 10px;">
+																<?php
+																$query = "SELECT * FROM aset";
+																$result = mysqli_query($conn, $query);
+																if (mysqli_num_rows($result) > 0) {
+																	while ($row = mysqli_fetch_assoc($result)) {
+																		echo "<option value='$row[ID_ASET]'>$row[NAMA_ASET]</option>";
+																	}
+																} else {
+																	echo "<option>Input Aset Baru</option>";
 																}
-															} else {
-																echo "<option>Input Lokasi Baru</option>";
-															}
-															?>
-														</select>
-														<span class="input-group-append">
-															<a class="file-upload-browse btn btn-info" type="button" href="lokasi_home.php">Input Lokasi</a>
-														</span>
+																?>
+															</select>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Spatial</label>
-													<div class="input-group col-sm-8">
-														<select name="ID_DATASPA" class="form-control" style="margin: 0px 10px;">
-															<?php
-															$query = "SELECT * FROM dataspa";
-															$result = mysqli_query($conn, $query);
-															if (mysqli_num_rows($result) > 0) {
-																while ($row = mysqli_fetch_assoc($result)) {
-																	echo "<option value='$row[ID_DATASPA]'>$row[NAMA_DATASPA]</option>";
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Lokasi</label>
+														<div class="input-group col-sm-8">
+															<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
+																<?php
+																$query = "SELECT * FROM lokasi";
+																$result = mysqli_query($conn, $query);
+																if (mysqli_num_rows($result) > 0) {
+																	while ($row = mysqli_fetch_assoc($result)) {
+																		echo "<option value='$row[ID_LOKASI]'>$row[NAMA_LOKASI]</option>";
+																	}
+																} else {
+																	echo "<option>Input Lokasi Baru</option>";
 																}
-															} else {
-																echo "<option>Input Data Spatial Baru</option>";
-															}
-															?>
-														</select>
-														<span class="input-group-append">
-															<a class="file-upload-browse btn btn-info" type="button" href="dataspa_home.php">Input Spatial</a>
-														</span>
+																?>
+															</select>
+															<span class="input-group-append">
+																<a class="file-upload-browse btn btn-info" type="button" href="lokasi_home.php">Input Lokasi</a>
+															</span>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Spatial</label>
+														<div class="input-group col-sm-8">
+															<select name="ID_DATASPA" class="form-control" style="margin: 0px 10px;">
+																<?php
+																$query = "SELECT * FROM dataspa";
+																$result = mysqli_query($conn, $query);
+																if (mysqli_num_rows($result) > 0) {
+																	while ($row = mysqli_fetch_assoc($result)) {
+																		echo "<option value='$row[ID_DATASPA]'>$row[NAMA_DATASPA]</option>";
+																	}
+																} else {
+																	echo "<option>Input Data Spatial Baru</option>";
+																}
+																?>
+															</select>
+															<span class="input-group-append">
+																<a class="file-upload-browse btn btn-info" type="button" href="dataspa_home.php">Input Spatial</a>
+															</span>
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Nama Barang</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NAMA_BARANG" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Nama Barang</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="NAMA_BARANG" />
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Kd Barang</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NOMOR_KODE_BARANG" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Kd Barang</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="NOMOR_KODE_BARANG" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">No Dokumen</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="NOMOR_DOKUMEN" <?php echo "value='$row[NOMOR_DOKUMEN]'"; ?> />
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">No Dokumen</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NOMOR_DOKUMEN" <?php echo "value='$row[NOMOR_DOKUMEN]'"; ?> />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">No Regis</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="NOMOR_REGISTER" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Konstruksi</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="KONSTRUKSI" />
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">No Regis</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NOMOR_REGISTER" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Panjang</label>
+														<div class="col-sm-9">
+															<input type="number" class="form-control" name="PANJANG" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Lebar</label>
+														<div class="col-sm-9">
+															<input type="number" class="form-control" name="LEBAR" />
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Konstruksi</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="KONSTRUKSI" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Luas</label>
+														<div class="col-sm-9">
+															<input type="number" class="form-control" name="LUAS" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Tgl Dokumen</label>
+														<div class="col-sm-9">
+															<input type="date" class="form-control" name="TANGGAL_DOKUMEN" />
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Panjang</label>
-													<div class="col-sm-9">
-														<input type="number" class="form-control" name="PANJANG" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Status Tanah</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="STATUS_TANAH" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Nomor Kode</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="NOMOR_KODE" />
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Lebar</label>
-													<div class="col-sm-9">
-														<input type="number" class="form-control" name="LEBAR" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Asal Usul</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="ASAL_USUL" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Harga</label>
+														<div class="col-sm-9">
+															<input type="number" class="form-control" name="HARGA" />
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Luas</label>
-													<div class="col-sm-9">
-														<input type="number" class="form-control" name="LUAS" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Kondisi</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="KONDISI" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Keterangan</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control" name="KETERANGAN" />
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Tgl Dokumen</label>
-													<div class="col-sm-9">
-														<input type="date" class="form-control" name="TANGGAL_DOKUMEN" />
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">Foto</label>
+														<div class="col-sm-9">
+															<input type="file" name="FOTO" />
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group row">
+														<label class="col-sm-3 col-form-label">File</label>
+														<div class="col-sm-9">
+															<input type="file" name="FILE" />
+														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Status Tanah</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="STATUS_TANAH" />
-													</div>
+											<div class="row">
+												<div class="col-md-12">
+													<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
 												</div>
 											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Nomor Kode</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="NOMOR_KODE" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Asal Usul</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="ASAL_USUL" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Harga</label>
-													<div class="col-sm-9">
-														<input type="number" class="form-control" name="HARGA" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Kondisi</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="KONDISI" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Keterangan</label>
-													<div class="col-sm-9">
-														<input type="text" class="form-control" name="KETERANGAN" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">Foto</label>
-													<div class="col-sm-9">
-														<input type="file" name="FOTO" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label">File</label>
-													<div class="col-sm-9">
-														<input type="file" name="FILE" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<button type="submit" class="btn btn-success mr-2" style="width:100%;">Submit</button>
-											</div>
-										</div>
-									</form>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					<?php } ?>
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:../../partials/_footer.html -->
