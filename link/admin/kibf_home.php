@@ -57,7 +57,7 @@ if (isset($_SESSION['user_id'])) {
 						<div class="col-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<h5 class="card-title mb-4">Big Div</h5>
+									<h5 class="card-title mb-4">Data KIB F</h5>
 									<div class="table-responsive">
 										<table id="myTable" class="table table-hover">
 											<thead>
@@ -335,7 +335,10 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row">
 														<label class="col-sm-3 col-form-label">Keterangan</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="KETERANGAN" />
+															<select name="KETERANGAN" class="form-control">
+																<option value="Dalam Pengerjaan">Dalam Pengerjaan</option>
+																<option value="Selesai">Selesai</option>
+															</select>
 														</div>
 													</div>
 												</div>

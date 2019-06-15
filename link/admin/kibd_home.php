@@ -140,6 +140,91 @@ if (isset($_SESSION['user_id'])) {
 							</div>
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title mb-4">Data Kartu Inventaris Barang F yang harus dipindahkan</h5>
+									<div class="table-responsive">
+										<table id="myTable" class="table table-hover">
+											<thead>
+												<tr>
+													<td>Spasial</td>
+													<td>Lokasi</td>
+													<td>Aset</td>
+													<td>Nama Barang</td>
+													<td>Bangunan</td>
+													<td>Bertingkat</td>
+													<td>Beton</td>
+													<td>Panjang</td>
+													<td>Tgl Dokumen</td>
+													<td>No Dokumen</td>
+													<td>Tgl Mulai</td>
+													<td>Status Tanah</td>
+													<td>Kode Tanah</td>
+													<td>Nilai Kontrak</td>
+													<td>Foto</td>
+													<td>File</td>
+													<td>Keterangan</td>
+													<td>Asal Usul</td>
+													<td>Update</td>
+													<td>Delete</td>
+												</tr>
+											</thead>
+											<tbody>
+												<?php
+												$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+												$sql = "SELECT * FROM kibf,lokasi,dataspa,aset where kibf.ID_LOKASI=lokasi.ID_LOKASI AND kibf.ID_DATASPA=dataspa.ID_DATASPA AND kibf.ID_ASET=aset.ID_ASET AND keterangan='Selesai'";
+												$result = mysqli_query($conn, $sql);
+												if (mysqli_num_rows($result) > 0) {
+													while ($row = mysqli_fetch_assoc($result)) {
+														echo "<tr>
+												<td><a href='https://$row[LINK_GIS]' target='_blank'>$row[NAMA_DATASPA]</a></td>
+												<td>$row[NAMA_LOKASI]</td>
+												<td>$row[NAMA_ASET]</td>
+												<td>$row[NAMA_BARANG]</td>
+												<td>$row[BANGUNAN]</td>
+												<td>$row[BERTINGKAT]</td>
+												<td>$row[BETON]</td>
+												<td>$row[PANJANG]</td>
+												<td>$row[TANGGAL_DOKUMEN]</td>
+												<td>$row[NOMOR_DOKUMEN]</td>
+												<td>$row[TANGGAL_MULAI]</td>
+												<td>$row[STATUS_TANAH]</td>
+												<td>$row[NOMO_KODE_TANAH]</td>
+												<td>$row[NILAI_KONTRAK]</td>
+												<td><img src='../../img/upload/$row[FOTO]' width='50px' height='auto'></td>
+												<td><a href='../../file/$row[FILE]'>Lampiran</a></td>
+												<td>$row[KETERANGAN]</td>
+												<td>$row[ASAL_USUL]</td>
+												<td>
+												<a href='kibf_update.php?idkibf=$row[ID_KIBF]'>
+												<button class='btn btn-warning' type='button'>
+												<span class='mdi mdi-pencil'></span>
+												</button>
+												</a>
+												</td>
+												<td>
+												<a href='../process.php?process=delete-kibf&&idkibf=$row[ID_KIBF]'>
+												<button class='btn btn-danger' type='button'>
+																		<span class='mdi mdi-delete'></span>
+																	</button>
+												</a>
+												</td>
+												</tr>";
+													}
+												} else {
+													echo "<tr><td colspan='20' align='center'>0 results</td></tr>";
+												}
+												?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<?php if ($_SESSION['jenis'] != "User") { ?>
 						<div class="row">
 							<div class="col-12 grid-margin">

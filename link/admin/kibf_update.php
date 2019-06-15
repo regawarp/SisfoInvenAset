@@ -2,17 +2,17 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    $conn = mysqli_connect("localhost", "root", "", "db_pupr");
-    $sql = "SELECT * FROM kibf,lokasi,dataspa WHERE kibf.ID_LOKASI=lokasi.ID_LOKASI AND kibf.ID_DATASPA=dataspa.ID_DATASPA AND ID_KIBF='$_GET[idkibf]'";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        if ($row = mysqli_fetch_assoc($result)) { } else {
-            header("Location:kibf_home.php");
-        }
-    }
+	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+	$sql = "SELECT * FROM kibf,lokasi,dataspa WHERE kibf.ID_LOKASI=lokasi.ID_LOKASI AND kibf.ID_DATASPA=dataspa.ID_DATASPA AND ID_KIBF='$_GET[idkibf]'";
+	$result = mysqli_query($conn, $sql);
+	if (mysqli_num_rows($result) > 0) {
+		if ($row = mysqli_fetch_assoc($result)) { } else {
+			header("Location:kibf_home.php");
+		}
+	}
 } else {
-    // Redirect them to the login page
-    header("Location: ../beranda.php");
+	// Redirect them to the login page
+	header("Location: ../beranda.php");
 }
 ?>
 <html>
@@ -65,7 +65,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">ID KIB F</label>
 													<div class="col-sm-9">
-                                                        <input type='text' class='form-control' name='ID_KIBF' readonly <?php echo "value='$row[ID_KIBF]'"; ?> />
+														<input type='text' class='form-control' name='ID_KIBF' readonly <?php echo "value='$row[ID_KIBF]'"; ?> />
 													</div>
 												</div>
 											</div>
@@ -74,21 +74,21 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">Aset</label>
 													<div class="input-group col-sm-8">
 														<select name="ID_ASET" class="form-control" style="margin: 0px 10px;">
-                                                        <?php
-                                                            $query = "SELECT * FROM aset";
-                                                            $result = mysqli_query($conn, $query);
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                                while ($rowaset = mysqli_fetch_assoc($result)) {
-                                                                    if ($rowaset['ID_ASET'] == $row['ID_ASET']) {
-                                                                        echo "<option value='$rowaset[ID_ASET]' selected>$rowaset[NAMA_ASET]</option>";
-                                                                    } else {
-                                                                        echo "<option value='$rowaset[ID_ASET]'>$rowaset[NAMA_ASET]</option>";
-                                                                    }
-                                                                }
-                                                            } else {
-                                                                echo "<option>Input Aset Baru</option>";
-                                                            }
-                                                            ?>
+															<?php
+															$query = "SELECT * FROM aset";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																while ($rowaset = mysqli_fetch_assoc($result)) {
+																	if ($rowaset['ID_ASET'] == $row['ID_ASET']) {
+																		echo "<option value='$rowaset[ID_ASET]' selected>$rowaset[NAMA_ASET]</option>";
+																	} else {
+																		echo "<option value='$rowaset[ID_ASET]'>$rowaset[NAMA_ASET]</option>";
+																	}
+																}
+															} else {
+																echo "<option>Input Aset Baru</option>";
+															}
+															?>
 														</select>
 													</div>
 												</div>
@@ -100,21 +100,21 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">Lokasi</label>
 													<div class="input-group col-sm-8">
 														<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
-                                                            <?php
-                                                            $query = "SELECT * FROM lokasi";
-                                                            $result = mysqli_query($conn, $query);
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                                while ($rowlok = mysqli_fetch_assoc($result)) {
-                                                                    if ((string)($rowlok['ID_LOKASI']) == (string)($row['ID_LOKASI'])) {
-                                                                        echo "<option value='$rowlok[ID_LOKASI]' selected='selected'>$rowlok[NAMA_LOKASI]</option>";
-                                                                    } else {
-                                                                        echo "<option value='$rowlok[ID_LOKASI]'>$rowlok[NAMA_LOKASI]</option>";
-                                                                    }
-                                                                }
-                                                            } else {
-                                                                echo "<option>Input Lokasi Baru</option>";
-                                                            }
-                                                            ?>
+															<?php
+															$query = "SELECT * FROM lokasi";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																while ($rowlok = mysqli_fetch_assoc($result)) {
+																	if ((string)($rowlok['ID_LOKASI']) == (string)($row['ID_LOKASI'])) {
+																		echo "<option value='$rowlok[ID_LOKASI]' selected='selected'>$rowlok[NAMA_LOKASI]</option>";
+																	} else {
+																		echo "<option value='$rowlok[ID_LOKASI]'>$rowlok[NAMA_LOKASI]</option>";
+																	}
+																}
+															} else {
+																echo "<option>Input Lokasi Baru</option>";
+															}
+															?>
 														</select>
 														<span class="input-group-append">
 															<button class="file-upload-browse btn btn-info" type="button">Input Lokasi</button>
@@ -127,21 +127,21 @@ if (isset($_SESSION['user_id'])) {
 													<label class="col-sm-3 col-form-label">Spatial</label>
 													<div class="input-group col-sm-8">
 														<select name="ID_DATASPA" class="form-control" style="margin: 0px 10px;">
-                                                            <?php
-                                                            $query = "SELECT * FROM dataspa";
-                                                            $result = mysqli_query($conn, $query);
-                                                            if (mysqli_num_rows($result) > 0) {
-                                                                while ($rowspa = mysqli_fetch_assoc($result)) {
-                                                                    if ($rowspa['ID_DATASPA'] == $row['ID_DATASPA']) {
-                                                                        echo "<option value='$rowspa[ID_DATASPA]' selected>$rowspa[NAMA_DATASPA]</option>";
-                                                                    } else {
-                                                                        echo "<option value='$rowspa[ID_DATASPA]'>$rowspa[NAMA_DATASPA]</option>";
-                                                                    }
-                                                                }
-                                                            } else {
-                                                                echo "<option>Input Data Spatial Baru</option>";
-                                                            }
-                                                            ?>
+															<?php
+															$query = "SELECT * FROM dataspa";
+															$result = mysqli_query($conn, $query);
+															if (mysqli_num_rows($result) > 0) {
+																while ($rowspa = mysqli_fetch_assoc($result)) {
+																	if ($rowspa['ID_DATASPA'] == $row['ID_DATASPA']) {
+																		echo "<option value='$rowspa[ID_DATASPA]' selected>$rowspa[NAMA_DATASPA]</option>";
+																	} else {
+																		echo "<option value='$rowspa[ID_DATASPA]'>$rowspa[NAMA_DATASPA]</option>";
+																	}
+																}
+															} else {
+																echo "<option>Input Data Spatial Baru</option>";
+															}
+															?>
 														</select>
 														<span class="input-group-append">
 															<button class="file-upload-browse btn btn-info" type="button">Input Spatial</button>
@@ -253,7 +253,19 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Keterangan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="KETERANGAN" <?php echo "value='$row[KETERANGAN]'"; ?> />
+														<select name="KETERANGAN" class="form-control">
+															<?php
+															$query = "SELECT * FROM dataspa";
+															$result = mysqli_query($conn, $query);
+															if ($row['KETERANGAN']=="Selesai") {
+																echo "<option value='Dalam Pengerjaan'>Dalam Pengerjaan</option>";
+																echo "<option value='Selesai' selected>Selesai</option>";
+															}else{
+																echo "<option value='Dalam Pengerjaan' selected>Dalam Pengerjaan</option>";
+																echo "<option value='Selesai' >Selesai</option>";	
+															}
+															?>
+														</select>
 													</div>
 												</div>
 											</div>

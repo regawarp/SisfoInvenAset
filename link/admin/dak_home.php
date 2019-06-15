@@ -131,9 +131,7 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                     </div>
-                    <?php
-                    if ($_SESSION['jenis'] != "User") {
-                        ?>
+                    <?php if ($_SESSION['jenis'] != "User") { ?>
                         <div class="row">
                             <div class="col-12 grid-margin">
                                 <div class="card">
