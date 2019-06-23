@@ -1,7 +1,21 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_id'])) { } else {
+if (isset($_SESSION['user_id'])) {
+  $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+
+  $sql = "SELECT COUNT(*) total FROM kiba";
+  $result = mysqli_query($conn, $sql);
+
+  $sql2 = "SELECT COUNT(*) total FROM kibd";
+  $result2 = mysqli_query($conn, $sql2);
+
+  $sql3 = "SELECT COUNT(*) total FROM kibf";
+  $result3 = mysqli_query($conn, $sql3);
+
+  $sql4 = "SELECT COUNT(*) total FROM lokasi";
+  $result4 = mysqli_query($conn, $sql4);
+} else {
   // Redirect them to the login page
   header("Location: ../beranda.php");
 }
@@ -13,7 +27,7 @@ if (isset($_SESSION['user_id'])) { } else {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Dashboard</title>
 
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../css/materialdesignicons.min.css">
@@ -48,12 +62,19 @@ if (isset($_SESSION['user_id'])) { } else {
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-cube text-danger icon-lg"></i>
+                      <i class="mdi mdi-map text-danger icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Lorem Ipsum</p>
+                      <p class="mb-0 text-right">Total KIB A</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
+                        <h3 class="font-weight-medium text-right mb-0">
+                          <?php
+                          if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            echo "$row[total]";
+                          }
+                          ?>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -68,12 +89,19 @@ if (isset($_SESSION['user_id'])) { } else {
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-receipt text-warning icon-lg"></i>
+                      <i class="mdi mdi-file-multiple text-warning icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Lorem Ipsum</p>
+                      <p class="mb-0 text-right">Total KIB D</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">3455</h3>
+                        <h3 class="font-weight-medium text-right mb-0">
+                          <?php
+                          if (mysqli_num_rows($result2) > 0) {
+                            $row = mysqli_fetch_assoc($result2);
+                            echo "$row[total]";
+                          }
+                          ?>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -88,12 +116,19 @@ if (isset($_SESSION['user_id'])) { } else {
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-poll-box text-success icon-lg"></i>
+                      <i class="mdi mdi-table text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Lorem Ipsum</p>
+                      <p class="mb-0 text-right">Total KIB F</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">5693</h3>
+                        <h3 class="font-weight-medium text-right mb-0">
+                          <?php
+                          if (mysqli_num_rows($result3) > 0) {
+                            $row = mysqli_fetch_assoc($result3);
+                            echo "$row[total]";
+                          }
+                          ?>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -108,12 +143,19 @@ if (isset($_SESSION['user_id'])) { } else {
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
-                      <i class="mdi mdi-account-location text-info icon-lg"></i>
+                      <i class="mdi mdi-map-marker text-info icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Lorem Ipsum</p>
+                      <p class="mb-0 text-right">Lokasi</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">246</h3>
+                        <h3 class="font-weight-medium text-right mb-0">
+                          <?php
+                          if (mysqli_num_rows($result4) > 0) {
+                            $row = mysqli_fetch_assoc($result4);
+                            echo "$row[total]";
+                          }
+                          ?>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -125,320 +167,19 @@ if (isset($_SESSION['user_id'])) { } else {
             </div>
           </div>
           <div class="row">
-            <div class="col-12 grid-margin">
+            <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title mb-4">Big Div</h5>
-                  <div class="fluid-container">
-                    <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
-
-                    </div>
-                  </div>
+                  <h4 class="card-title">Grafik Jumlah Berdasarkan Luas Aset</h4>
+                  <canvas id="barChart" style="height:230px"></canvas>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12 grid-margin">
+            <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Contoh Tabel</h4>
-                  <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>
-                            #
-                          </th>
-                          <th>
-                            First name
-                          </th>
-                          <th>
-                            Progress
-                          </th>
-                          <th>
-                            Amount
-                          </th>
-                          <th>
-                            Sales
-                          </th>
-                          <th>
-                            Deadline
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="font-weight-medium">
-                            1
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td class="text-danger"> 53.64%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            2
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td class="text-success"> 24.56%
-                            <i class="mdi mdi-arrow-up"></i>
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            3
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $138.00
-                          </td>
-                          <td class="text-danger"> 28.76%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            Apr 12, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            4
-                          </td>
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td class="text-danger"> 53.45%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            5
-                          </td>
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 160.25
-                          </td>
-                          <td class="text-success"> 18.32%
-                            <i class="mdi mdi-arrow-up"></i>
-                          </td>
-                          <td>
-                            May 03, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            6
-                          </td>
-                          <td>
-                            Henry Tom
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 150.00
-                          </td>
-                          <td class="text-danger"> 24.67%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            June 16, 2015
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-7 grid-margin stretch-card">
-              <!--weather card-->
-              <div class="card card-weather">
-                <div class="card-body">
-                  <div class="weather-date-location">
-                    <h3>Monday</h3>
-                    <p class="text-gray">
-                      <span class="weather-date">25 October, 2016</span>
-                      <span class="weather-location">London, UK</span>
-                    </p>
-                  </div>
-                  <div class="weather-data d-flex">
-                    <div class="mr-auto">
-                      <h4 class="display-3">21
-                        <span class="symbol">&deg;</span>C</h4>
-                      <p>
-                        Mostly Cloudy
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body p-0">
-                  <div class="d-flex weakly-weather">
-                    <div class="weakly-weather-item">
-                      <p class="mb-0">
-                        Sun
-                      </p>
-                      <i class="mdi mdi-weather-cloudy"></i>
-                      <p class="mb-0">
-                        30°
-                      </p>
-                    </div>
-                    <div class="weakly-weather-item">
-                      <p class="mb-1">
-                        Mon
-                      </p>
-                      <i class="mdi mdi-weather-hail"></i>
-                      <p class="mb-0">
-                        31°
-                      </p>
-                    </div>
-                    <div class="weakly-weather-item">
-                      <p class="mb-1">
-                        Tue
-                      </p>
-                      <i class="mdi mdi-weather-partlycloudy"></i>
-                      <p class="mb-0">
-                        28°
-                      </p>
-                    </div>
-                    <div class="weakly-weather-item">
-                      <p class="mb-1">
-                        Wed
-                      </p>
-                      <i class="mdi mdi-weather-pouring"></i>
-                      <p class="mb-0">
-                        30°
-                      </p>
-                    </div>
-                    <div class="weakly-weather-item">
-                      <p class="mb-1">
-                        Thu
-                      </p>
-                      <i class="mdi mdi-weather-pouring"></i>
-                      <p class="mb-0">
-                        29°
-                      </p>
-                    </div>
-                    <div class="weakly-weather-item">
-                      <p class="mb-1">
-                        Fri
-                      </p>
-                      <i class="mdi mdi-weather-snowy-rainy"></i>
-                      <p class="mb-0">
-                        31°
-                      </p>
-                    </div>
-                    <div class="weakly-weather-item">
-                      <p class="mb-1">
-                        Sat
-                      </p>
-                      <i class="mdi mdi-weather-snowy"></i>
-                      <p class="mb-0">
-                        32°
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--weather card ends-->
-            </div>
-            <div class="col-lg-5 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title text-primary mb-5">Performance History</h2>
-                  <div class="wrapper d-flex justify-content-between">
-                    <div class="side-left">
-                      <p class="mb-2">The best performance</p>
-                      <p class="display-3 mb-4 font-weight-light">+45.2%</p>
-                    </div>
-                    <div class="side-right">
-                      <small class="text-muted">2017</small>
-                    </div>
-                  </div>
-                  <div class="wrapper d-flex justify-content-between">
-                    <div class="side-left">
-                      <p class="mb-2">Worst performance</p>
-                      <p class="display-3 mb-5 font-weight-light">-35.3%</p>
-                    </div>
-                    <div class="side-right">
-                      <small class="text-muted">2015</small>
-                    </div>
-                  </div>
-                  <div class="wrapper">
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Sales</p>
-                      <p class="mb-2 text-primary">88%</p>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="wrapper mt-4">
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Visits</p>
-                      <p class="mb-2 text-success">56%</p>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 56%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
+                  <h4 class="card-title">Grafik Jumlah Berdasarkan Aset</h4>
+                  <canvas id="pieChart" style="height:250px"></canvas>
                 </div>
               </div>
             </div>
@@ -447,7 +188,7 @@ if (isset($_SESSION['user_id'])) { } else {
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <?php
-          include "footer.php"
+        include "footer.php"
         ?>
         <!-- partial -->
       </div>
@@ -468,6 +209,9 @@ if (isset($_SESSION['user_id'])) { } else {
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  <!-- Custom js for this page-->
+  <script src="../../js/chart.js"></script>
+  <!-- End custom js for this page--> 
 </body>
 
 </html>

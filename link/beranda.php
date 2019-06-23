@@ -228,7 +228,7 @@ if (isset($_SESSION['user_id'])) {
 
 				<!-- Peta content -->
 				<div class="section-header text-center">
-					<h2 class="title">Peta Titik Lokasi Banjir</h2>
+					<h2 class="title">Peta Titik Lokasi Banjir dan Daerah Berpotensi Banjir</h2>
 				</div>
 				<div class="col-md-12 tentang">
 					<iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Peta Titik Lokasi Banjir" src="//www.arcgis.com/apps/Embed/index.html?webmap=cfc7c9ea3f984a29a9475890be44ad8b&extent=107.8132,-7.2523,107.9928,-7.1592&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>

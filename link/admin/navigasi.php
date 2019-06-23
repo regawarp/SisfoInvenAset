@@ -7,9 +7,9 @@
             <img src="../../img/faces/face1.jpg" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name"><?php echo"$_SESSION[nama]";?></p>
+            <p class="profile-name"><?php echo "$_SESSION[nama]"; ?></p>
             <div>
-              <small class="designation text-muted"><?php echo"$_SESSION[jenis]";?></small>
+              <small class="designation text-muted"><?php echo "$_SESSION[jenis]"; ?></small>
               <span class="status-indicator online"></span>
             </div>
           </div>
@@ -54,25 +54,25 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="bi_home.php">
-        <i class="menu-icon mdi mdi-table"></i>
+        <i class="menu-icon mdi mdi-file-document"></i>
         <span class="menu-title">BI</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="dataspa_home.php">
-        <i class="menu-icon mdi mdi-map-marker-multiple"></i>
+        <i class="menu-icon mdi mdi-google-earth"></i>
         <span class="menu-title">Data Spasial</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="pegawai_home.php">
-        <i class="menu-icon mdi mdi-map-marker-multiple"></i>
+        <i class="menu-icon mdi mdi-account-multiple"></i>
         <span class="menu-title">Pegawai</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="pemeliharaan_home.php">
-        <i class="menu-icon mdi mdi-map-marker-multiple"></i>
+        <i class="menu-icon mdi mdi-settings-box"></i>
         <span class="menu-title">Pemeliharaan</span>
       </a>
     </li>

@@ -14138,7 +14138,7 @@ address p {
   font-weight: 500;
   color: #404852;
   margin-bottom: 22px;
-  font-size: 14px;
+  font-size: 20px;
   text-transform: capitalize; }
   .rtl .card-title {
     text-align: right; }
@@ -15671,7 +15671,7 @@ pre {
     border-color: #f2f2f2; }
 
 .form-control {
-  border: 1px solid #f2f2f2;
+  border: 1px solid #d4d4d4;
   font-family: "Poppins", sans-serif;
   font-size: 0.75rem;
   padding: 0.56rem 0.75rem;

@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Dashboard</title>
 
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../css/materialdesignicons.min.css">
@@ -26,7 +26,7 @@ if (isset($_SESSION['user_id'])) {
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="../../css/skins/all.css">
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../datatables/css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../datatables/css/jquery.dataTables.min.css" />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="../../css/admin.css">
@@ -56,7 +56,7 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="card-body">
                                     <h5 class="card-title mb-4">Data DAK</h5>
                                     <div class="table-responsive">
-                                        <table id="myTable" class="table table-hover">
+                                        <table id="myTable" class="table table-hover cell-border ">
                                             <thead>
                                                 <tr>
                                                     <td>ID_DAK</td>
@@ -126,7 +126,9 @@ if (isset($_SESSION['user_id'])) {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="dak_export.php" class="btn btn-success col-md-12">Export to Excel</a>
+                                    <a href="dak_export.php" class="btn btn-success col-md-12" style="margin-top:20px;">
+                                    <i class="mdi mdi-file-excel"></i>Download File Excel
+                                    </a>
                                 </div>
                             </div>
                         </div>
