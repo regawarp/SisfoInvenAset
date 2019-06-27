@@ -30,6 +30,9 @@ if (isset($_SESSION['user_id'])) {
 	<link rel="stylesheet" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="../css/util.css" />
+	<link type="text/css" rel="stylesheet" href="../css/main.css" />
+
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 
 </head>
@@ -69,7 +72,7 @@ if (isset($_SESSION['user_id'])) {
 					<li><a href="#home">Beranda</a></li>
 					<li><a href="#about">Tentang</a></li>
 					<li><a href="#peta">Peta</a></li>
-					<li class="has-dropdown"><a href="#fitur">Fitur</a>
+					<!--<li class="has-dropdown"><a href="#fitur">Fitur</a>
 						<ul class="dropdown">
 							<li class="has-dropdown"><a href="#">Irigasi</a>
 								<ul class="dropdown">
@@ -92,13 +95,14 @@ if (isset($_SESSION['user_id'])) {
 								</ul>
 							</li>
 						</ul>
-					</li>
+					</li>-->
 					<li><a href="#contact">Kontak</a></li>
 					<?php
+					
 					if ($nav == "Dashboard") {
 						echo '<li><a href="admin/dashboard.php">Dashboard</a></li>';
 					} else {
-						echo '<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>';
+						/*echo '<li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Login</a></li>';*/
 					}
 					?>
 				</ul>
@@ -137,15 +141,29 @@ if (isset($_SESSION['user_id'])) {
 		<div class="home-wrapper">
 			<div class="container">
 				<div class="row">
-
 					<!-- home content -->
-					<div class="col-md-10 col-md-offset-1">
+					<div class="col-md-7">
 						<div class="home-content">
-							<h1 class="white-text bgjudul">Aplikasi Inventarisasi <br />Aset Infrastruktur <br />Sumber Daya Air</h1>
-							<!--<p class="white-text">Morbi mattis felis at nunc. Duis viverra diam non justo. In nisl. Nullam sit amet magna in magna gravida vehicula. Mauris tincidunt sem sed arcu. Nunc posuere.</p>-->
-							<!--<button class="white-btn">Get Started!</button>
-							<button class="main-btn">Learn more</button>-->
+							<h2 class="white-text bgjudul">Aplikasi Inventarisasi <br />Aset Infrastruktur <br />Sumber Daya Air</h2><br/>
+							<a href="#peta"><img src="../img/ss1.png" alt="ss1" style="height:150px; margin-top:10px;"></a>
+							<a href="#peta2"><img src="../img/ss2.png" alt="ss2" style="height:150px; margin-top:10px;"></a>
 						</div>
+					</div>
+
+					<div class="col-md-5 login">
+							<div class="modal-header">
+								<h5 class="modal-title text-center" id="exampleModalLongTitle">Login</h5>
+							</div>
+							<div class="modal-body" style="color:black;">
+								<form action="process.php?process=login" method="post">
+									<center><img src="../img/logo-square-only.png" alt="pugarut" style="height:100px;"></center>
+									Username: <br />
+									<input type="text" name="username" class="form-control" placeholder="Username">
+									Password: <br />
+									<input type="password" name="password" class="form-control" placeholder="Password">
+									<input type="submit" value="Login" class="btn btn-info" style="margin-top:10px;width:100%;">
+								</form>
+							</div>
 					</div>
 					<!-- /home content -->
 
@@ -206,8 +224,8 @@ if (isset($_SESSION['user_id'])) {
 				<div class="section-header text-center">
 					<h2 class="title">Peta Aset Infrastruktur Sumber Daya Air</h2>
 				</div>
-				<div class="col-md-12 tentang">
-					<iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Aset Infrastruktur Sumber Daya Air" src="//www.arcgis.com/apps/Embed/index.html?webmap=ef284696a7a8437e8aac540dd4e680e3&extent=107.54,-7.4457,107.5849,-7.4224&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+				<div class="col-md-12">
+					<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Aset Infrastruktur Sumber Daya Air" src="//www.arcgis.com/apps/Embed/index.html?webmap=ef284696a7a8437e8aac540dd4e680e3&extent=107.54,-7.4457,107.5849,-7.4224&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
 				</div>
 				<!-- /Peta content -->
 			</div>
@@ -218,7 +236,7 @@ if (isset($_SESSION['user_id'])) {
 
 	</div>
 
-	<div id="peta" class="section md-padding bg-grey">
+	<div id="peta2" class="section md-padding bg-grey">
 
 		<!-- Container -->
 		<div class="container">
@@ -230,8 +248,8 @@ if (isset($_SESSION['user_id'])) {
 				<div class="section-header text-center">
 					<h2 class="title">Peta Titik Lokasi Banjir dan Daerah Berpotensi Banjir</h2>
 				</div>
-				<div class="col-md-12 tentang">
-					<iframe width="950" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Peta Titik Lokasi Banjir" src="//www.arcgis.com/apps/Embed/index.html?webmap=cfc7c9ea3f984a29a9475890be44ad8b&extent=107.8132,-7.2523,107.9928,-7.1592&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
+				<div class="col-md-12">
+					<iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Peta Titik Lokasi Banjir" src="//www.arcgis.com/apps/Embed/index.html?webmap=cfc7c9ea3f984a29a9475890be44ad8b&extent=107.8132,-7.2523,107.9928,-7.1592&home=true&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&details=true&legendlayers=true&active_panel=details&basemap_gallery=true&disable_scroll=true&theme=light"></iframe>
 				</div>
 				<!-- /Peta content -->
 			</div>
@@ -357,7 +375,7 @@ if (isset($_SESSION['user_id'])) {
 
 					<!-- footer logo -->
 					<div class="footer-logo">
-						<a href="index.html"><img src="../img/logo-alt.png" alt="logo"></a>
+						<a href="beranda.php"><img src="../img/logo-alt.png" alt="logo"></a>
 					</div>
 					<!-- /footer logo -->
 
