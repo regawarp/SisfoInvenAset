@@ -144,17 +144,19 @@ if (isset($_SESSION['user_id'])) {
 					<!-- home content -->
 					<div class="col-md-7">
 						<div class="home-content">
-							<h2 class="white-text bgjudul">Aplikasi Inventarisasi <br />Aset Infrastruktur <br />Sumber Daya Air</h2><br/>
-							<a href="#peta"><img src="../img/ss1.png" alt="ss1" style="height:150px; margin-top:10px;"></a>
-							<a href="#peta2"><img src="../img/ss2.png" alt="ss2" style="height:150px; margin-top:10px;"></a>
+						<!--<h2 class="white-text bgjudul">Aplikasi Inventarisasi <br />Aset Infrastruktur <br />Sumber Daya Air</h2><br/>-->
+						<a href="#peta"><img src="../img/ss1.png" alt="ss1" style="height:250px;"></a><br/>
+						<a href="#peta2"><img src="../img/ss2.png" alt="ss2" style="height:250px;margin-top:10px;"></a>
 						</div>
 					</div>
 
 					<div class="col-md-5 login">
+					
 							<div class="modal-header">
-								<h5 class="modal-title text-center" id="exampleModalLongTitle">Login</h5>
+								<h5 class="modal-title text-center" id="exampleModalLongTitle">Aplikasi Inventarisasi Aset Infrastruktur SDA</h5>
 							</div>
 							<div class="modal-body" style="color:black;">
+							
 								<form action="process.php?process=login" method="post">
 									<center><img src="../img/logo-square-only.png" alt="pugarut" style="height:100px;"></center>
 									Username: <br />
@@ -165,6 +167,13 @@ if (isset($_SESSION['user_id'])) {
 								</form>
 							</div>
 					</div>
+
+					<!--<div class="col-md-6" style="margin-top:20px;">
+							<div class="home-content">
+							<a href="#peta"><img src="../img/ss1.png" alt="ss1" style="height:150px;"></a>
+							
+							</div>
+					</div>-->
 					<!-- /home content -->
 
 				</div>
