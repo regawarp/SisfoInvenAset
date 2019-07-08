@@ -253,7 +253,7 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row">
 														<label class="col-sm-3 col-form-label">Luas</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="luas" />
+															<input type="number" class="form-control" name="luas" />
 														</div>
 													</div>
 												</div>
@@ -263,7 +263,7 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row">
 														<label class="col-sm-3 col-form-label">Thn Pengadan</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="thn_pengadaan" />
+															<input type="date" class="form-control" name="thn_pengadaan" />
 														</div>
 													</div>
 												</div>
