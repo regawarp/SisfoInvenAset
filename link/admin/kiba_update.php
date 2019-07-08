@@ -176,7 +176,7 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Thn Pengadan</label>
 													<div class="col-sm-9">
-														<input type="text" class="form-control" name="thn_pengadaan" <?php echo "value='$row[TAHUN_PENGADAAN]'"; ?> />
+														<input type="date" class="form-control" name="thn_pengadaan" <?php echo "value='$row[TAHUN_PENGADAAN]'"; ?> />
 													</div>
 												</div>
 											</div>

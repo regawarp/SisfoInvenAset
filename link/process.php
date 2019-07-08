@@ -101,7 +101,7 @@ if ($_SESSION['jenis'] == "User") {
                     $result = mysqli_query($conn, $query);
                     if (mysqli_num_rows($result) > 0) {
                         if ($row = mysqli_fetch_assoc($result)) {
-                            if ((string)$_POST['password'] == (string)$row['PASSWORD']) {
+                            if ((string) $_POST['password'] == (string) $row['PASSWORD']) {
                                 $_SESSION['user_id'] = $_POST['username'];
                                 $_SESSION['jenis'] = $row['NAMA_JENIS'];
                                 $_SESSION['nama'] = $row['NAMA_PEGAWAI'];
@@ -147,7 +147,8 @@ if ($_SESSION['jenis'] == "User") {
             $asalusul = $_POST['asalusul'];
 
             $conn = mysqli_connect($servername, $username, $password, $dbname);
-            $insert_query = 'INSERT INTO kiba VALUES("' . $idkiba . '","' . $idlokasi . '","' . $iddataspa . '","' . $nama_barang . '","' . $nokodebrg . '","' . $noreg . '",' . $luas . ',' . $thn_pengadaan . ',"' . $hak . '",' . $tgl_sertifikat . ',"' . $no_sertifikat . '","' . $penggunaan . '",' . $harga . ',"' . $foto . '","' . $file . '","' . $keterangan . '","' . $asalusul . '")';
+            $insert_query = "INSERT INTO kiba VALUES('$idkiba','$idlokasi','$iddataspa','$nama_barang','$nokodebrg','$noreg',$luas,'$thn_pengadaan','$hak','$tgl_sertifikat','$no_sertifikat','$penggunaan',$harga,'$foto','$file','$keterangan','$asalusul')";
+            echo $insert_query;
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses diinput";
 
@@ -247,13 +248,13 @@ if ($_SESSION['jenis'] == "User") {
 
             $conn = mysqli_connect($servername, $username, $password, $dbname);
             if ($foto == "" && $file == "") {
-                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER=$noreg,LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul' WHERE ID_KIBA='$idkiba'";
+                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER='$noreg',LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul' WHERE ID_KIBA='$idkiba'";
             } else if ($foto == "") {
-                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER=$noreg,LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FILE='$file' WHERE ID_KIBA='$idkiba'";
+                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER='$noreg',LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FILE='$file' WHERE ID_KIBA='$idkiba'";
             } else if ($file == "") {
-                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER=$noreg,LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FOTO='$foto' WHERE ID_KIBA='$idkiba'";
+                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER='$noreg',LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FOTO='$foto' WHERE ID_KIBA='$idkiba'";
             } else {
-                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER=$noreg,LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FOTO='$foto',FILE='$file' WHERE ID_KIBA='$idkiba'";
+                $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER='$noreg',LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul',FOTO='$foto',FILE='$file' WHERE ID_KIBA='$idkiba'";
             }
 
             if (mysqli_query($conn, $update_query)) {
