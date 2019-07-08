@@ -5,14 +5,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "db_pupr";
-
 if ($_SESSION['jenis'] == "User") {
-    switch ($_GET['process']) {
-        case 'logout':
-            session_destroy();
-            header('Location: ../index.php');
-            break;
-    }
     echo ("<script LANGUAGE='JavaScript'>
                             window.alert('Tidak Ada Hak Akses !');
                             window.location.href='admin/dashboard.php';
