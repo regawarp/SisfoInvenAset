@@ -597,15 +597,22 @@ header {
     text-align: left;
 }
 .login {
-    position: absolute;
     min-height: 100px;
     width: 500px;
+    margin: 0px auto;
     background-color:rgba(255, 255, 255, .8);
     color:black;
-    top:10%;
-    right: 10%;
     border-radius: 5px;
 }
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-top: 20px solid #fff;
+  }
+  
 .home-content h1 {
   text-transform: uppercase;
 }

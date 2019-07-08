@@ -76,10 +76,10 @@ if (isset($_SESSION['user_id'])) {
 													<td>Status Tanah</td>
 													<td>Kode Tanah</td>
 													<td>Nilai Kontrak</td>
-													<td>Foto</td>
-													<td>File</td>
 													<td>Keterangan</td>
 													<td>Asal Usul</td>
+													<td>Foto</td>
+													<td>File</td>
 													<td>Update</td>
 													<td>Delete</td>
 												</tr>
@@ -103,10 +103,10 @@ if (isset($_SESSION['user_id'])) {
 												<td>$row[STATUS_TANAH]</td>
 												<td>$row[NOMO_KODE_TANAH]</td>
 												<td>$row[NILAI_KONTRAK]</td>
-												<td><img src='../../img/upload/$row[FOTO]' width='50px' height='auto'></td>
-												<td><a href='../../file/$row[FILE]'>Lampiran</a></td>
 												<td>$row[KETERANGAN]</td>
 												<td>$row[ASAL_USUL]</td>
+												<td><img src='../../img/upload/$row[FOTO]' width='50px' height='auto'></td>
+												<td><a href='../../file/$row[FILE]'>Lampiran</a></td>
 												<td>
 												<a href='kibf_update.php?idkibf=$row[ID_KIBF]'>
 												<button class='btn btn-warning' type='button'>
