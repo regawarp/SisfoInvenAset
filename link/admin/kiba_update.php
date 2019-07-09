@@ -90,7 +90,7 @@ if (isset($_SESSION['user_id'])) {
 															$result = mysqli_query($conn, $query);
 															if (mysqli_num_rows($result) > 0) {
 																while ($rowlok = mysqli_fetch_assoc($result)) {
-																	if ((string)($rowlok['ID_LOKASI']) == (string)($row['ID_LOKASI'])) {
+																	if ((string) ($rowlok['ID_LOKASI']) == (string) ($row['ID_LOKASI'])) {
 																		echo "<option value='$rowlok[ID_LOKASI]' selected='selected'>$rowlok[NAMA_LOKASI]</option>";
 																	} else {
 																		echo "<option value='$rowlok[ID_LOKASI]'>$rowlok[NAMA_LOKASI]</option>";
@@ -176,7 +176,20 @@ if (isset($_SESSION['user_id'])) {
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label">Thn Pengadan</label>
 													<div class="col-sm-9">
-														<input type="date" class="form-control" name="thn_pengadaan" <?php echo "value='$row[TAHUN_PENGADAAN]'"; ?> />
+														<select name="thn_pengadaan">
+															<?php
+															$tahun_now = date('Y');
+															for ($i = 0; $i <= 10; $i++) {
+																$tahun = DateTime::createFromFormat("Y-m-d", $row['TAHUN_PENGADAAN'])->format("Y");
+																if ($tahun == $tahun_now) { 
+																	echo "<option value='$tahun_now' selected>$tahun_now</option>";
+																} else {
+																	echo "<option value='$tahun_now'>$tahun_now</option>";
+																}
+																$tahun_now--;
+															}
+															?>
+														</select>
 													</div>
 												</div>
 											</div>

@@ -87,13 +87,14 @@ if (isset($_SESSION['user_id'])) {
 												<?php
 												if (mysqli_num_rows($result) > 0) {
 													while ($row = mysqli_fetch_assoc($result)) {
+														
 														echo "<tr>
 																<td>$row[NAMA_LOKASI]</td>
 																<td><a href='https://$row[LINK_GIS]' target='_blank'>$row[NAMA_DATASPA]</a></td>
 																<td>$row[NOMOR_KODE_BARANG]</td>
 																<td>$row[NOMOR_REGISTER]</td>
 																<td>$row[LUAS]</td>
-																<td>$row[TAHUN_PENGADAAN]</td>
+																<td>".DateTime::createFromFormat("Y-m-d", $row['TAHUN_PENGADAAN'])->format("Y")."</td>
 																<td>$row[HAK]</td>
 																<td>$row[TANGGAL_SERTIFIKAT]</td>
 																<td>$row[NOMOR_SERTIFIKAT]</td>
@@ -131,8 +132,8 @@ if (isset($_SESSION['user_id'])) {
 										</table>
 									</div>
 									<a href="kiba_export.php" class="btn btn-success col-md-12" style="margin-top:20px;">
-                                    	<i class="mdi mdi-file-excel"></i>Download File Excel
-                                    </a>
+										<i class="mdi mdi-file-excel"></i>Download File Excel
+									</a>
 								</div>
 							</div>
 						</div>
@@ -263,7 +264,15 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row">
 														<label class="col-sm-3 col-form-label">Thn Pengadan</label>
 														<div class="col-sm-9">
-															<input type="date" class="form-control" name="thn_pengadaan" />
+															<select name="thn_pengadaan">
+																<?php
+																$tahun_now = date('Y');
+																for ($i = 0; $i <= 10; $i++) {
+																	echo "<option value='$tahun_now'>$tahun_now</option>";
+																	$tahun_now--;
+																}
+																?>
+															</select>
 														</div>
 													</div>
 												</div>

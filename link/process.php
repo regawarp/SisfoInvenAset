@@ -135,7 +135,7 @@ if ($_SESSION['jenis'] == "User") {
             $nokodebrg = $_POST['nokodebrg'];
             $noreg = $_POST['noreg'];
             $luas = $_POST['luas'];
-            $thn_pengadaan = $_POST['thn_pengadaan'];
+            $thn_pengadaan = $_POST['thn_pengadaan']."-01-01";
             $hak = $_POST['hak'];
             $tgl_sertifikat = $_POST['tgl_sertifikat'];
             $no_sertifikat = $_POST['no_sertifikat'];
@@ -235,7 +235,7 @@ if ($_SESSION['jenis'] == "User") {
             $nokodebrg = $_POST['nokodebrg'];
             $noreg = $_POST['noreg'];
             $luas = $_POST['luas'];
-            $thn_pengadaan = $_POST['thn_pengadaan'];
+            $thn_pengadaan = $_POST['thn_pengadaan']."-01-01";
             $hak = $_POST['hak'];
             $tgl_sertifikat = $_POST['tgl_sertifikat'];
             $no_sertifikat = $_POST['no_sertifikat'];
