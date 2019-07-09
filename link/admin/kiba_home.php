@@ -266,8 +266,8 @@ if (isset($_SESSION['user_id'])) {
 														<div class="col-sm-9">
 															<select name="thn_pengadaan">
 																<?php
-																$tahun_now = date('Y');
-																for ($i = 0; $i <= 10; $i++) {
+																$tahun_now = 2005;
+																for ($i = 0; $i <= 15; $i++) {
 																	echo "<option value='$tahun_now'>$tahun_now</option>";
 																	$tahun_now--;
 																}
