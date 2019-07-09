@@ -96,7 +96,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'login':
             if (!empty($_POST)) {
                 if (isset($_POST['username']) && isset($_POST['password'])) {
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                    include("connect.php");
                     $query = "SELECT * FROM pegawai,jenis_pegawai WHERE pegawai.ID_JENIS=jenis_pegawai.ID_JENIS AND NOMOR_INDUK_PEGAWAI = '$_POST[username]' ";
                     $result = mysqli_query($conn, $query);
                     if (mysqli_num_rows($result) > 0) {
@@ -146,7 +146,7 @@ if ($_SESSION['jenis'] == "User") {
             $keterangan = $_POST['keterangan'];
             $asalusul = $_POST['asalusul'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "INSERT INTO kiba VALUES('$idkiba','$idlokasi','$iddataspa','$nama_barang','$nokodebrg','$noreg',$luas,'$thn_pengadaan','$hak','$tgl_sertifikat','$no_sertifikat','$penggunaan',$harga,'$foto','$file','$keterangan','$asalusul')";
             echo $insert_query;
             if (mysqli_query($conn, $insert_query)) {
@@ -246,7 +246,7 @@ if ($_SESSION['jenis'] == "User") {
             $keterangan = $_POST['keterangan'];
             $asalusul = $_POST['asalusul'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             if ($foto == "" && $file == "") {
                 $update_query = "UPDATE kiba  SET ID_LOKASI='$idlokasi', ID_DATASPA='$iddataspa',NOMOR_KODE_BARANG='$nokodebrg',NOMOR_REGISTER='$noreg',LUAS=$luas,TAHUN_PENGADAAN='$thn_pengadaan',HAK='$hak',TANGGAL_SERTIFIKAT='$tgl_sertifikat',NOMOR_SERTIFIKAT='$no_sertifikat',PENGGUNAAN='$penggunaan',HARGA=$harga,NAMA_BARANG='$nama_barang',KETERANGAN='$keterangan',ASAL_USUL='$asalusul' WHERE ID_KIBA='$idkiba'";
             } else if ($foto == "") {
@@ -270,7 +270,7 @@ if ($_SESSION['jenis'] == "User") {
             $idkiba = $_GET['idkiba'];
             $foto = $_GET['foto'];
             $file = $_GET['file'];
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $delete_query = 'DELETE FROM kiba WHERE ID_KIBA=' . $idkiba;
             if (mysqli_query($conn, $delete_query)) {
                 echo "Data berhasil dihapus";
@@ -319,7 +319,7 @@ if ($_SESSION['jenis'] == "User") {
             $FILE = basename($_FILES["FILE"]["name"]);
             $KETERANGAN = $_POST['KETERANGAN'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "INSERT INTO kibd VALUES('$ID_KIBD','$ID_LOKASI','$ID_DATASPA','$ID_ASET','$NAMA_BARANG','$NOMOR_KODE_BARANG','$NOMOR_REGISTER','$KONSTRUKSI','$PANJANG','$LEBAR','$LUAS','$TANGGAL_DOKUMEN','$NOMOR_DOKUMEN','$STATUS_TANAH','$NOMOR_KODE','$ASAL_USUL','$HARGA','$KONDISI','$KETERANGAN','$FOTO','$FILE')";
             if (mysqli_query($conn, $insert_query)) {
                 header("Location: admin/kibd_home.php?status=sukses-insert");
@@ -353,7 +353,7 @@ if ($_SESSION['jenis'] == "User") {
             $FILE = basename($_FILES["FILE"]["name"]);
             $KETERANGAN = $_POST['KETERANGAN'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             if ($FOTO != "" && $FILE != "") {
                 $update_query = "UPDATE kibd SET ID_DATASPA = '$ID_DATASPA',ID_ASET = '$ID_ASET',NAMA_BARANG = '$NAMA_BARANG',NOMOR_KODE_BARANG = '$NOMOR_KODE_BARANG',NOMOR_REGISTER = '$NOMOR_REGISTER',KONSTRUKSI = '$KONSTRUKSI',PANJANG = '$PANJANG',LEBAR = '$LEBAR',LUAS = '$LUAS',TANGGAL_DOKUMEN = '$TANGGAL_DOKUMEN',NOMOR_DOKUMEN = '$NOMOR_DOKUMEN',STATUS_TANAH = '$STATUS_TANAH',NOMOR_KODE = '$NOMOR_KODE',ASAL_USUL = '$ASAL_USUL',HARGA = '$HARGA',KONDISI = '$KONDISI',FOTO = '$FOTO',FILE = '$FILE',KETERANGAN = '$KETERANGAN' WHERE ID_KIBD='$ID_KIBD'";
             } else if ($FOTO != "") {
@@ -377,7 +377,7 @@ if ($_SESSION['jenis'] == "User") {
             $idkibd = $_GET['idkibd'];
             $foto = $_GET['foto'];
             $file = $_GET['file'];
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $delete_query = "DELETE FROM kibd WHERE ID_KIBD='$idkibd'";
             if (mysqli_query($conn, $delete_query)) {
                 echo "Data berhasil dihapus";
@@ -424,7 +424,7 @@ if ($_SESSION['jenis'] == "User") {
             $KETERANGAN = $_POST['KETERANGAN'];
             $ASAL_USUL = $_POST['ASAL_USUL'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "INSERT INTO kibf VALUES('$ID_KIBF','$ID_DATASPA','$ID_LOKASI','$ID_ASET','$NAMA_BARANG','$BANGUNAN','$BERTINGKAT','$BETON','$PANJANG','$TANGGAL_DOKUMEN','$NOMOR_DOKUMEN','$TANGGAL_MULAI','$STATUS_TANAH','$NOMO_KODE_TANAH','$NILAI_KONTRAK','$FOTO','$FILE','$KETERANGAN','$ASAL_USUL')";
             if (mysqli_query($conn, $insert_query)) {
                 header("Location: admin/kibf_home.php?status=sukses-insert");
@@ -455,7 +455,7 @@ if ($_SESSION['jenis'] == "User") {
             $KETERANGAN = $_POST['KETERANGAN'];
             $ASAL_USUL = $_POST['ASAL_USUL'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             if ($FOTO != "" && $FILE != "") {
                 $update_query = "UPDATE kibf SET ID_DATASPA = '$ID_DATASPA',ID_LOKASI = '$ID_LOKASI',ID_ASET = '$ID_ASET',NAMA_BARANG = '$NAMA_BARANG',BANGUNAN = '$BANGUNAN',BERTINGKAT = '$BERTINGKAT',BETON = '$BETON',PANJANG = '$PANJANG',TANGGAL_DOKUMEN = '$TANGGAL_DOKUMEN',NOMOR_DOKUMEN = '$NOMOR_DOKUMEN',TANGGAL_MULAI = '$TANGGAL_MULAI',STATUS_TANAH = '$STATUS_TANAH',NOMO_KODE_TANAH = '$NOMO_KODE_TANAH',NILAI_KONTRAK = '$NILAI_KONTRAK',FOTO = '$FOTO',FILE = '$FILE',KETERANGAN = '$KETERANGAN',ASAL_USUL = '$ASAL_USUL' WHERE ID_KIBF='$ID_KIBF'";
             } else if ($FOTO != "") {
@@ -479,7 +479,7 @@ if ($_SESSION['jenis'] == "User") {
             $idkibf = $_GET['idkibf'];
             $foto = $_GET['foto'];
             $file = $_GET['file'];
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $delete_query = "DELETE FROM kibf WHERE ID_KIBF='$idkibf'";
             if (mysqli_query($conn, $delete_query)) {
                 echo "Data berhasil dihapus";
@@ -509,7 +509,7 @@ if ($_SESSION['jenis'] == "User") {
             $ID_LOKASI = $_POST['ID_LOKASI'];
             $NAMA_LOKASI = $_POST['NAMA_LOKASI'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "INSERT INTO lokasi VALUES('$ID_LOKASI','$NAMA_LOKASI')";
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses diinput";
@@ -524,7 +524,7 @@ if ($_SESSION['jenis'] == "User") {
             $ID_LOKASI = $_POST['ID_LOKASI'];
             $NAMA_LOKASI = $_POST['NAMA_LOKASI'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "UPDATE lokasi SET NAMA_LOKASI='$NAMA_LOKASI' WHERE ID_LOKASI='$ID_LOKASI'";
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses di update";
@@ -538,7 +538,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-lokasi':
             $ID_LOKASI = $_GET['ID_LOKASI'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "DELETE FROM lokasi WHERE ID_LOKASI='$ID_LOKASI'";
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses di delete";
@@ -553,7 +553,7 @@ if ($_SESSION['jenis'] == "User") {
             $ID_ASET = $_POST['ID_ASET'];
             $NAMA_ASET = $_POST['NAMA_ASET'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "INSERT INTO aset VALUES('$ID_ASET','$NAMA_ASET')";
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses diinput";
@@ -567,7 +567,7 @@ if ($_SESSION['jenis'] == "User") {
             $ID_ASET = $_POST['ID_LOKASI'];
             $NAMA_ASET = $_POST['NAMA_ASET'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "INSERT aset SET NAMA_ASET='$NAMA_ASET' WHERE ID_ASET='$ID_ASET'";
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses di update";
@@ -580,7 +580,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-aset':
             $ID_ASET = $_GET['ID_ASET'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $insert_query = "DELETE FROM aset WHERE ID_ASET='$ID_ASET'";
             if (mysqli_query($conn, $insert_query)) {
                 echo "Data Sukses di delete";
@@ -613,7 +613,7 @@ if ($_SESSION['jenis'] == "User") {
             $USULAN_TAMBAHAN_M = $_POST['USULAN_TAMBAHAN_M'];
             $USULAN_TAMBAHAN_SUMBER_DANA = $_POST['USULAN_TAMBAHAN_SUMBER_DANA'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "INSERT INTO dak VALUES('$ID_DAK','$ID_LOKASI','$NAMA_DAK',$LUAS,$PANJANG,$LEBAR,$PANJANG_BAIK_M,$PANJANG_BAIK_PERS,$PANJANG_SEDANG_M,$PANJANG_SEDANG_PERS,$PANJANG_RUSAKRINGAN_M,$PANJANG_RUSAKRINGAN_PERS,$PANJANG_RUSAKBERAT_M,$PANJANG_RUSAKBERAT_PERS,'$RENCANA_PENANGANAN',$KEBUTUHAN_ANGGARAN,$KEMAMPUAN_RUPIAH,$KEMAMPUAN_M,$USULAN_TAMBAHAN_RUPIAH,$USULAN_TAMBAHAN_M,'$USULAN_TAMBAHAN_SUMBER_DANA')";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di insert";
@@ -647,7 +647,7 @@ if ($_SESSION['jenis'] == "User") {
             $USULAN_TAMBAHAN_M = $_POST['USULAN_TAMBAHAN_M'];
             $USULAN_TAMBAHAN_SUMBER_DANA = $_POST['USULAN_TAMBAHAN_SUMBER_DANA'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "UPDATE dak SET ID_LOKASI = '$ID_LOKASI',NAMA_DAK = '$NAMA_DAK',LUAS = $LUAS,PANJANG = $PANJANG,LEBAR = $LEBAR,PANJANG_BAIK_M = $PANJANG_BAIK_M,PANJANG_BAIK_PERS = $PANJANG_BAIK_PERS,PANJANG_SEDANG_M = $PANJANG_SEDANG_M,PANJANG_SEDANG_PERS = $PANJANG_SEDANG_PERS,PANJANG_RUSAKRINGAN_M = $PANJANG_RUSAKRINGAN_M,PANJANG_RUSAKRINGAN_PERS = $PANJANG_RUSAKRINGAN_PERS,PANJANG_RUSAKBERAT_M = $PANJANG_RUSAKBERAT_M,PANJANG_RUSAKBERAT_PERS = $PANJANG_RUSAKBERAT_PERS,RENCANA_PENANGANAN = '$RENCANA_PENANGANAN',KEBUTUHAN_ANGGARAN = $KEBUTUHAN_ANGGARAN,KEMAMPUAN_RUPIAH = $KEMAMPUAN_RUPIAH,KEMAMPUAN_M = $KEMAMPUAN_M,USULAN_TAMBAHAN_RUPIAH = $USULAN_TAMBAHAN_RUPIAH,USULAN_TAMBAHAN_M = $USULAN_TAMBAHAN_M,USULAN_TAMBAHAN_SUMBER_DANA = '$USULAN_TAMBAHAN_SUMBER_DANA' WHERE ID_DAK = '$ID_DAK'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di update";
@@ -661,7 +661,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-dak':
             $ID_DAK = $_GET['ID_DAK'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "DELETE FROM dak WHERE ID_DAK = '$ID_DAK'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di delete";
@@ -677,7 +677,7 @@ if ($_SESSION['jenis'] == "User") {
             $NAMA_DATASPA = $_POST['NAMA_DATASPA'];
             $LINK_GIS = $_POST['LINK_GIS'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "INSERT INTO dataspa VALUES('$ID_DATASPA','$NAMA_DATASPA','$LINK_GIS')";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses diinput";
@@ -693,7 +693,7 @@ if ($_SESSION['jenis'] == "User") {
             $NAMA_DATASPA = $_POST['NAMA_DATASPA'];
             $LINK_GIS = $_POST['LINK_GIS'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "UPDATE dataspa SET NAMA_DATASPA='$NAMA_DATASPA',LINK_GIS='$LINK_GIS' WHERE ID_DATASPA='$ID_DATASPA'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses diinput";
@@ -707,7 +707,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-spatial':
             $ID_DATASPA = $_GET['ID_DATASPA'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "DELETE FROM dataspa WHERE ID_DATASPA='$ID_DATASPA'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di delete";
@@ -724,7 +724,7 @@ if ($_SESSION['jenis'] == "User") {
             $PATH_FILE = basename($_FILES['PATH_FILE']['name']);
             $TMP = $_FILES['PATH_FILE']['tmp_name'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "INSERT INTO ded VALUES('$ID_DED','$PATH_FILE')";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses diinput";
@@ -744,7 +744,7 @@ if ($_SESSION['jenis'] == "User") {
             $ID_LOKASI = $_POST['ID_LOKASI'];
             $PATH_FILE = basename($_FILES['PATH_FILE']['name']);
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
 
             $query = "UPDATE dedlokasi SET ID_LOKASI='$ID_LOKASI' WHERE ID_DED='$ID_DED'";
             mysqli_query($conn, $query);
@@ -766,7 +766,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-ded':
             $ID_DED = $_GET['ID_DED'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "DELETE FROM dedlokasi WHERE ID_DED='$ID_DED'";
             mysqli_query($conn, $query);
             $query = "DELETE FROM ded WHERE ID_DED='$ID_DED'";
@@ -785,7 +785,7 @@ if ($_SESSION['jenis'] == "User") {
             $NAMA_PEGAWAI = $_POST['NAMA_PEGAWAI'];
             $PASSWORD = $_POST['PASSWORD'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "INSERT INTO pegawai VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di insert";
@@ -802,7 +802,7 @@ if ($_SESSION['jenis'] == "User") {
             $NAMA_PEGAWAI = $_POST['NAMA_PEGAWAI'];
             $PASSWORD = $_POST['PASSWORD'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "UPDATE pegawai SET ID_JENIS='$ID_JENIS',NAMA_PEGAWAI='$NAMA_PEGAWAI',PASSWORD='$PASSWORD' WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di update";
@@ -817,7 +817,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-pegawai':
             $NOMOR_INDUK_PEGAWAI = $_GET['NOMOR_INDUK_PEGAWAI'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "DELETE FROM pegawai WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di delete";
@@ -835,7 +835,7 @@ if ($_SESSION['jenis'] == "User") {
             $TANGGAL_MULAI = $_POST['TANGGAL_MULAI'];
             $TANGGAL_AKHIR = $_POST['TANGGAL_AKHIR'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "INSERT INTO pemeliharaan VALUES('$ID_PEMELIHARAAN','$ID_DAK',$TOTAL_BIAYA,'$TANGGAL_MULAI','$TANGGAL_AKHIR')";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses diinput";
@@ -853,7 +853,7 @@ if ($_SESSION['jenis'] == "User") {
             $TANGGAL_MULAI = $_POST['TANGGAL_MULAI'];
             $TANGGAL_AKHIR = $_POST['TANGGAL_AKHIR'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "UPDATE pemeliharaan SET ID_DAK='$ID_DAK',TOTAL_BIAYA=$TOTAL_BIAYA,TANGGAL_MULAI='$TANGGAL_MULAI',TANGGAL_AKHIR='$TANGGAL_AKHIR' WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di update";
@@ -867,7 +867,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-pemeliharaan':
             $ID_PEMELIHARAAN = $_GET['ID_PEMELIHARAAN'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "DELETE FROM pemeliharaan WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses diinput";
@@ -885,7 +885,7 @@ if ($_SESSION['jenis'] == "User") {
             $BIAYA = $_POST['BIAYA'];
             $VOLUME = $_POST['VOLUME'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "INSERT INTO detail_pemeliharaan VALUES('$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
             if (mysqli_query($conn, $query)) {
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
@@ -903,7 +903,7 @@ if ($_SESSION['jenis'] == "User") {
             $BIAYA = $_POST['BIAYA'];
             $VOLUME = $_POST['VOLUME'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "UPDATE detail_pemeliharaan SET ID_PEMELIHARAAN='$ID_PEMELIHARAAN',JENIS_PEMELIHARAAN='$JENIS_PEMELIHARAAN',BIAYA=$BIAYA,VOLUME=$VOLUME WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di update";
@@ -917,7 +917,7 @@ if ($_SESSION['jenis'] == "User") {
         case 'delete-detail':
             $ID_DETAIL_PEMELIHARAAN = $_GET['ID_DETAIL_PEMELIHARAAN'];
 
-            $conn = mysqli_connect($servername, $username, $password, $dbname);
+            include("connect.php");
             $query = "DELETE FROM detail_pemeliharaan WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
                 echo "Data Sukses di delete";

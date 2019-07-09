@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+    include("../connect.php");
     $sql = "SELECT * FROM dak WHERE ID_DAK='$_GET[ID_DAK]'";
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) { } else {

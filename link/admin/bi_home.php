@@ -77,7 +77,7 @@ if (isset($_SESSION['user_id'])) {
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+                                                include("../connect.php");
                                                 $sql = "SELECT * FROM kiba";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($result) > 0) {

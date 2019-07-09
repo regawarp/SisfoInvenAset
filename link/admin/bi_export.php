@@ -104,7 +104,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 
 // DATA
 $rowExcel = 13;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM kiba";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {

@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+	include("../connect.php");
 	$sql = "SELECT * FROM kiba,lokasi,dataspa WHERE kiba.ID_LOKASI=lokasi.ID_LOKASI AND kiba.ID_DATASPA=dataspa.ID_DATASPA AND ID_KIBA='$_GET[idkiba]'";
 	$result = mysqli_query($conn, $sql);
 	if (mysqli_num_rows($result) > 0) {

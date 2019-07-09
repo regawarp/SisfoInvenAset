@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+	include("../connect.php");
 	$sql = "SELECT * FROM dataspa";
 	$result = mysqli_query($conn, $sql);
 } else {
@@ -106,7 +106,7 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DATASPA</label>
 														<div class="col-sm-9">
 															<?php
-															$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+															include("../connect.php");
 															$sql = "SELECT * FROM dataspa ORDER BY ID_DATASPA DESC LIMIT 1";
 															$result = mysqli_query($conn, $sql);
 															if (mysqli_num_rows($result) > 0) {

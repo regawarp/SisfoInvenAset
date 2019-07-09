@@ -2,7 +2,7 @@
 session_start();
 
 if ( isset( $_SESSION['user_id']) ) {
-	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+	include("../connect.php");
 	$sql = "SELECT * FROM jenis_pegawai";
 	$result = mysqli_query($conn, $sql);
 } else {

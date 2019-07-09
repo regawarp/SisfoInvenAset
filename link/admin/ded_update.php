@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+    include("../connect.php");
     $sql = "SELECT * FROM ded,dedlokasi,lokasi WHERE ded.ID_DED='$_GET[ID_DED]' AND ded.ID_DED=dedlokasi.ID_DED AND dedlokasi.ID_LOKASI=lokasi.ID_LOKASI";
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) { } else {
@@ -72,7 +72,7 @@ if (isset($_SESSION['user_id'])) {
                                                     <div class="col-sm-9">
                                                         <select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
                                                             <?php
-                                                            $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+                                                            include("../connect.php");
                                                             $query = "SELECT * FROM lokasi";
                                                             $result = mysqli_query($conn, $query);
                                                             if (mysqli_num_rows($result) > 0) {

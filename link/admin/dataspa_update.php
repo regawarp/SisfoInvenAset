@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+    include("../connect.php");
     $sql = "SELECT * FROM dataspa WHERE ID_DATASPA='$_GET[ID_DATASPA]'";
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) { } else {

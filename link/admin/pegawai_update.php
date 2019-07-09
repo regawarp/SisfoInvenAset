@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+    include("../connect.php");
     $sql = "SELECT * FROM pegawai,jenis_pegawai WHERE pegawai.ID_JENIS=jenis_pegawai.ID_JENIS AND NOMOR_INDUK_PEGAWAI = '$_GET[NOMOR_INDUK_PEGAWAI]'";
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) { } else {
@@ -73,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
                                                     <div class="col-sm-9">
                                                         <select name="ID_JENIS" class="form-control" style="margin: 0px 10px;">
                                                             <?php
-                                                            $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+                                                            include("../connect.php");
                                                             $query = "SELECT * FROM jenis_pegawai";
                                                             $result = mysqli_query($conn, $query);
                                                             if (mysqli_num_rows($result) > 0) {

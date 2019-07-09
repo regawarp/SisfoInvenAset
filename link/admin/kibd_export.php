@@ -215,7 +215,7 @@ $objPHPExcel->setActiveSheetIndex(3)
 
 // DATA
 $rowExcel = 11;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM kibd,lokasi WHERE kibd.ID_LOKASI=lokasi.ID_LOKASI AND ID_ASET='AS01'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -293,7 +293,7 @@ foreach (range('C7', 'R' . ($rowExcel - 1)) as $columnID) {
 
 // DATA
 $rowExcel = 11;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM kibd,lokasi WHERE kibd.ID_LOKASI=lokasi.ID_LOKASI AND ID_ASET='AS02'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -371,7 +371,7 @@ foreach (range('C7', 'R' . ($rowExcel - 1)) as $columnID) {
 
 // DATA
 $rowExcel = 11;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM kibd,lokasi WHERE kibd.ID_LOKASI=lokasi.ID_LOKASI AND ID_ASET='AS03'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
@@ -449,7 +449,7 @@ foreach (range('C7', 'R' . ($rowExcel - 1)) as $columnID) {
 
 // DATA
 $rowExcel = 11;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM kibd,lokasi WHERE kibd.ID_LOKASI=lokasi.ID_LOKASI AND ID_ASET='AS04'";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {

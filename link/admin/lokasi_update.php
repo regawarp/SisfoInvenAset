@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-    $conn = mysqli_connect("localhost", "root", "", "db_pupr");
+    include("../connect.php");
     $sql = "SELECT * FROM lokasi WHERE ID_LOKASI='$_GET[ID_LOKASI]'";
     $result = mysqli_query($conn, $sql);
     if ($row = mysqli_fetch_assoc($result)) { } else {

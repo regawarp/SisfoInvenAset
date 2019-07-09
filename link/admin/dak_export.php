@@ -145,7 +145,7 @@ $JML_KEMAMPUAN_RUPIAH = 0;
 $JML_KEMAMPUAN_M = 0;
 $JML_USULAN_TAMBAHAN_RUPIAH = 0;
 $JML_USULAN_TAMBAHAN_M = 0;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM dak";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {

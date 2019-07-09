@@ -6,7 +6,7 @@ if (isset($_SESSION['user_id'])) {
 		$status = $_GET['status'];
 		echo "<script type='text/javascript'>alert('$status');</script>";
 	}
-	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+	include("../connect.php");
 	$sql = "SELECT * FROM kibf,lokasi,dataspa,aset where kibf.ID_LOKASI=lokasi.ID_LOKASI AND kibf.ID_DATASPA=dataspa.ID_DATASPA AND kibf.ID_ASET=aset.ID_ASET";
 	$result = mysqli_query($conn, $sql);
 } else {

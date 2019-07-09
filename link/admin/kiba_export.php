@@ -89,7 +89,7 @@ $objPHPExcel->setActiveSheetIndex(0)
 
 // DATA
 $rowExcel = 11;
-$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+include("../connect.php");
 $sql = "SELECT * FROM kiba,lokasi WHERE kiba.ID_LOKASI=lokasi.ID_LOKASI";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {

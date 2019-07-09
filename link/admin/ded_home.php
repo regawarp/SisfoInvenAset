@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-	$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+	include("../connect.php");
 	$sql = "SELECT * FROM ded,dedlokasi,lokasi WHERE ded.ID_DED=dedlokasi.ID_DED AND dedlokasi.ID_LOKASI=lokasi.ID_LOKASI";
 	$result = mysqli_query($conn, $sql);
 } else {
@@ -106,7 +106,7 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row"> <label class="col-sm-3 col-form-label">ID_DED</label>
 														<div class="col-sm-9">
 															<?php
-															$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+															include("../connect.php");
 															$query = "SELECT * FROM ded,dedlokasi,lokasi WHERE ded.ID_DED=dedlokasi.ID_DED AND dedlokasi.ID_LOKASI=lokasi.ID_LOKASI GROUP BY ded.ID_DED ";
 															$result = mysqli_query($conn, $sql);
 															if (mysqli_num_rows($result) > 0) {
@@ -128,7 +128,7 @@ if (isset($_SESSION['user_id'])) {
 														<div class="col-sm-9">
 															<select name="ID_LOKASI" class="form-control" style="margin: 0px 10px;">
 																<?php
-																$conn = mysqli_connect("localhost", "root", "", "db_pupr");
+																include("../connect.php");
 																$query = "SELECT * FROM lokasi";
 																$result = mysqli_query($conn, $query);
 																if (mysqli_num_rows($result) > 0) {
