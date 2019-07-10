@@ -375,26 +375,26 @@ if (isset($_SESSION['jenis']) && $_SESSION['jenis'] == "User") {
 
         case 'delete-kibd':
             $idkibd = $_GET['idkibd'];
-            $foto = $_GET['foto'];
-            $file = $_GET['file'];
+            // $foto = $_GET['foto'];
+            // $file = $_GET['file'];
             include("connect.php");
             $delete_query = "DELETE FROM kibd WHERE ID_KIBD='$idkibd'";
             if (mysqli_query($conn, $delete_query)) {
                 //echo "Data berhasil dihapus";
-                if ($foto != "") {
-                    if (!unlink('../img/upload/' . $foto)) {
-                        // echo ("Error deleting $foto");
-                    } else {
-                        // echo ("Deleted $foto");
-                    }
-                }
-                if ($file != "") {
-                    if (!unlink('../file/' . $file)) {
-                        // echo ("Error deleting $file");
-                    } else {
-                        // echo ("Deleted $file");
-                    }
-                }
+                // if ($foto != "") {
+                //     if (!unlink('../img/upload/' . $foto)) {
+                //         // echo ("Error deleting $foto");
+                //     } else {
+                //         // echo ("Deleted $foto");
+                //     }
+                // }
+                // if ($file != "") {
+                //     if (!unlink('../file/' . $file)) {
+                //         // echo ("Error deleting $file");
+                //     } else {
+                //         // echo ("Deleted $file");
+                //     }
+                // }
                 header("Location: admin/kibd_home.php?status=sukses-delete");
             } else {
                 header("Location: admin/kibd_home.php?status=gagal-delete");
@@ -479,26 +479,26 @@ if (isset($_SESSION['jenis']) && $_SESSION['jenis'] == "User") {
 
         case 'delete-kibf':
             $idkibf = $_GET['idkibf'];
-            $foto = $_GET['foto'];
-            $file = $_GET['file'];
+            // $foto = $_GET['foto'];
+            // $file = $_GET['file'];
             include("connect.php");
             $delete_query = "DELETE FROM kibf WHERE ID_KIBF='$idkibf'";
             if (mysqli_query($conn, $delete_query)) {
                 //echo "Data berhasil dihapus";
-                if ($foto != "") {
-                    if (!unlink('../img/upload/' . $foto)) {
-                        // echo ("Error deleting $foto");
-                    } else {
-                        // echo ("Deleted $foto");
-                    }
-                }
-                if ($file != "") {
-                    if (!unlink('../file/' . $file)) {
-                        // echo ("Error deleting $file");
-                    } else {
-                        // echo ("Deleted $file");
-                    }
-                }
+                // if ($foto != "") {
+                //     if (!unlink('../img/upload/' . $foto)) {
+                //         // echo ("Error deleting $foto");
+                //     } else {
+                //         // echo ("Deleted $foto");
+                //     }
+                // }
+                // if ($file != "") {
+                //     if (!unlink('../file/' . $file)) {
+                //         // echo ("Error deleting $file");
+                //     } else {
+                //         // echo ("Deleted $file");
+                //     }
+                // }
                 header("Location: admin/kibf_home.php?status=sukses-delete");
             } else {
                 // header("Location: admin/kibd_home.php?status=gagal-delete");
