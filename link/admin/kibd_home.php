@@ -246,9 +246,9 @@ if (isset($_SESSION['user_id'])) {
 																if ($id = mysqli_fetch_assoc($result)) {
 																	$num = $id['ID_KIBD'];
 																	$num++;
-																	echo "<input type='text' class='form-control' name='idkibd' value='$num' readonly/>";
+																	echo "<input type='text' class='form-control' name='ID_KIBD' value='$num' readonly/>";
 																} else {
-																	echo "<input type='text' class='form-control' name='idkibd' value='1'/> readonly";
+																	echo "<input type='text' class='form-control' name='ID_KIBD' value='1'/> readonly";
 																}
 															}
 															?>
