@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 $dbname = "db_pupr";
 
-if ($_SESSION['jenis'] == "User") {
+if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
     switch ($_GET['process']) {
         case 'logout':
             session_destroy();
