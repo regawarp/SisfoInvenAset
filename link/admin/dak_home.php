@@ -192,67 +192,67 @@ if (isset($_SESSION['user_id'])) {
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">LUAS</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="LUAS">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="LUAS">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">LEBAR</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="LEBAR">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="LEBAR">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_BAIK_M</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_BAIK_M">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_BAIK_M">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_BAIK_PERS</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_BAIK_PERS">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_BAIK_PERS">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_SEDANG_M</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_SEDANG_M">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_SEDANG_M">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_SEDANG_PERS</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_SEDANG_PERS">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_SEDANG_PERS">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKRINGAN_M</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKRINGAN_M">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_RUSAKRINGAN_M">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKRINGAN_PERS</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKRINGAN_PERS">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_RUSAKRINGAN_PERS">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKBERAT_M</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKBERAT_M">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_RUSAKBERAT_M">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">PANJANG_RUSAKBERAT_PERS</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="PANJANG_RUSAKBERAT_PERS">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="PANJANG_RUSAKBERAT_PERS">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -264,31 +264,31 @@ if (isset($_SESSION['user_id'])) {
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">KEBUTUHAN_ANGGARAN</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="KEBUTUHAN_ANGGARAN">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="KEBUTUHAN_ANGGARAN">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">KEMAMPUAN_RUPIAH</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="KEMAMPUAN_RUPIAH">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="KEMAMPUAN_RUPIAH">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">KEMAMPUAN_M</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="KEMAMPUAN_M">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="KEMAMPUAN_M">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">USULAN_TAMBAHAN_RUPIAH</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="USULAN_TAMBAHAN_RUPIAH">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="USULAN_TAMBAHAN_RUPIAH">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row"> <label class="col-sm-3 col-form-label">USULAN_TAMBAHAN_M</label>
-                                                        <div class="col-sm-9"> <input type="number" class="form-control" name="USULAN_TAMBAHAN_M">
+                                                        <div class="col-sm-9"> <input type="number" value="0" class="form-control" name="USULAN_TAMBAHAN_M">
                                                         </div>
                                                     </div>
                                                 </div>
