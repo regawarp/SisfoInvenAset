@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 $dbname = "db_pupr";
 
-if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
+if (isset($_SESSION['jenis']) && $_SESSION['jenis'] == "User") {
     switch ($_GET['process']) {
         case 'logout':
             session_destroy();
@@ -32,21 +32,21 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             if (isset($_POST["submit"])) {
                 $check = getimagesize($TMP);
                 if ($check !== false) {
-                    echo "File is an image - " . $check["mime"] . ".";
+                    // echo "File is an image - " . $check["mime"] . ".";
                     $uploadOk = 1;
                 } else {
-                    echo "File is not an image.";
+                    // echo "File is not an image.";
                     $uploadOk = 0;
                 }
             }
             // Check if file already exists
             if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
+                //echo "Sorry, file already exists.";
                 $uploadOk = 0;
             }
             // Check file size
             if ($_FILES["foto"]["size"] > 500000) {
-                echo "Sorry, your file is too large.";
+                //echo "Sorry,  your file is too large.";
                 $uploadOk = 0;
             }
             // Allow certain file formats
@@ -54,18 +54,18 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                 && $imageFileType != "gif"
             ) {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                 $uploadOk = 0;
             }
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                // echo "Sorry, your file was not uploaded.";
                 // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($TMP, $target_file)) {
-                    echo "The file " . $PATH_FILE . " has been uploaded.";
+                    // echo "The file " . $PATH_FILE . " has been uploaded.";
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    // echo "Sorry, there was an error uploading your file.";
                 }
             }
         } else if ($JENIS == "FILE") {
@@ -75,18 +75,18 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             // Check if file already exists
             if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
+                //echo "Sorry, file already exists.";
                 $uploadOk = 0;
             }
             // Check if $uploadOk is set to 0 by an error
             if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
+                // echo "Sorry, your file was not uploaded.";
                 // if everything is ok, try to upload file
             } else {
                 if (move_uploaded_file($TMP, $target_file)) {
-                    echo "The file " . $PATH_FILE . " has been uploaded.";
+                    // echo "The file " . $PATH_FILE . " has been uploaded.";
                 } else {
-                    echo "Sorry, there was an error uploading your file.";
+                    // echo "Sorry, there was an error uploading your file.";
                 }
             }
         }
@@ -148,9 +148,9 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
 
             include("connect.php");
             $insert_query = "INSERT INTO kiba VALUES('$idkiba','$idlokasi','$iddataspa','$nama_barang','$nokodebrg','$noreg',$luas,'$thn_pengadaan','$hak','$tgl_sertifikat','$no_sertifikat','$penggunaan',$harga,'$foto','$file','$keterangan','$asalusul')";
-            echo $insert_query;
+            // echo $insert_query;
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses diinput";
+                
 
                 //Upload foto and file
                 $target_dir = "../img/upload/";
@@ -161,21 +161,21 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 if (isset($_POST["submit"])) {
                     $check = getimagesize($_FILES["foto"]["tmp_name"]);
                     if ($check !== false) {
-                        echo "File is an image - " . $check["mime"] . ".";
+                        // echo "File is an image - " . $check["mime"] . ".";
                         $uploadOk = 1;
                     } else {
-                        echo "File is not an image.";
+                        // echo "File is not an image.";
                         $uploadOk = 0;
                     }
                 }
                 // Check if file already exists
                 if (file_exists($target_file)) {
-                    echo "Sorry, file already exists.";
+                    //echo "Sorry, file already exists.";
                     $uploadOk = 0;
                 }
                 // Check file size
                 if ($_FILES["foto"]["size"] > 500000) {
-                    echo "Sorry, your file is too large.";
+                    //echo "Sorry,  your file is too large.";
                     $uploadOk = 0;
                 }
                 // Allow certain file formats
@@ -183,18 +183,18 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                     $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                     && $imageFileType != "gif"
                 ) {
-                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    // //echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
                     $uploadOk = 0;
                 }
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0) {
-                    echo "Sorry, your file was not uploaded.";
+                    // echo "Sorry, your file was not uploaded.";
                     // if everything is ok, try to upload file
                 } else {
                     if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-                        echo "The file " . basename($_FILES["foto"]["name"]) . " has been uploaded.";
+                        // echo "The file " . basename($_FILES["foto"]["name"]) . " has been uploaded.";
                     } else {
-                        echo "Sorry, there was an error uploading your file.";
+                        // echo "Sorry, there was an error uploading your file.";
                     }
                 }
 
@@ -204,25 +204,25 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
                 // Check if file already exists
                 if (file_exists($target_file)) {
-                    echo "Sorry, file already exists.";
+                    // //echo "Sorry, file already exists.";
                     $uploadOk = 0;
                 }
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0) {
-                    echo "Sorry, your file was not uploaded.";
+                    // echo "Sorry, your file was not uploaded.";
                     // if everything is ok, try to upload file
                 } else {
                     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                        echo "The file " . basename($_FILES["file"]["name"]) . " has been uploaded.";
+                        // echo "The file " . basename($_FILES["file"]["name"]) . " has been uploaded.";
                     } else {
-                        echo "Sorry, there was an error uploading your file.";
+                        // echo "Sorry, there was an error uploading your file.";
                     }
                 }
 
                 header("Location: admin/kiba_home.php?status=sukses-insert");
             } else {
                 header("Location: admin/kiba_home.php?status=gagal-insert");
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
             break;
@@ -261,7 +261,7 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 header("Location: admin/kiba_home.php?status=sukses-update");
             } else {
                 header("Location: admin/kiba_home.php?status=gagal-update");
-                echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
             break;
@@ -273,25 +273,25 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $delete_query = 'DELETE FROM kiba WHERE ID_KIBA=' . $idkiba;
             if (mysqli_query($conn, $delete_query)) {
-                echo "Data berhasil dihapus";
+                //echo "Data berhasil dihapus";
                 if ($foto != "") {
                     if (!unlink('../img/upload/' . $foto)) {
-                        echo ("Error deleting $foto");
+                        // echo ("Error deleting $foto");
                     } else {
-                        echo ("Deleted $foto");
+                        // echo ("Deleted $foto");
                     }
                 }
                 if ($file != "") {
                     if (!unlink('../file/' . $file)) {
-                        echo ("Error deleting $file");
+                        // echo ("Error deleting $file");
                     } else {
-                        echo ("Deleted $file");
+                        // echo ("Deleted $file");
                     }
                 }
                 header("Location: admin/kiba_home.php?status=sukses-delete");
             } else {
                 header("Location: admin/kiba_home.php?status=gagal-delete");
-                echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
             break;
@@ -325,7 +325,7 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 header("Location: admin/kibd_home.php?status=sukses-insert");
             } else {
                 header("Location: admin/kibd_home.php?status=gagal-insert");
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
             break;
@@ -368,7 +368,7 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 header("Location: admin/kibd_home.php?status=sukses-update");
             } else {
                 header("Location: admin/kiba_home.php?status=gagal-update");
-                echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
             break;
@@ -380,25 +380,25 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $delete_query = "DELETE FROM kibd WHERE ID_KIBD='$idkibd'";
             if (mysqli_query($conn, $delete_query)) {
-                echo "Data berhasil dihapus";
+                //echo "Data berhasil dihapus";
                 if ($foto != "") {
                     if (!unlink('../img/upload/' . $foto)) {
-                        echo ("Error deleting $foto");
+                        // echo ("Error deleting $foto");
                     } else {
-                        echo ("Deleted $foto");
+                        // echo ("Deleted $foto");
                     }
                 }
                 if ($file != "") {
                     if (!unlink('../file/' . $file)) {
-                        echo ("Error deleting $file");
+                        // echo ("Error deleting $file");
                     } else {
-                        echo ("Deleted $file");
+                        // echo ("Deleted $file");
                     }
                 }
                 header("Location: admin/kibd_home.php?status=sukses-delete");
             } else {
                 header("Location: admin/kibd_home.php?status=gagal-delete");
-                echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
             }
             mysqli_close($conn);
             break;
@@ -429,7 +429,7 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             if (mysqli_query($conn, $insert_query)) {
                 header("Location: admin/kibf_home.php?status=sukses-insert");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location: admin/kibf_home.php?status=gagal-insert");
             }
             mysqli_close($conn);
@@ -471,7 +471,7 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 header("Location: admin/kibf_home.php?status=sukses-update");
             } else {
                 // header("Location: admin/kiba_home.php?status=gagal-update");
-                echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $update_query . "<br>" . mysqli_error($conn);
                 header("Location: admin/kibf_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -484,25 +484,25 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $delete_query = "DELETE FROM kibf WHERE ID_KIBF='$idkibf'";
             if (mysqli_query($conn, $delete_query)) {
-                echo "Data berhasil dihapus";
+                //echo "Data berhasil dihapus";
                 if ($foto != "") {
                     if (!unlink('../img/upload/' . $foto)) {
-                        echo ("Error deleting $foto");
+                        // echo ("Error deleting $foto");
                     } else {
-                        echo ("Deleted $foto");
+                        // echo ("Deleted $foto");
                     }
                 }
                 if ($file != "") {
                     if (!unlink('../file/' . $file)) {
-                        echo ("Error deleting $file");
+                        // echo ("Error deleting $file");
                     } else {
-                        echo ("Deleted $file");
+                        // echo ("Deleted $file");
                     }
                 }
                 header("Location: admin/kibf_home.php?status=sukses-delete");
             } else {
                 // header("Location: admin/kibd_home.php?status=gagal-delete");
-                echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
                 header("Location: admin/kibf_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -515,10 +515,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $insert_query = "INSERT INTO lokasi VALUES('$ID_LOKASI','$NAMA_LOKASI')";
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses diinput";
+                
                 header("Location:admin/lokasi_home.php?status=sukses-input");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location:admin/lokasi_home.php?status=gagal-input");
             }
             mysqli_close($conn);
@@ -531,10 +531,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $insert_query = "UPDATE lokasi SET NAMA_LOKASI='$NAMA_LOKASI' WHERE ID_LOKASI='$ID_LOKASI'";
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses di update";
+                
                 header("Location:admin/lokasi_home.php?status=sukses-update");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location:admin/lokasi_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -546,10 +546,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $insert_query = "DELETE FROM lokasi WHERE ID_LOKASI='$ID_LOKASI'";
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/lokasi_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location:admin/lokasi_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -562,10 +562,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $insert_query = "INSERT INTO aset VALUES('$ID_ASET','$NAMA_ASET')";
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses diinput";
+                
                 header("Location:admin/aset_home.php?status=sukses-input");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location:admin/aset_home.php?status=gagal-input");
             }
             mysqli_close($conn);
@@ -578,10 +578,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $insert_query = "INSERT aset SET NAMA_ASET='$NAMA_ASET' WHERE ID_ASET='$ID_ASET'";
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses di update";
+                
                 header("Location:admin/aset_home.php?status=sukses-update");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location:admin/aset_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -593,10 +593,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $insert_query = "DELETE FROM aset WHERE ID_ASET='$ID_ASET'";
             if (mysqli_query($conn, $insert_query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/aset_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $insert_query . "<br>" . mysqli_error($conn);
                 header("Location:admin/aset_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -628,10 +628,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "INSERT INTO dak VALUES('$ID_DAK','$ID_LOKASI','$NAMA_DAK',$LUAS,$PANJANG,$LEBAR,$PANJANG_BAIK_M,$PANJANG_BAIK_PERS,$PANJANG_SEDANG_M,$PANJANG_SEDANG_PERS,$PANJANG_RUSAKRINGAN_M,$PANJANG_RUSAKRINGAN_PERS,$PANJANG_RUSAKBERAT_M,$PANJANG_RUSAKBERAT_PERS,'$RENCANA_PENANGANAN',$KEBUTUHAN_ANGGARAN,$KEMAMPUAN_RUPIAH,$KEMAMPUAN_M,$USULAN_TAMBAHAN_RUPIAH,$USULAN_TAMBAHAN_M,'$USULAN_TAMBAHAN_SUMBER_DANA')";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di insert";
+                // echo "Data Sukses di insert";
                 header("Location:admin/dak_home.php?status=sukses-insert");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/dak_home.php?status=gagal-insert");
             }
             mysqli_close($conn);
@@ -663,10 +663,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "UPDATE dak SET ID_LOKASI = '$ID_LOKASI',NAMA_DAK = '$NAMA_DAK',LUAS = $LUAS,PANJANG = $PANJANG,LEBAR = $LEBAR,PANJANG_BAIK_M = $PANJANG_BAIK_M,PANJANG_BAIK_PERS = $PANJANG_BAIK_PERS,PANJANG_SEDANG_M = $PANJANG_SEDANG_M,PANJANG_SEDANG_PERS = $PANJANG_SEDANG_PERS,PANJANG_RUSAKRINGAN_M = $PANJANG_RUSAKRINGAN_M,PANJANG_RUSAKRINGAN_PERS = $PANJANG_RUSAKRINGAN_PERS,PANJANG_RUSAKBERAT_M = $PANJANG_RUSAKBERAT_M,PANJANG_RUSAKBERAT_PERS = $PANJANG_RUSAKBERAT_PERS,RENCANA_PENANGANAN = '$RENCANA_PENANGANAN',KEBUTUHAN_ANGGARAN = $KEBUTUHAN_ANGGARAN,KEMAMPUAN_RUPIAH = $KEMAMPUAN_RUPIAH,KEMAMPUAN_M = $KEMAMPUAN_M,USULAN_TAMBAHAN_RUPIAH = $USULAN_TAMBAHAN_RUPIAH,USULAN_TAMBAHAN_M = $USULAN_TAMBAHAN_M,USULAN_TAMBAHAN_SUMBER_DANA = '$USULAN_TAMBAHAN_SUMBER_DANA' WHERE ID_DAK = '$ID_DAK'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di update";
+                
                 header("Location:admin/dak_home.php?status=sukses-update");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/dak_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -678,10 +678,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "DELETE FROM dak WHERE ID_DAK = '$ID_DAK'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/dak_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                //echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/dak_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -695,10 +695,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "INSERT INTO dataspa VALUES('$ID_DATASPA','$NAMA_DATASPA','$LINK_GIS')";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses diinput";
+                
                 header("Location:admin/dataspa_home.php?status=sukses-insert");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // //echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/dataspa_home.php?status=gagal-insert");
             }
             mysqli_close($conn);
@@ -712,10 +712,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "UPDATE dataspa SET NAMA_DATASPA='$NAMA_DATASPA',LINK_GIS='$LINK_GIS' WHERE ID_DATASPA='$ID_DATASPA'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses diinput";
+                
                 header("Location:admin/dataspa_home.php?status=sukses-update");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/dataspa_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -727,10 +727,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "DELETE FROM dataspa WHERE ID_DATASPA='$ID_DATASPA'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/dataspa_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/dataspa_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -745,14 +745,14 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "INSERT INTO ded VALUES('$ID_DED','$PATH_FILE')";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses diinput";
+                
                 //Input ke table ded lokasi
                 $query = "INSERT INTO dedlokasi VALUES('$ID_LOKASI','$ID_DED')";
                 mysqli_query($conn, $query);
                 uploadFileFoto($PATH_FILE, $TMP, "FILE");
                 header("Location:admin/ded_home.php?status=sukses-insert");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/ded_home.php?status=gagal-insert");
             }
             mysqli_close($conn);
@@ -771,10 +771,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
                 $query = "UPDATE ded SET PATH_FILE='$PATH_FILE' WHERE ID_DED='$ID_DED'";
                 uploadFileFoto($PATH_FILE, $TMP, "FILE");
                 if (mysqli_query($conn, $query)) {
-                    echo "Data Sukses di update";
+                    
                     header("Location:admin/ded_home.php?status=sukses-update");
                 } else {
-                    echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                    // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                     header("Location:admin/ded_home.php?status=gagal-update");
                 }
             }
@@ -791,10 +791,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             mysqli_query($conn, $query);
             $query = "DELETE FROM ded WHERE ID_DED='$ID_DED'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/ded_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/ded_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -809,10 +809,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "INSERT INTO pegawai VALUES('$NOMOR_INDUK_PEGAWAI','$ID_JENIS','$NAMA_PEGAWAI','$PASSWORD')";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di insert";
+                // echo "Data Sukses di insert";
                 header("Location:admin/pegawai_home.php?status=sukses-insert");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/pegawai_home.php?status=gagal-insert");
             }
             mysqli_close($conn);
@@ -827,10 +827,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "UPDATE pegawai SET ID_JENIS='$ID_JENIS',NAMA_PEGAWAI='$NAMA_PEGAWAI',PASSWORD='$PASSWORD' WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di update";
+                
                 header("Location:admin/pegawai_home.php?status=sukses-update");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/pegawai_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -843,10 +843,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "DELETE FROM pegawai WHERE NOMOR_INDUK_PEGAWAI='$NOMOR_INDUK_PEGAWAI'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/pegawai_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/pegawai_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -862,10 +862,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "INSERT INTO pemeliharaan VALUES('$ID_PEMELIHARAAN','$ID_DAK',$TOTAL_BIAYA,'$TANGGAL_MULAI','$TANGGAL_AKHIR')";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses diinput";
+                
                 header("Location:admin/pemeliharaan_home.php?status=sukses-insert");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/pemeliharaan_home.php?status=gagal-insert");
             }
             mysqli_close($conn);
@@ -881,10 +881,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "UPDATE pemeliharaan SET ID_DAK='$ID_DAK',TOTAL_BIAYA=$TOTAL_BIAYA,TANGGAL_MULAI='$TANGGAL_MULAI',TANGGAL_AKHIR='$TANGGAL_AKHIR' WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di update";
+                
                 header("Location:admin/pemeliharaan_home.php?status=sukses-update");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/pemeliharaan_home.php?status=gagal-update");
             }
             mysqli_close($conn);
@@ -896,10 +896,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "DELETE FROM pemeliharaan WHERE ID_PEMELIHARAAN='$ID_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses diinput";
+                
                 header("Location:admin/pemeliharaan_home.php?status=sukses-delete");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/pemeliharaan_home.php?status=gagal-delete");
             }
             mysqli_close($conn);
@@ -916,9 +916,9 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             $query = "INSERT INTO detail_pemeliharaan VALUES('$ID_DETAIL_PEMELIHARAAN','$ID_PEMELIHARAAN','$JENIS_PEMELIHARAAN','$BIAYA','$VOLUME')";
             if (mysqli_query($conn, $query)) {
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
-                echo "Data Sukses diinput";
+                
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
             }
             mysqli_close($conn);
@@ -934,10 +934,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "UPDATE detail_pemeliharaan SET ID_PEMELIHARAAN='$ID_PEMELIHARAAN',JENIS_PEMELIHARAAN='$JENIS_PEMELIHARAAN',BIAYA=$BIAYA,VOLUME=$VOLUME WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di update";
+                
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
             }
             mysqli_close($conn);
@@ -949,10 +949,10 @@ if (isset($_SESSION['jenis'] && $_SESSION['jenis'] == "User") {
             include("connect.php");
             $query = "DELETE FROM detail_pemeliharaan WHERE ID_DETAIL_PEMELIHARAAN='$ID_DETAIL_PEMELIHARAAN'";
             if (mysqli_query($conn, $query)) {
-                echo "Data Sukses di delete";
+                
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
             } else {
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                // echo "Error: " . $query . "<br>" . mysqli_error($conn);
                 header("Location:admin/detail_home.php?ID_PEMELIHARAAN='$ID_PEMELIHARAAN'");
             }
             mysqli_close($conn);
