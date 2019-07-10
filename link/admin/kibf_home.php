@@ -275,7 +275,7 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row">
 														<label class="col-sm-3 col-form-label">Panjang</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="PANJANG" />
+															<input type="number" class="form-control" name="PANJANG" value="0" />
 														</div>
 													</div>
 												</div>
@@ -319,7 +319,7 @@ if (isset($_SESSION['user_id'])) {
 													<div class="form-group row">
 														<label class="col-sm-3 col-form-label">No Kd Tanah</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="NOMOR_KODE_TANAH" />
+															<input type="text" class="form-control" name="NOMO_KODE_TANAH" />
 														</div>
 													</div>
 												</div>
